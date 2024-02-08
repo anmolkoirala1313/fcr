@@ -692,12 +692,15 @@ Container: Start
   font-size: 14px;
   font-weight: 400;
   line-height: 22px;
+  cursor: pointer;
 }
 
 .caption2 {
   font-size: 12px;
   font-weight: 500;
   line-height: 16px;
+    cursor: pointer;
+
 }
 
 .fs-60 {
@@ -1907,6 +1910,9 @@ Header menu main: Start
 .header-menu #menu-mobile-block .sub-nav-mobile .sub-nav-item:first-child {
   border-top: 1px solid var(--line);
 }
+.header-menu #menu-mobile-block .sub-nav-mobile .sub-nav-child-item:first-child {
+  border-top: 1px solid var(--line);
+}
 .header-menu #menu-mobile-block .sub-nav-mobile .sub-nav-item a {
   position: relative;
 }
@@ -2191,7 +2197,7 @@ Header menu Home6: Start
   position: relative;
 }
 .style-home-six .header-menu.style-six .container .header-main .menu-header {
-    background-color: rgb(15 30 55 / 33%);
+    background-color: rgb(88 98 115 / 33%);
     backdrop-filter: blur(29.5px);
   position: absolute;
   z-index: 10;
@@ -2631,7 +2637,15 @@ Mobile Menu Humburger: Start
   overflow: hidden;
   max-height: 0;
 }
+.header-menu #menu-mobile-block .menu-mobile-main .menu-nav-mobile .nav-item-mobile .sub-nav-child-mobile {
+  transition: all ease-in-out 0.5s;
+  overflow: hidden;
+  max-height: 0;
+}
 .header-menu #menu-mobile-block .menu-mobile-main .menu-nav-mobile .nav-item-mobile .sub-nav-mobile.open {
+  max-height: 280px;
+}
+.header-menu #menu-mobile-block .menu-mobile-main .menu-nav-mobile .nav-item-mobile .sub-nav-child-mobile.open {
   max-height: 280px;
 }
 .header-menu #menu-mobile-block.open {

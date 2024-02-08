@@ -4,31 +4,60 @@
             <div class="container">
                 <div class="row flex-between pb-40">
                     <div class="col-3">
-                        <div class="footer-company-infor flex-columns-between gap-20"><img class="footer-logo" src="assets/images/Logo-footer.svg" alt="Logo"/>
-                            <div class="text caption1 text-white">We are a diversified company specialized in providing comprehensive financial solutions for individuals and businesses.</div>
-                            <div class="list-social flex-item-center gap-10 style-one"><a class="item bora-50 w-28 h-28 border-grey-2px flex-center" href="https://www.facebook.com/" target="_blank"><i class="icon-facebook fs-12"></i></a><a class="item bora-50 w-28 h-28 border-grey-2px flex-center" href="https://www.linkedin.com/" target="_blank"><i class="icon-in fs-12"></i></a><a class="item bora-50 w-28 h-28 border-grey-2px flex-center" href="https://www.twitter.com/" target="_blank"><i class="icon-twitter fs-10"></i></a><a class="item bora-50 w-28 h-28 border-grey-2px flex-center" href="https://www.instagram.com/" target="_blank"><i class="icon-insta fs-10"></i></a><a class="item bora-50 w-28 h-28 border-grey-2px flex-center" href="https://www.youtube.com/" target="_blank"><i class="icon-youtube fs-10"></i></a></div>
+                        <div class="footer-company-infor flex-columns-between gap-20">
+                            <img class="footer-logo lazy" data-src="{{ $setting_data->logo_white ?  asset(imagePath($setting_data->logo_white)) : asset(imagePath($setting_data->logo))}}" style="max-width: 305px;" alt="">
+                            <div class="text caption1 text-white">{{ $setting_data->description ?? '' }}</div>
+                            <div class="list-social flex-item-center gap-10 style-one">
+                                @if(@$setting_data->facebook)
+                                    <a class="item bora-50 w-28 h-28 border-grey-2px flex-center" href="https://www.facebook.com/" target="_blank"><i class="icon-facebook fs-12"></i></a>
+                                @endif
+                                @if(@$setting_data->instagram)
+                                    <a class="item bora-50 w-28 h-28 border-grey-2px flex-center" href="https://www.linkedin.com/" target="_blank"><i class="icon-insta fs-12"></i></a>
+                                @endif
+                                @if(@$setting_data->youtube)
+                                    <a class="item bora-50 w-28 h-28 border-grey-2px flex-center" href="https://www.twitter.com/" target="_blank"><i class="icon-youtube fs-10"></i></a>
+                                @endif
+                                @if(@$setting_data->linkedin)
+                                    <a class="item bora-50 w-28 h-28 border-grey-2px flex-center" href="https://www.instagram.com/" target="_blank"><i class="icon-in fs-10"></i></a>
+                                @endif
+                                @if(!empty(@$setting_data->ticktock))
+                                    <a class="item bora-50 w-28 h-28 border-grey-2px flex-center" href="https://www.youtube.com/" target="_blank"><i class="fab fa-tiktok fs-10"></i></a>
+                                @endif
+                            </div>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="footer-navigate flex-center gap-80">
-                            <div class="footer-nav-item">
-                                <div class="item-heading text-button-small text-white">Quick Links</div>
-                                <ul class="list-nav mt-4">
-                                    <li class="mt-12"><a class="caption1 text-line hover-underline" href="about-one.html">About us</a></li>
-                                    <li class="mt-12"><a class="caption1 text-line hover-underline" href="service-one.html">Services</a></li>
-                                    <li class="mt-12"><a class="caption1 text-line hover-underline" href="case-studies-one.html">Case Studies</a></li>
-                                    <li class="mt-12"><a class="caption1 text-line hover-underline" href="contact-two.html">Contact</a></li>
-                                </ul>
-                            </div>
-                            <div class="footer-nav-item">
-                                <div class="item-heading text-button-small text-white">Pages</div>
-                                <ul class="list-nav mt-4">
-                                    <li class="mt-12"><a class="caption1 text-line hover-underline" href="faqs.html">FAQs</a></li>
-                                    <li class="mt-12"><a class="caption1 text-line hover-underline" href="pricing.html">Pricing</a></li>
-                                    <li class="mt-12"><a class="caption1 text-line hover-underline" href="partners.html">Partners</a></li>
-                                    <li class="mt-12"><a class="caption1 text-line hover-underline" href="contact-two.html">Support Center</a></li>
-                                </ul>
-                            </div>
+                            @if($footer_nav_data1!==null)
+                                <div class="footer-nav-item">
+                                    <div class="item-heading text-button-small text-white">{{ $footer_nav_title1 ?? ''}}</div>
+                                    <ul class="list-nav mt-4">
+                                        @foreach(@$footer_nav_data1 as $nav)
+                                            @if(empty(@$nav->children[0]))
+                                                <li class="mt-12"><a class="caption1 text-line hover-underline" href="{{get_menu_url(@$nav->type, @$nav)}}" target="{{@$nav->target ? '_blank':''}}">
+                                                        {{ @$nav->name ?? @$nav->title ?? ''}} </a>
+                                                </li>
+                                            @endif
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            @if($footer_nav_data2!==null)
+                                <div class="footer-nav-item">
+                                    <div class="item-heading text-button-small text-white">{{ $footer_nav_title2 ?? ''}}</div>
+                                    <ul class="list-nav mt-4">
+                                        @foreach(@$footer_nav_data2 as $nav)
+                                            @if(empty(@$nav->children[0]))
+                                                <li class="mt-12">
+                                                    <a class="caption1 text-line hover-underline" href="{{get_menu_url(@$nav->type, @$nav)}}" target="{{@$nav->target ? '_blank':''}}">
+                                                        {{ @$nav->name ?? @$nav->title ?? ''}}
+                                                    </a>
+                                                </li>
+                                            @endif
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                @endif
                             <div class="footer-nav-item">
                                 <div class="item-heading text-button-small text-white">Blog</div>
                                 <ul class="list-nav mt-4">
@@ -51,16 +80,12 @@
                                     <path d="M32.9554 27.4955C32.9554 27.9155 32.8804 28.3505 32.7304 28.7705C32.6854 28.8905 32.6404 29.0105 32.5804 29.1305C32.3254 29.6705 31.9954 30.1805 31.5604 30.6605C30.8254 31.4705 30.0154 32.0555 29.1004 32.4305C29.0854 32.4305 29.0704 32.4455 29.0554 32.4455C28.1704 32.8055 27.2104 33.0005 26.1754 33.0005C24.6454 33.0005 23.0104 32.6405 21.2854 31.9055C19.5604 31.1705 17.8354 30.1805 16.1254 28.9355C15.5404 28.5005 14.9554 28.0655 14.4004 27.6005L19.3054 22.6955C19.7254 23.0105 20.1004 23.2505 20.4154 23.4155C20.4904 23.4455 20.5804 23.4905 20.6854 23.5355C20.8054 23.5805 20.9254 23.5955 21.0604 23.5955C21.3154 23.5955 21.5104 23.5055 21.6754 23.3405L22.8154 22.2155C23.1904 21.8405 23.5504 21.5555 23.8954 21.3755C24.2404 21.1655 24.5854 21.0605 24.9604 21.0605C25.2454 21.0605 25.5454 21.1205 25.8754 21.2555C26.2054 21.3905 26.5504 21.5855 26.9254 21.8405L31.8904 25.3655C32.2804 25.6355 32.5504 25.9505 32.7154 26.3255C32.8654 26.7005 32.9554 27.0755 32.9554 27.4955Z" fill="#2868D8"></path>
                                 </svg>
                                 <div class="text ml-16">
-                                    <div class="caption2 text-line">Need help? 24/7 </div>
-                                    <div class="fw-700 text-white mt-4">001-1234-88888</div>
+                                    <div class="caption2 text-line">Need help? Call Us </div>
+                                    <div class="fw-700 text-white mt-4">{{ $setting_data->phone ?? $setting_data->mobile }}</div>
                                 </div>
                             </div>
                             <div class="locate mt-12 flex-item-center"> <i class="ph-light ph-map-pin text-line"></i>
-                                <div class="caption1 text-line ml-8">101 E 129th St, East Chicago, IN 46312, US</div>
-                            </div>
-                            <div class="send-block mt-20 flex-item-center">
-                                <input class="caption1 text-secondary" type="text" placeholder="Your email address"/>
-                                <button class="flex-center"><i class="ph ph-paper-plane-tilt text-white"></i></button>
+                                <div class="caption1 text-line ml-8">{{ $setting_data->address ?? '' }}</div>
                             </div>
                         </div>
                     </div>
@@ -76,17 +101,16 @@
         </div>
     </div>
 </div>
-<!--build:js assets/js/main.min.js-->
-<script src="assets/js/jquery-3.7.0.js"></script>
-<script src="assets/js/jquery-migrate-3.4.1.js"></script>
-<script src="assets/js/slick.min.js"></script>
-<script src="assets/js/waypoints.min.js"></script>
-<script src="assets/js/countUp.min.js"></script>
-<script src="assets/js/phosphor-icon.js"></script>
-<script src="assets/js/scrollreveal-4.0.0.min.js"></script>
-<script src="assets/js/bootstrap-drawer.min.js"></script>
-<script src="assets/js/drawer.min.js"></script>
-<script src="assets/js/main.min.js"></script>
-<!--endbuild-->
+
+<script src="{{ asset('assets/frontend/js/jquery-3.7.0.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/jquery-migrate-3.4.1.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/slick.min.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/waypoints.min.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/countUp.min.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/phosphor-icon.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/scrollreveal-4.0.0.min.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/bootstrap-drawer.min.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/drawer.min.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/main.min.js') }}"></script>
 </body>
 </html>
