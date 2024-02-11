@@ -1510,6 +1510,10 @@ Container: Start
   background-color: var(--on-surface);
   color: white;
 }
+.hover-button-blue:hover {
+  background-color: var(--blue);
+  color: white;
+}
 
 .hover-bg-white {
   transition: all ease 0.5s;
@@ -4530,12 +4534,20 @@ Section Payment Gateway Services (first) Home1: Start
 .payment-gateway-one .button-block {
   position: relative;
 }
-.payment-gateway-one .button-block .button-share:nth-child(2) {
+.button-block .button-share:nth-child(2) {
   z-index: 1;
 }
-.payment-gateway-one .button-block > img {
+.button-block-2 .button-share:nth-child(1) {
+  z-index: 1;
+}
+.button-block > img {
   position: absolute;
   left: 376px;
+  z-index: 0;
+}
+.button-block-2 > img {
+  position: absolute;
+  left: 115px;
   z-index: 0;
 }
 @media (max-width: 1169.99px) {
@@ -7317,4 +7329,8 @@ Reduce font and spacing: End
 
 .text-align-justify{
     text-align: justify;
+}
+
+.ml-6{
+    margin-left: 6rem !important;
 }
