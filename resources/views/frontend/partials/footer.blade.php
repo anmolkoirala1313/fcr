@@ -6,7 +6,7 @@
                     <div class="col-3">
                         <div class="footer-company-infor flex-columns-between gap-20">
                             <img class="footer-logo lazy" data-src="{{ $setting_data->logo_white ?  asset(imagePath($setting_data->logo_white)) : asset(imagePath($setting_data->logo))}}" style="max-width: 305px;" alt="">
-                            <div class="text caption1 text-white">{{ $setting_data->description ?? '' }}</div>
+                            <div class="text caption1 text-white text-align-justify">{{ $setting_data->description ?? '' }}</div>
                             <div class="list-social flex-item-center gap-10 style-one">
                                 @if(@$setting_data->facebook)
                                     <a class="item bora-50 w-28 h-28 border-grey-2px flex-center" href="https://www.facebook.com/" target="_blank"><i class="icon-facebook fs-12"></i></a>
@@ -58,20 +58,27 @@
                                     </ul>
                                 </div>
                                 @endif
-                            <div class="footer-nav-item">
-                                <div class="item-heading text-button-small text-white">Blog</div>
-                                <ul class="list-nav mt-4">
-                                    <li class="mt-12"><a class="caption1 text-line hover-underline" href="blog-list-one.html">Blog List</a></li>
-                                    <li class="mt-12"><a class="caption1 text-line hover-underline" href="blog-grid.html">Blog Grid</a></li>
-                                    <li class="mt-12"><a class="caption1 text-line hover-underline" href="blog-masonry.html">Masonry</a></li>
-                                    <li class="mt-12"><a class="caption1 text-line hover-underline" href="blog-detail-one.html">Blog Detail</a></li>
-                                </ul>
-                            </div>
+                                @if($footer_nav_data3!==null)
+                                    <div class="footer-nav-item">
+                                        <div class="item-heading text-button-small text-white">{{ $footer_nav_title3 ?? ''}}</div>
+                                        <ul class="list-nav mt-4">
+                                            @foreach(@$footer_nav_data3 as $nav)
+                                                @if(empty(@$nav->children[0]))
+                                                    <li class="mt-12">
+                                                        <a class="caption1 text-line hover-underline" href="{{get_menu_url(@$nav->type, @$nav)}}" target="{{@$nav->target ? '_blank':''}}">
+                                                            {{ @$nav->name ?? @$nav->title ?? ''}}
+                                                        </a>
+                                                    </li>
+                                                @endif
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                         </div>
                     </div>
                     <div class="col-3">
                         <div class="company-contact">
-                            <div class="heading text-button-small text-white">Newsletter</div>
+                            <div class="heading text-button-small text-white">Get In Touch</div>
                             <div class="mt-12 flex-item-center">
                                 <svg width="36" height="36" viewbox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M26.43 16.1254C25.785 16.1254 25.275 15.6004 25.275 14.9704C25.275 14.4154 24.72 13.2604 23.79 12.2554C22.875 11.2804 21.87 10.7104 21.03 10.7104C20.385 10.7104 19.875 10.1854 19.875 9.55539C19.875 8.92539 20.4 8.40039 21.03 8.40039C22.53 8.40039 24.105 9.21039 25.485 10.6654C26.775 12.0304 27.6 13.7254 27.6 14.9554C27.6 15.6004 27.075 16.1254 26.43 16.1254Z" fill="#C1D8FF"></path>
@@ -87,15 +94,22 @@
                             <div class="locate mt-12 flex-item-center"> <i class="ph-light ph-map-pin text-line"></i>
                                 <div class="caption1 text-line ml-8">{{ $setting_data->address ?? '' }}</div>
                             </div>
+                            <div class="locate mt-12 flex-item-center"> <i class="ph-light ph-envelope text-line"></i>
+                                <div class="caption1 text-line ml-8">{{ $setting_data->email ?? '' }}</div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="border-line"></div>
                 <div class="footer-bottom flex-between pt-12 pb-12">
                     <div class="left-block flex-item-center">
-                        <div class="copy-right text-line caption1">©2023 Finatex. All Rights Reserved.</div>
+                        <div class="copy-right text-line caption1">©2024 {{$setting_data->title ?? ''}}. By <a href="https://www.canosoft.com.np/" class="text-white" target="_blank">Canosoft Techonology</a> - All Rights Reserved.</div>
                     </div>
-                    <div class="nav-link flex-item-center gap-10"><a class="text-line caption1 hover-underline" href="#!">Terms Of Services</a><span class="text-line caption1">|</span><a class="text-line caption1 hover-underline" href="#!">Privacy Policy</a><span class="text-line caption1">|</span><a class="text-line caption1 hover-underline" href="#!">Cookie Policy</a></div>
+                    <div class="nav-link flex-item-center gap-10">
+                        <a class="text-line caption1 hover-underline" href="#!">Terms and Conditions</a>
+                        <span class="text-line caption1">|</span>
+                        <a class="text-line caption1 hover-underline" href="#!">Privacy Policy</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -112,5 +126,10 @@
 <script src="{{ asset('assets/frontend/js/bootstrap-drawer.min.js') }}"></script>
 <script src="{{ asset('assets/frontend/js/drawer.min.js') }}"></script>
 <script src="{{ asset('assets/frontend/js/main.min.js') }}"></script>
+
+<script src="{{ asset('assets/common/lazyload.js') }}"></script>
+@yield('js')
+@stack('scripts')
+
 </body>
 </html>

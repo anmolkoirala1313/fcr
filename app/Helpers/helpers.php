@@ -387,3 +387,26 @@ if (! function_exists('getThumbImageName')) {
     }
 }
 
+if (! function_exists('splitWordsFromEnd')) {
+    /**
+     * returns list of flights
+     *
+     * @param $image
+     * @return string
+     */
+    function splitWordsFromEnd($sentence, $numWordsToSplit) {
+        $split = explode(" ", $sentence);
+
+        if (count($split) > $numWordsToSplit) {
+            $lastWords = implode(" ", array_slice($split, -$numWordsToSplit));
+            array_splice($split, -$numWordsToSplit);
+            $remainingWords = implode(" ", $split);
+            return [$remainingWords, $lastWords];
+        } else {
+            // Handle the case where there are fewer than $numWordsToSplit words
+            return [$sentence, ''];
+        }
+    }
+
+}
+

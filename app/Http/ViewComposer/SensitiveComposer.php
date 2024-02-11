@@ -20,11 +20,14 @@ class SensitiveComposer
         $topNavItems          = json_decode(@$topNav->content);
         $footerItem1          = json_decode(@$footerMenu[0]->content);
         $footerItem2          = json_decode(@$footerMenu[1]->content);
+        $footerItem3          = json_decode(@$footerMenu[2]->content);
         $topNavItems          = @$topNavItems[0];
         $footerItem1          = @$footerItem1[0];
         $footerItem2          = @$footerItem2[0];
+        $footerItem3          = @$footerItem3[0];
         $footerItemTitle1     = @$footerMenu[0]->title;
         $footerItemTitle2     = @$footerMenu[1]->title;
+        $footerItemTitle3     = @$footerMenu[2]->title;
         $pageData             = Page::active()->whereIn('slug',['terms-conditions','terms-and-conditions','privacy-policy','service-agreement'])->pluck('slug')->toArray();
 
         if(!empty(@$topNavItems)){
@@ -75,6 +78,17 @@ class SensitiveComposer
             }
         }
 
+        if(!empty(@$footerItem3)){
+            foreach($footerItem3 as $menu3){
+                $menu3->title   = MenuItem::where('id',$menu3->id)->value('title');
+                $menu3->name    = MenuItem::where('id',$menu3->id)->value('name');
+                $menu3->slug    = MenuItem::where('id',$menu3->id)->value('slug');
+                $menu3->target  = MenuItem::where('id',$menu3->id)->value('target');
+                $menu3->type    = MenuItem::where('id',$menu3->id)->value('type');
+            }
+        }
+
+
         $theme_data = Setting::first();
         $blogs   = Blog::active()->latest()->limit(3)->get();
 
@@ -84,6 +98,8 @@ class SensitiveComposer
             ->with('footer_nav_title1', $footerItemTitle1)
             ->with('footer_nav_data2', $footerItem2)
             ->with('footer_nav_title2', $footerItemTitle2)
+            ->with('footer_nav_data3', $footerItem3)
+            ->with('footer_nav_title3', $footerItemTitle3)
             ->with('top_nav_data', $topNavItems)
             ->with('footerTopNav', $pageData)
             ->with('latest_blogs', $blogs);

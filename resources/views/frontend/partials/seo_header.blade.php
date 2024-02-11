@@ -110,7 +110,7 @@
                                                     @if(!empty($childNav->children[0]))
                                                         <ul class="sub-nav-child hidden">
                                                             @foreach($childNav->children[0] as $key => $lastchild)
-                                                                <li class="sub-nav-item"> <a class="sub-nav-link" href="{{get_menu_url($lastchild->type, $lastchild)}}" target="{{@$lastchild->target ? '_blank':''}}">
+                                                                <li class="sub-nav-child-item"> <a class="sub-nav-child-link" href="{{get_menu_url($lastchild->type, $lastchild)}}" target="{{@$lastchild->target ? '_blank':''}}">
                                                                         {{ @$lastchild->name ?? @$lastchild->title ?? ''}}
                                                                     </a>
                                                                 </li>

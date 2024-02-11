@@ -132,7 +132,7 @@ title in the table of contents (Press Crtl + F to search).
   --line: #E5E5E5;
   --background: #F5F5F5;
   --surface: #F5F5F2;
-  --blue: #2868D8;
+  --blue: #0955a7;
   --critical: #EB4D4D;
   --success: #37CC8E;
   --primary: #2ED197;
@@ -140,7 +140,7 @@ title in the table of contents (Press Crtl + F to search).
   --white: #FFFFFF;
   --deep-purple: #15143B;
   --gradient: #5D47E2;
-  --dark: #0F1E37;
+  --dark: #0a132d;
   --grey: #3F4B5F;
   --dark-blue: #173363;
   --dark-purple: #130E38;
@@ -1843,7 +1843,7 @@ Header menu main: Start
   transform: translateY(-50%);
   width: 0;
   height: 2px;
-  background-color: var(--blue);
+  background-color: var(--orange);
   border-radius: 6px;
   transition: all ease 0.3s;
 }
@@ -1855,19 +1855,23 @@ Header menu main: Start
   transform: translateY(-50%);
   width: 0;
   height: 2px;
-  background-color: var(--blue);
+  background-color: var(--orange);
   border-radius: 6px;
   transition: all ease 0.3s;
 }
-.header-menu .menu-center-block .nav-item .sub-nav .sub-nav-item:hover a {
-  color: var(--blue);
+.header-menu .menu-center-block .nav-item .sub-nav .sub-nav-item:hover .sub-nav-link {
+  color: var(--orange);
   padding-left: 20px;
 }
-.header-menu .menu-center-block .nav-item sub-nav-child .sub-nav-child-item:hover a {
-  color: var(--blue);
+.header-menu .menu-center-block .sub-nav-child .sub-nav-child-item a {
+  color: var(--on-surface);
+}
+.header-menu .menu-center-block .sub-nav-child .sub-nav-child-item:hover a {
+  color: var(--orange);
   padding-left: 20px;
 }
-.header-menu .menu-center-block .nav-item .sub-nav .sub-nav-item:hover a::before {
+
+.header-menu .menu-center-block .nav-item .sub-nav .sub-nav-item:hover .sub-nav-link::before {
   width: 12px;
 }
 .header-menu .menu-center-block .nav-item .sub-nav-child .sub-nav-child-item:hover a::before {
@@ -1888,7 +1892,7 @@ Header menu main: Start
   width: 12px;
 }
 .header-menu .menu-center-block .nav-item:hover .nav-link {
-  color: var(--blue);
+  color: var(--orange);
 }
 .header-menu .menu-center-block .nav-item:hover .sub-nav {
   top: 80px;
@@ -2693,6 +2697,7 @@ Section Slider Homepage Main: Start
   top: 50%;
   transform: translateY(-50%);
   padding-right: 15px;
+    width: 50%;
 }
 @media (max-width: 500.99px) {
   .slider-block .slider-main .slider-item .text-content br {
@@ -7308,4 +7313,8 @@ Reduce font and spacing: End
 
 .style-one .fab{
     color: #fff;
+}
+
+.text-align-justify{
+    text-align: justify;
 }

@@ -25,7 +25,8 @@ class SliderRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'         => 'required|string|max:60',
+            'title'         => 'required|string|max:120',
+            'subtitle'      => 'nullable|string|max:160',
             'image_input'   => request()->method() == 'POST' ? 'required':'nullable'.'|image|mimes:jpg,jpeg,png|max:2048',
         ];
     }
