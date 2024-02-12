@@ -407,4 +407,9 @@
 
 @section('js')
     <script src="{{asset('assets/common/lazyload.js')}}"></script>
+    <script>
+        $('.video-popup').magnificPopup({
+            type: 'iframe'
+        });
+    </script>
 @endsection

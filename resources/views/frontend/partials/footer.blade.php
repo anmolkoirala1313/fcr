@@ -124,6 +124,7 @@
 <script src="{{ asset('assets/frontend/js/phosphor-icon.js') }}"></script>
 <script src="{{ asset('assets/frontend/js/scrollreveal-4.0.0.min.js') }}"></script>
 <script src="{{ asset('assets/frontend/js/bootstrap-drawer.min.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/jquery.magnific-popup.min.js') }}"></script>
 <script src="{{ asset('assets/frontend/js/drawer.min.js') }}"></script>
 <script src="{{ asset('assets/frontend/js/main.min.js') }}"></script>
 

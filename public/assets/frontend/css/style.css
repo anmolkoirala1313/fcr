@@ -7334,3 +7334,13 @@ Reduce font and spacing: End
 .ml-6{
     margin-left: 6rem !important;
 }
+
+.video-popup{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all ease 0.4s;
+    cursor: pointer;
+}
+}
