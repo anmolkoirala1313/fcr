@@ -129,6 +129,11 @@
 <script src="{{ asset('assets/frontend/js/main.min.js') }}"></script>
 
 <script src="{{ asset('assets/common/lazyload.js') }}"></script>
+<script>
+    $('.video-popup').magnificPopup({
+        type: 'iframe'
+    });
+</script>
 @yield('js')
 @stack('scripts')
 

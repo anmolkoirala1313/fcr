@@ -128,6 +128,7 @@ title in the table of contents (Press Crtl + F to search).
 /* Main color */
 :root {
   --on-surface: #121212;
+  --on-surface-blue: #0e253d;
   --secondary: #64666C;
   --line: #E5E5E5;
   --background: #F5F5F5;
@@ -522,7 +523,7 @@ Container: Start
 }
 
 .bg-on-surface {
-  background-color: var(--on-surface);
+  background-color: var(--on-surface-blue);
 }
 
 .bg-transparent {
@@ -829,6 +830,9 @@ Container: Start
 
 .pt-100 {
   padding-top: 100px;
+}
+.pt-90 {
+  padding-top: 90px;
 }
 
 .pt-80 {
@@ -4742,6 +4746,7 @@ Section Benefit(Case Studies) Home1: Start
   left: 60px;
   right: 60px;
   transition: all ease 0.5s;
+    z-index: 1;
 }
 .benefit-block.style-one .list-benefit .row > div .benefit-item .text .heading5 {
   position: relative;
@@ -7335,6 +7340,10 @@ Reduce font and spacing: End
     margin-left: 6rem !important;
 }
 
+.mt-6{
+    margin-top: 6rem !important;
+}
+
 .video-popup{
     position: absolute;
     top: 50%;
@@ -7343,4 +7352,68 @@ Reduce font and spacing: End
     transition: all ease 0.4s;
     cursor: pointer;
 }
+
+.jobs-cover{
+    height: 475px;
+    width: 360px;
+    object-fit: cover;
+}
+
+.benefit-item .bg-img::before {
+    content: "";
+    position: absolute;
+    bottom: 0; /* Start from the bottom */
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(to top, rgb(0 0 0 / 74%), transparent);
+}
+
+.cta-image::before{
+    content: "";
+    position: absolute;
+    bottom: 0; /* Start from the bottom */
+    left: 0;
+    width: 100%;
+    height: 80%;
+    background: linear-gradient(to top, rgb(0 0 0 / 74%), transparent);
+}
+
+.select2-container--default .select2-selection--single{
+    background-color: #f5f5f2!important;
+    border: transparent!important;
+    border-radius: 8px!important;
+}
+
+.select2-container .select2-selection--single{
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    height: 50px !important;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered{
+    outline: none;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    cursor: pointer;
+    padding:10px 16px 10px 16px;
+    color: #777!important;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered{
+    padding-left: 16px!important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow{
+    height: 46px!important;
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    width: 20px;
 }

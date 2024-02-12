@@ -110,7 +110,7 @@
     </div>
     <div class="col-lg-6">
         <div class="mb-3">
-            {!! Form::label('meta_tags', 'Min. Qualification', ['class' => 'form-label']) !!}
+            {!! Form::label('meta_tags', 'Meta Tags', ['class' => 'form-label']) !!}
             {!! Form::text('meta_tags', null,['class'=>'form-control','id'=>'meta_tags','data-choices','data-choices-text-unique-true']) !!}
         </div>
     </div>

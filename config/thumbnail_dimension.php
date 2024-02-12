@@ -1,7 +1,7 @@
 <?php
 return [
     'service' => [
-        'width' => 306,
-        'height' => 430,
+        'width' => 410,
+        'height' => 261,
     ],
 ];

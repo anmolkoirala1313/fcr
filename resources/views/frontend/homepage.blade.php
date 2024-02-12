@@ -1,6 +1,7 @@
 @extends('frontend.layouts.master')
 @section('title') Home @endsection
 @section('css')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 @endsection
 @section('content')
@@ -61,6 +62,170 @@
                 </div>
             </div>
         @endif
+
+        @if($data['homepage']->mission)
+            <div class="service-block style-six pt-80 pb-100 mt-6 bg-on-surface">
+                <div class="container">
+                    <div class="row flex-columns-center">
+    {{--                        <div class="heading3 text-white">Our services</div>--}}
+    {{--                        <div class="body3 text-line text-center mt-24 col-12 col-lg-6">This is  simply dummy text printing and typesetting industry been industry's. This is  simply dummy text been industry. <a class="text-underline text-surface hover-text-orange" href="service-one.html">View case</a></div>--}}
+                        <div class="col-12 list-service row">
+                            <div class="col-12 col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                                <a class="main-item bora-16"> <i class="icon-rocket"></i>
+                                    <div class="heading7 text-white hover-text-orange">Mission
+                                    </div>
+                                    <div class="body3 text-placehover mt-12">
+                                        {{ $data['homepage']->mission ?? '' }}
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-12 col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                                <a class="main-item bora-16"> <i class="icon-lamp-earth-white"></i>
+                                    <div class="heading7 text-white hover-text-orange">Vision</div>
+                                    <div class="body3 text-placehover mt-12">
+                                        {{ $data['homepage']->vision ?? '' }}
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-12 col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                                <a class="main-item bora-16"> <i class="icon-lamp-gear"></i>
+                                    <div class="heading7 text-white hover-text-orange">Value</div>
+                                    <div class="body3 text-placehover mt-12">
+                                        {{ $data['homepage']->value ?? '' }}
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+
+        @if(count($data['jobs']) > 0)
+            <div class="benefit-block style-one mt-100">
+                <div class="container">
+                    <div class="heading text-center">
+                        <div class="text-sub-heading2 text-white pt-8 pb-8 pl-16 pr-16 bg-blue bora-8 display-inline-block">
+                            Current demands
+                        </div>
+                        <div class="heading3 mt-20">Learn more about our latest<br> jobs</div>
+                        <div class="right flex-columns-center gap-8 mt-12">
+                            <a class="text-button" href="{{ route('frontend.job.index') }}">View All <i class="ph-bold ph-caret-double-right fs-12 mt-4"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-benefit mt-40">
+                    <div class="row">
+                        @foreach($data['jobs'] as $index=>$job)
+                            <div class="col-12 col-xl-3 col-sm-6">
+                                <div class="benefit-item">
+                                    <div class="bg-img">
+                                        <img class="jobs-cover display-block lazy" data-src="{{ asset(imagePath($job->image)) }}" alt="">
+                                     </div>
+                                    <div class="text flex-columns-between gap-12">
+                                        <div class="heading5">
+                                            <a class="text-white" href="{{ route('frontend.job.show', $job->slug) }}">
+                                                {{ $job->title ?? '' }}
+                                            </a>
+                                        </div>
+                                        <div class="body2 text-white">
+                                            @if(@$job->end_date >= date('Y-m-d'))
+                                                {{date('M j, Y',strtotime(@$job->start_date))}} - {{date('M j, Y',strtotime(@$job->end_date))}}
+                                            @else
+                                                Expired
+                                            @endif
+                                        </div>
+                                        <a class="flex-item-center gap-4" href="{{ route('frontend.job.show', $job->slug) }}">
+                                            <div class="text-button text-white">Read More </div>
+                                            <i class="ph-bold ph-caret-double-right fs-12 mt-4 text-white"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        @endif
+
+        @if(count($data['services']) > 0)
+            <div class="blog-list style-six pt-100 pb-100 bg-surface">
+                <div class="container">
+                    <div class="heading flex-between">
+                        <div class="heading4">OUR LATEST CATEGORIES</div>
+                        <a class="text-underline hover-text-orange" href="{{ route('frontend.service.index') }}">View All <i class="ph-bold ph-caret-double-right fs-12 mt-4"></i></a>
+                    </div>
+                    <div class="row row-gap-32 mt-40">
+                        @foreach($data['services'] as $index=>$service)
+                            <div class="blog-item col-12 col-xl-4 col-sm-6">
+                                <a class="blog-item-main" href="{{ route('frontend.service.show', $service->key) }}">
+                                    <div class="bg-img w-100 overflow-hidden mb-minus-1">
+                                        <img class="w-100 h-100 display-block lazy"  data-src="{{ asset(thumbnailImagePath($service->image)) }}" alt="">
+                                    </div>
+                                    <div class="infor bg-white p-24">
+{{--                                        <div class="caption2 pt-4 pb-4 pl-12 pr-12 bg-surface bora-40 display-inline-block">Makerting</div>--}}
+                                        <div class="heading6 mt-8">{{ $service->title ?? '' }}</div>
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        @endif
+
+        @if($data['homepage']->action_title)
+            <div class="form-cta-block benefit-two">
+                <div class="bg-img cta-image">
+                    <img class="lazy" data-src="{{ asset('assets/frontend/images/banner/form-benefit-two.png') }}" alt="">
+                </div>
+                <div class="container h-100">
+                    <div class="row flex-between h-100 row-gap-20">
+                        <div class="col-12 col-xl-5 col-lg-6">
+                            <div class="heading3 text-white">{{ $data['homepage']->action_title ?? '' }}</div>
+                            <div class="body1 text-line mt-16">{{ $data['homepage']->action_subtitle ?? '' }}</div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="form-block bora-16 bg-white p-28 flex-columns-between gap-20">
+                                <div class="heading6">Send us a message</div>
+                                <div class="row row-gap-20">
+                                    <div class="col-12 col-sm-6">
+                                        <input class="w-100 bg-surface caption1 pl-16 pr-16 pt-12 pb-12 bora-8" name="name" type="text" placeholder="Name">
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <input class="w-100 bg-surface caption1 pl-16 pr-16 pt-12 pb-12 bora-8" name="email"  type="text" placeholder="Email">
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <input class="w-100 bg-surface caption1 pl-16 pr-16 pt-12 pb-12 bora-8" name="number" type="text" placeholder="Number">
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <input class="w-100 bg-surface caption1 pl-16 pr-16 pt-12 pb-12 bora-8" name="location" type="text" placeholder="Location">
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <select class="w-100 bg-surface caption1 pl-12 pt-12 pb-12 bora-8 select2" name="categories">
+                                            <option value>Select Category</option>
+                                            @foreach($data['categories'] as $index=>$category)
+                                                <option value="{{ $index }}">{{$category}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <input class="w-100 bg-surface caption1 bora-8" style="padding: 9px;" type="file" placeholder="CV">
+                                    </div>
+                                    <div class="col-12">
+                                        <textarea class="w-100 bg-surface caption1 pl-16 pr-16 pt-12 pb-12 bora-8" name="messsage" cols="10" rows="2" placeholder="Your Message"></textarea>
+                                    </div>
+                                </div>
+                                <div class="button-block">
+                                    <button class="button-share hover-button-black bg-blue text-white text-button pl-36 pr-36 pt-12 pb-12 bora-48">Send Message</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+
     <div class="service-block mt-100">
         <div class="container">
             <div class="heading3 text-center">Our Services</div>
@@ -149,61 +314,6 @@
                             <div class="body3 text-secondary mt-24">We provide reliable and secure payment gateway services for businesses of all sizes. With our cutting-edge technology and 24/7 customer support, you can easily accept payments from customers all over the world.</div>
                         </div>
                         <div class="button-block flex-item-center gap-24"><a class="button-share box-shadow hover-button-black text-white bg-blue text-button pt-12 pb-12 pl-36 pr-36 bora-48" href="contact-two.html">Get started</a><a class="button-share box-shadow hover-button-black text-on-surface bg-white text-button pt-12 pb-12 pl-36 pr-36 bora-48 flex-item-center gap-8" href="contact-two.html"><i class="ph ph-phone fs-20"></i><span>(00) 123 456 789</span></a><img src="assets/images/component/gateway1-dot.png" alt=""/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="benefit-block style-one mt-100">
-        <div class="container">
-            <div class="heading text-center">
-                <div class="heading3">Case Studies</div>
-                <div class="right flex-columns-center gap-8 mt-12">
-                    <div class="body3">Exploring In-Depth and Inspiring Case Studies of Success Stories</div><a class="flex-item-center gap-8 hover-text-blue" href="service-one.html">
-                        <div class="text-button">View Our Services</div><i class="ph-bold ph-caret-double-right fs-12 mt-4"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="list-benefit mt-40">
-            <div class="row">
-                <div class="col-12 col-xl-3 col-sm-6">
-                    <div class="benefit-item">
-                        <div class="bg-img"> <img class="w-100 h-100 display-block" src="assets/images/component/benefit1.png" alt=""/></div>
-                        <div class="text flex-columns-between gap-12">
-                            <div class="heading5"><a class="text-white" href="case-studies-detail.html">Trusted Advisor</a></div>
-                            <div class="body2 text-white">We are committed to providing reliable and high-quality financial advisory services.</div><a class="flex-item-center gap-4" href="service-detail.html">
-                                <div class="text-button text-white">Read More </div><i class="ph-bold ph-caret-double-right fs-12 mt-4 text-white"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-xl-3 col-sm-6">
-                    <div class="benefit-item">
-                        <div class="bg-img"> <img class="w-100 h-100 display-block" src="assets/images/component/benefit2.png" alt=""/></div>
-                        <div class="text flex-columns-between gap-12">
-                            <div class="heading5"><a class="text-white" href="case-studies-detail.html">Team Augmentation</a></div>
-                            <div class="body2 text-white">With an experienced and skilled team, we bring the necessary expertise to enhance work productivity.</div><a class="flex-item-center gap-4" href="service-detail.html">
-                                <div class="text-button text-white">Read More </div><i class="ph-bold ph-caret-double-right fs-12 mt-4 text-white"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-xl-3 col-sm-6">
-                    <div class="benefit-item">
-                        <div class="bg-img"> <img class="w-100 h-100 display-block" src="assets/images/component/benefit3.png" alt=""/></div>
-                        <div class="text flex-columns-between gap-12">
-                            <div class="heading5"><a class="text-white" href="case-studies-detail.html">Innovation</a></div>
-                            <div class="body2 text-white">We constantly seek advanced solutions to address challenges and deliver the highest value to our customers.</div><a class="flex-item-center gap-4" href="service-detail.html">
-                                <div class="text-button text-white">Read More </div><i class="ph-bold ph-caret-double-right fs-12 mt-4 text-white"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-xl-3 col-sm-6">
-                    <div class="benefit-item">
-                        <div class="bg-img"> <img class="w-100 h-100 display-block" src="assets/images/component/benefit4.png" alt=""/></div>
-                        <div class="text flex-columns-between gap-12">
-                            <div class="heading5"><a class="text-white" href="case-studies-detail.html">Experience</a></div>
-                            <div class="body2 text-white">With over 21 years of serving industrial customers and over 3000 projects, we have the experience to solve almost.</div><a class="flex-item-center gap-4" href="service-detail.html">
-                                <div class="text-button text-white">Read More </div><i class="ph-bold ph-caret-double-right fs-12 mt-4 text-white"></i></a>
                         </div>
                     </div>
                 </div>
@@ -407,9 +517,9 @@
 
 @section('js')
     <script src="{{asset('assets/common/lazyload.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
-        $('.video-popup').magnificPopup({
-            type: 'iframe'
-        });
+        $('.select2').select2();
     </script>
+
 @endsection

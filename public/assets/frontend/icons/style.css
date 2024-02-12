@@ -64,6 +64,12 @@
   content: "\e908";
   color: #2868d8;
 }
+
+.icon-lamp-earth-white:before {
+  content: "\e908";
+  color: #fff;
+}
+
 .icon-hand-protect:before {
   content: "\e90a";
   color: #2868d8;
@@ -181,7 +187,7 @@
 }
 .icon-rocket:before {
   content: "\e926";
-  color: #2868d8;
+  color: #fff;
 }
 .icon-user-happy:before {
   content: "\e927";
