@@ -634,6 +634,11 @@ Container: Start
   line-height: 28px;
   text-transform: capitalize;
 }
+.heading9 {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 26px;
+}
 
 .body1 {
   font-size: 20px;
@@ -4027,12 +4032,13 @@ Section Testimonial Home6: Start
   transition: all ease 0.7s;
 }
 .testimonials-six .container > .row .slick-list .slick-center .row > div:first-child .comment-item .infor .text-button-small {
-  font-size: 16px;
+  font-size: 22px;
   line-height: 26px;
   transition: all ease 0.7s;
 }
 .testimonials-six .container > .row .slick-list .slick-center .row > div:first-child .comment-item .infor .caption2 {
-  font-weight: 500;
+  font-size: 14px;
+    font-weight: 500;
   transition: all ease 0.7s;
 }
 .testimonials-six .container > .row .slick-dots {
@@ -4527,9 +4533,9 @@ Section Payment Gateway Services (first) Home1: Start
   justify-content: right;
 }
 .payment-gateway-one .row .col-12.col-xl-6 .payment-infor {
-  padding-top: 150px;
-  padding-bottom: 150px;
-  padding-left: 80px;
+    padding-top: 50px;
+    padding-bottom: 90px;
+    padding-left: 65px;
   gap: 32px;
 }
 .payment-gateway-one .row .col-12.col-xl-6 .payment-infor .heading .bg-img {
@@ -4623,20 +4629,20 @@ Section Payment Gateway Services (second) Home1: Start
 .payment-gateway-two .container .row.row-gap-32 > div:last-child .right .feature-item {
   position: absolute;
 }
-.payment-gateway-two .container .row.row-gap-32 > div:last-child .right .feature-item:nth-child(2) {
+.payment-gateway-two .container .row.row-gap-32 > div:last-child .right .feature-item:nth-child(2), .payment-gateway-one .container .row.row-gap-32 > div:last-child .right .feature-item:nth-child(2) {
   left: 40px;
   top: 18%;
   animation: moveY 8s ease infinite;
 }
-.payment-gateway-two .container .row.row-gap-32 > div:last-child .right .feature-item:nth-child(2) i {
+.payment-gateway-two .container .row.row-gap-32 > div:last-child .right .feature-item:nth-child(2) i, .payment-gateway-one .container .row.row-gap-32 > div:last-child .right .feature-item:nth-child(2) i {
   padding: 16px 12px;
 }
-.payment-gateway-two .container .row.row-gap-32 > div:last-child .right .feature-item:nth-child(3) {
+.payment-gateway-two .container .row.row-gap-32 > div:last-child .right .feature-item:nth-child(3), .payment-gateway-one .container .row.row-gap-32 > div:last-child .right .feature-item:nth-child(3) {
   right: 0px;
   top: 30%;
   animation: moveY 8s ease infinite;
 }
-.payment-gateway-two .container .row.row-gap-32 > div:last-child .right .feature-item:nth-child(4) {
+.payment-gateway-two .container .row.row-gap-32 > div:last-child .right .feature-item:nth-child(4), .payment-gateway-one .container .row.row-gap-32 > div:last-child .right .feature-item:nth-child(4) {
   right: 40px;
   bottom: 0px;
   animation: moveX 8s ease infinite;
@@ -4650,18 +4656,18 @@ Section Payment Gateway Services (second) Home1: Start
   .payment-gateway-two .container .row.row-gap-32 > div:last-child .right {
     padding-left: 0;
   }
-  .payment-gateway-two .container .row.row-gap-32 > div:last-child .right .feature-item:nth-child(2) {
+  .payment-gateway-two .container .row.row-gap-32 > div:last-child .right .feature-item:nth-child(2), .payment-gateway-two .container .row.row-gap-32 > div:last-child .right .feature-item:nth-child(2) {
     padding: 8px 12px;
     border-radius: 16px;
     gap: 8px;
     left: 10px;
   }
-  .payment-gateway-two .container .row.row-gap-32 > div:last-child .right .feature-item:nth-child(2) i {
+  .payment-gateway-two .container .row.row-gap-32 > div:last-child .right .feature-item:nth-child(2) i, .payment-gateway-two .container .row.row-gap-32 > div:last-child .right .feature-item:nth-child(2) i {
     font-size: 14px;
     padding: 10px 8px;
     border-radius: 12px;
   }
-  .payment-gateway-two .container .row.row-gap-32 > div:last-child .right .feature-item:nth-child(2) .text .heading7 {
+  .payment-gateway-two .container .row.row-gap-32 > div:last-child .right .feature-item:nth-child(2) .text .heading7, .payment-gateway-one .container .row.row-gap-32 > div:last-child .right .feature-item:nth-child(2) .text .heading7 {
     font-size: 12px;
     line-height: 16px;
   }

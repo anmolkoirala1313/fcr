@@ -226,146 +226,132 @@
             </div>
         @endif
 
-    <div class="service-block mt-100">
-        <div class="container">
-            <div class="heading3 text-center">Our Services</div>
-            <div class="list-service row mt-40 row-gap-32">
-                <div class="col-12 col-xl-4 col-lg-6 col-md-6 col-sm-6">
-                    <div class="service-item hover-box-shadow bora-8 p-32 bg-white border-line-1px"><a class="service-item-main flex-column gap-16" href="service-cryptocurrency-trading.html">
-                            <div class="heading flex-between"><i class="icon-coin-chair text-blue fs-60"></i>
-                                <div class="number heading3 text-placehover"> </div>
-                            </div>
-                            <div class="desc">
-                                <div class="heading7 hover-text-blue">Cryptocurrency Trading</div>
-                                <div class="body3 text-secondary mt-4">Experience the excitement and potential of the cryptocurrency market with our expert trading services.</div>
-                            </div></a>
+        @if(count($data['homepage']->coreValueDetail))
+            <div class="service-block mt-100">
+                <div class="container">
+                    <div class="text-center">
+                        <div class="text-sub-heading2 text-white pt-8 pb-8 pl-16 pr-16 bg-blue bora-8 display-inline-block">
+                            {{ $data['homepage']->core_subtitle ?? '' }}
+                        </div>
+                        <div class="heading3 mt-20">{{ $data['homepage']->core_title ?? '' }}</div>
                     </div>
-                </div>
-                <div class="col-12 col-xl-4 col-lg-6 col-md-6 col-sm-6">
-                    <div class="service-item hover-box-shadow bora-8 p-32 bg-white border-line-1px"><a class="service-item-main flex-column gap-16" href="service-portfolio-management.html">
-                            <div class="heading flex-between"><i class="icon-hand-tick text-blue fs-60"></i>
-                                <div class="number heading3 text-placehover"> </div>
+                    <div class="list-service row mt-40 row-gap-32">
+                        @foreach($data['homepage']->coreValueDetail as $index=>$core_value)
+                            <div class="col-12 col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                                <div class="service-item hover-box-shadow bora-8 p-32 bg-white border-line-1px">
+                                    <a class="service-item-main flex-column gap-16">
+                                        <div class="heading flex-between">
+                                            <i class="{{ core_value_icon($index) }} text-blue fs-60"></i>
+                                            <div class="number heading3 text-placehover"> </div>
+                                        </div>
+                                        <div class="desc">
+                                            <div class="heading7 hover-text-blue">{{ $core_value->title ?? '' }}</div>
+                                            <div class="body3 text-secondary mt-4 text-align-justify">
+                                                {{ $core_value->description ?? '' }}
+                                            </div>
+                                        </div></a>
+                                </div>
                             </div>
-                            <div class="desc">
-                                <div class="heading7 hover-text-blue">Portfolio Management</div>
-                                <div class="body3 text-secondary mt-4">We analyze market trends, manage risks, and optimize your portfolio to maximize returns and achieve your financial goals.</div>
-                            </div></a>
-                    </div>
-                </div>
-                <div class="col-12 col-xl-4 col-lg-6 col-md-6 col-sm-6">
-                    <div class="service-item hover-box-shadow bora-8 p-32 bg-white border-line-1px"><a class="service-item-main flex-column gap-16" href="service-investment-advice.html">
-                            <div class="heading flex-between"><i class="icon-hand-house text-blue fs-60"></i>
-                                <div class="number heading3 text-placehover"> </div>
-                            </div>
-                            <div class="desc">
-                                <div class="heading7 hover-text-blue">Investment Advice</div>
-                                <div class="body3 text-secondary mt-4">Our team of experienced advisors will guide you in making informed investment decisions, whether you're a beginner or an experienced trader.</div>
-                            </div></a>
-                    </div>
-                </div>
-                <div class="col-12 col-xl-4 col-lg-6 col-md-6 col-sm-6">
-                    <div class="service-item hover-box-shadow bora-8 p-32 bg-white border-line-1px"><a class="service-item-main flex-column gap-16" href="service-detail.html">
-                            <div class="heading flex-between"><i class="icon-gear-warning text-blue fs-60"></i>
-                                <div class="number heading3 text-placehover"> </div>
-                            </div>
-                            <div class="desc">
-                                <div class="heading7 hover-text-blue">Risk Management</div>
-                                <div class="body3 text-secondary mt-4">We employ industry-leading tools and techniques to protect your investments and minimize potential losses.</div>
-                            </div></a>
-                    </div>
-                </div>
-                <div class="col-12 col-xl-4 col-lg-6 col-md-6 col-sm-6">
-                    <div class="service-item hover-box-shadow bora-8 p-32 bg-white border-line-1px"><a class="service-item-main flex-column gap-16" href="service-research-analysis.html">
-                            <div class="heading flex-between"><i class="icon-text-search text-blue fs-60"></i>
-                                <div class="number heading3 text-placehover"> </div>
-                            </div>
-                            <div class="desc">
-                                <div class="heading7 hover-text-blue">Research and Analysis</div>
-                                <div class="body3 text-secondary mt-4">We provide timely reports, market updates, and data-driven insights to help you make informed trading decisions</div>
-                            </div></a>
-                    </div>
-                </div>
-                <div class="col-12 col-xl-4 col-lg-6 col-md-6 col-sm-6">
-                    <div class="service-item hover-box-shadow bora-8 p-32 bg-white border-line-1px"><a class="service-item-main flex-column gap-16" href="service-education-resources.html">
-                            <div class="heading flex-between"><i class="icon-education text-blue fs-52"></i>
-                                <div class="number heading3 text-placehover"> </div>
-                            </div>
-                            <div class="desc">
-                                <div class="heading7 hover-text-blue">Education and Resources</div>
-                                <div class="body3 text-secondary mt-4">Expand your knowledge and skills in cryptocurrency trading through our educational resources.</div>
-                            </div></a>
+                        @endforeach
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="payment-gateway-one mt-100 bg-surface">
-        <div class="bg-img"> <img class="w-100 h-100" src="assets/images/component/gateway1.png" alt=""/></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-xl-6">
-                    <div class="payment-infor flex-columns-between">
-                        <div class="heading flex-item-center gap-16">
-                            <div class="bg-img"> <img class="w-100" src="assets/images/component/avatar-gateway1.png" alt=""/></div>
-                            <div class="text-button text-secondary">Trusted by 50M+ People <br>around the globe</div>
-                        </div>
-                        <div class="text">
-                            <div class="heading3">Payment Gateway Services</div>
-                            <div class="body3 text-secondary mt-24">We provide reliable and secure payment gateway services for businesses of all sizes. With our cutting-edge technology and 24/7 customer support, you can easily accept payments from customers all over the world.</div>
-                        </div>
-                        <div class="button-block flex-item-center gap-24"><a class="button-share box-shadow hover-button-black text-white bg-blue text-button pt-12 pb-12 pl-36 pr-36 bora-48" href="contact-two.html">Get started</a><a class="button-share box-shadow hover-button-black text-on-surface bg-white text-button pt-12 pb-12 pl-36 pr-36 bora-48 flex-item-center gap-8" href="contact-two.html"><i class="ph ph-phone fs-20"></i><span>(00) 123 456 789</span></a><img src="assets/images/component/gateway1-dot.png" alt=""/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="payment-gateway-two mt-100">
-        <div class="container">
-            <div class="row row-gap-32 flex-item-center">
-                <div class="col-12 col-xl-5 flex-column row-gap-20">
-                    <div class="heading3">Payment Gateway Services</div>
-                    <div class="body2 text-secondary">We provide reliable and secure payment gateway services for businesses of all sizes. With our cutting-edge technology and 24/7 customer support, you can easily accept payments from customers all over the world.</div>
-                    <div class="list-service">
-                        <div class="service-item flex-item-center"> <i class="ph-bold ph-check text-blue fs-24"> </i>
-                            <div class="text-button ml-12">Debt evaluation and ability to repay</div>
-                        </div>
-                        <div class="service-item flex-item-center mt-12"><i class="ph-bold ph-check text-blue fs-24"> </i>
-                            <div class="text-button ml-12">Calculation of credit limit</div>
-                        </div>
-                        <div class="service-item flex-item-center mt-12"><i class="ph-bold ph-check text-blue fs-24"> </i>
-                            <div class="text-button ml-12">Consolidation of personal financial data</div>
-                        </div>
-                    </div>
-                    <div class="button-block"><a class="button-share hover-bg-blue text-white bg-on-surface text-button display-inline-block pt-12 pb-12 pl-36 pr-36 bora-48" href="contact-two.html">Get started</a>
-                    </div>
-                </div>
-                <div class="col-11 col-xl-7">
-                    <div class="right pl-40">
-                        <div class="bg-img"> <img class="w-100" src="assets/images/component/gateway2-bg.png" alt=""/></div>
-                        <div class="feature-item pt-16 pb-16 pl-24 pr-24 bora-20 bg-white flex-item-center gap-16 box-shadow display-inline-flex"><i class="icon-list fs-28 bg-orange p-16 bora-20"> </i>
-                            <div class="text">
-                                <div class="heading7">2K+</div>
-                                <div class="heading7 text-secondary">Projects</div>
+        @endif
+
+        @if($data['homepage']->why_title)
+            <div class="style-two mt-80">
+                <div class="count-number-block">
+                    <div class="container">
+                        <div class="row row-gap-32">
+                            <div class="col-12 col-xl-3 col-lg-3 col-md-6 col-sm-6 flex-columns-center">
+                                <div class="count-block flex-item-center">
+                                    <div class="counter heading3">{{ $data['homepage']->project_completed ?? '600' }}</div>
+                                </div>
+                                <div class="body1 text-secondary">Project Completed</div>
                             </div>
-                        </div>
-                        <div class="feature-item pt-16 pb-16 pl-24 pr-24 bora-20 bg-white flex-item-center gap-16 box-shadow display-inline-flex"><i class="ph-fill ph-star fs-32 bora-20 text-yellow"></i>
-                            <div class="text">
-                                <div class="heading7">4.8</div>
-                                <div class="heading7 text-secondary">Satisfaction</div>
+                            <div class="col-12 col-xl-3 col-lg-3 col-md-6 col-sm-6 flex-columns-center">
+                                <div class="count-block flex-item-center">
+                                    <div class="counter heading3">{{ $data['homepage']->happy_clients ?? '560' }}</div>
+                                </div>
+                                <div class="body1 text-secondary">Happy Clients</div>
                             </div>
-                        </div>
-                        <div class="feature-item pt-16 pb-16 pl-24 pr-24 bora-20 bg-white flex-item-center gap-16 box-shadow display-inline-flex"><i class="icon-user fs-32 bg-orange p-16 bora-20"> </i>
-                            <div class="text">
-                                <div class="heading7">5 Years</div>
-                                <div class="heading7 text-secondary">Product Designer</div>
+                            <div class="col-12 col-xl-3 col-lg-3 col-md-6 col-sm-6 flex-columns-center">
+                                <div class="count-block flex-item-center">
+                                    <div class="counter heading3">{{ $data['homepage']->visa_approved ?? '785' }}</div>
+                                </div>
+                                <div class="body1 text-secondary">Visa Approved</div>
+                            </div>
+                            <div class="col-12 col-xl-3 col-lg-3 col-md-6 col-sm-6 flex-columns-center">
+                                <div class="count-block flex-item-center">
+                                    <div class="counter heading3">{{ $data['homepage']->success_stories ?? '650' }}</div>
+                                </div>
+                                <div class="body1 text-secondary">Passive income earners</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+
+            <div class="payment-gateway-one bg-surface">
+                <div class="bg-img">
+                    <img class="w-100 h-100 lazy" data-src="{{ asset(imagePath($data['homepage']->why_image)) }}" alt=""/>
+                </div>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-xl-6">
+                            <div class="payment-infor flex-columns-between">
+                                <div class="text">
+                                    <div class="text-sub-heading2 text-white pt-8 pb-8 pl-16 pr-16 bg-blue bora-8 display-inline-block">
+                                        {{ $data['homepage']->why_subtitle ?? 'Why Choose Us' }}
+                                    </div>
+                                    <div class="heading3 mt-20">{{ $data['homepage']->why_title }}</div>
+                                </div>
+                                <div class="body3 text-secondary text-align-justify">
+                                    {{ $data['homepage']->why_description ?? '' }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+
+        @if(count($data['director']) > 0)
+            <div class="testimonials-six pt-100 bg-on-surface">
+                <div class="container">
+                    <div class="text-center">
+                        <div class="text-sub-heading2 text-white pt-8 pb-8 pl-16 pr-16 bg-blue bora-8 display-inline-block">
+                           Closer Look
+                        </div>
+                        <div class="heading3 text-white mt-20">Message From Our Directors</div>
+                    </div>
+                    <div class="row">
+                        @foreach($data['director'] as $index=>$director)
+                            <div class="col-12 col-md-8 {{$loop->last ? 'touch':''}}">
+                                <div class="row">
+                                    <div class="col-12 col-md-7">
+                                        <div class="comment-item bora-16">
+                                            <div class="heading9 mt-12 text-white text-align-justify">
+                                                {{ $director->description ?? '' }}
+                                            </div>
+                                            <div class="infor mt-16">
+                                                <div class="text-button-small text-white">{{ $director->title ?? '' }}</div>
+                                                <div class="caption2 fw-400 text-line mt-4">{{ $director->designation ?? '' }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-5">
+                                        <img class="w-100 h-100" src="{{ asset(imagePath($director->image)) }}" alt=""/>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        @endif
+
     <div class="faqs-block style-one mt-100">
         <div class="row row-gap-32">
             <div class="col-12 col-xl-6">

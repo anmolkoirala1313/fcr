@@ -198,17 +198,17 @@ if (!function_exists('core_value_icon')) {
     function core_value_icon($index): string
     {
         if($index == 0){
-            $icon = 'icon-business-advice';
+            $icon = 'icon-hand-protect';
         }else if($index == 1){
-            $icon = 'icon-planning';
+            $icon = 'icon-hand-team';
         }else if($index == 2){
-            $icon = 'icon-report';
+            $icon = 'icon-gear-collect';
         }else if($index == 3){
-            $icon = 'icon-solution';
+            $icon = 'icon-hand-tick';
         }else if($index == 4){
-            $icon = 'icon-diversity';
+            $icon = 'icon-lamp-earth';
         }else if($index == 5){
-            $icon = 'icon-risk-management';
+            $icon = 'icon-hand-message';
         }else if($index == 6){
             $icon = 'icon-woman';
         }else if($index == 7){

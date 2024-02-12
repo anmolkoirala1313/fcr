@@ -58,7 +58,7 @@ class ManagingDirectorController extends BackendBaseController
             $request->request->add(['created_by' => auth()->user()->id ]);
 
             if($request->hasFile('image_input')){
-                $image_name = $this->uploadImage($request->file('image_input'),'516','516');
+                $image_name = $this->uploadImage($request->file('image_input'),'505','533');
                 $request->request->add(['image'=>$image_name]);
             }
 
@@ -87,7 +87,7 @@ class ManagingDirectorController extends BackendBaseController
         DB::beginTransaction();
         try {
             if($request->hasFile('image_input')){
-                $image_name = $this->updateImage($request->file('image_input'),$data['row']->image,'516','516');
+                $image_name = $this->updateImage($request->file('image_input'),$data['row']->image,'505','533');
                 $request->request->add(['image'=>$image_name]);
             }
 
