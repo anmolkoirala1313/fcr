@@ -1612,6 +1612,7 @@ Container: Start
 }
 .hover-text-orange:hover {
   color: var(--orange);
+    border: 1px solid var(--orange);
 }
 
 .hover-border-white {

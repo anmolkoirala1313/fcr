@@ -64,6 +64,29 @@
                 </div>
             @endif
         </div>
+        <div class="col-lg-6">
+            <div class="mb-3">
+                {!! Form::label('popup_image_input', 'Popup Image', ['class' => 'form-label required']) !!}
+                {!! Form::file('popup_image_input', ['class'=>'form-control','id'=>'popup_image_input']) !!}
+            </div>
+            @if($data['row'] && $data['row']->popup_image)
+                <div class="col-xxl-4 col-xl-4 col-sm-6">
+                    <div class="gallery-box card">
+                        <div class="gallery-container">
+                            <a class="image-popup" href="{{ asset(imagePath($data['row']->popup_image))}}" title="">
+                                <img class="gallery-img img-fluid mx-auto lazy" data-src="{{ asset(imagePath($data['row']->popup_image))}}" alt="" />
+                                <div class="gallery-overlay">
+                                    <h5 class="overlay-caption">Popup Image</h5>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-danger feature-image-button remove-popup-image">
+                    <i class="ri-delete-back-fill align-bottom me-1"></i> Remove Image
+                </button>
+            @endif
+        </div>
     </div>
 </div>
 <!-- end logo card -->

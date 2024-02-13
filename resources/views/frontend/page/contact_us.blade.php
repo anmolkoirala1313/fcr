@@ -8,126 +8,70 @@
     @include($module.'includes.breadcrumb',['breadcrumb_image'=> 'background_action.jpeg'])
 
 
-    <!--Information Start-->
-    <section class="information">
+    <div class="form-contact style-two mt-100">
         <div class="container">
-            <div class="row">
-                <!--Information Single Start-->
-                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
-                    <div class="information__single">
-                        <div class="information__icon">
-                            <span class="icon-chat-1"></span>
+            <div class="row flex-between row-gap-32">
+                <div class="col-12 col-lg-5">
+                    <div class="infor flex-columns-between row-gap-32">
+                        <div class="heading">
+                            <div class="title">Contact us</div>
+                            <div class="heading3 mt-12">Get it touch</div>
+                            <div class="body3 mt-8">We will get back to you as soon as possible, or call us </div>
                         </div>
-                        <p class="information__text">Send Message</p>
-                        <p class="information__number">Use our contact form</p>
+                        <div class="list-more-infor">
+                            <div class="item flex-item-center gap-12"><i class="ph-fill ph-phone text-white bg-on-surface p-8 bora-50"></i>
+                                <div class="line-y"> </div>
+                                <div class="body2"><a href="tel:{{ $data['setting_data']->phone ?? $data['setting_data']->mobile ?? '' }}"></a>
+                                    {{ $data['setting_data']->phone ?? $data['setting_data']->mobile ?? '' }}</div>
+                            </div>
+                            <div class="item flex-item-center gap-12 mt-20"><i class="ph-bold ph-envelope-simple text-white bg-on-surface p-8 bora-50"></i>
+                                <div class="line-y"> </div>
+                                <div class="body2"><a href="mailto:{{ $data['setting_data']->email }}">{{ $data['setting_data']->email }}</a></div>
+                            </div>
+                            <div class="item flex-item-center gap-12 mt-20"><i class="ph-bold ph-map-pin text-white bg-on-surface p-8 bora-50"></i>
+                                <div class="line-y"> </div>
+                                <div class="body2">{{ $data['setting_data']->address }}</div>
+                            </div>
+                        </div>
+{{--                        <div class="list-social flex-item-center gap-10"><a class="item bora-50 w-48 h-48 flex-center bg-surface" href="https://www.facebook.com/" target="_blank"><i class="icon-facebook icon-on-surface"></i></a><a class="item bora-50 w-48 h-48 flex-center bg-surface" href="https://www.linkedin.com/" target="_blank"><i class="icon-in icon-on-surface"></i></a><a class="item bora-50 w-48 h-48 flex-center bg-surface" href="https://www.twitter.com/" target="_blank"><i class="icon-twitter fs-14 icon-on-surface ml-1"></i></a><a class="item bora-50 w-48 h-48 flex-center bg-surface" href="https://www.instagram.com/" target="_blank"><i class="icon-insta fs-14 icon-on-surface"></i></a><a class="item bora-50 w-48 h-48 flex-center bg-surface" href="https://www.youtube.com/" target="_blank"><i class="icon-youtube fs-12 icon-on-surface"></i></a></div>--}}
                     </div>
                 </div>
-                <!--Information Single End-->
-                <!--Information Single Start-->
-                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
-                    <div class="information__single">
-                        <div class="information__icon">
-                            <span class="icon-phone-call"></span>
-                        </div>
-                        <p class="information__text">Call Us</p>
-                        <p class="information__number"><a href="tel:{{ $data['setting_data']->phone ?? $data['setting_data']->mobile ?? '' }}">{{ $data['setting_data']->phone ?? $data['setting_data']->mobile ?? '' }}</a></p>
-                    </div>
-                </div>
-                <!--Information Single End-->
-                <!--Information Single Start-->
-                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
-                    <div class="information__single">
-                        <div class="information__icon">
-                            <span class="icon-gmail"></span>
-                        </div>
-                        <p class="information__text">Mail Us</p>
-                        <p class="information__number"><a href="mailto:{{ $data['setting_data']->email }}">{{ $data['setting_data']->email }}</a>
-                        </p>
-                    </div>
-                </div>
-                <!--Information Single End-->
-                <!--Information Single Start-->
-                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
-                    <div class="information__single">
-                        <div class="information__icon">
-                            <span class="icon-location-2"></span>
-                        </div>
-                        <p class="information__text">Office Address</p>
-                        <p class="information__number">{{ $data['setting_data']->address }}</p>
-                    </div>
-                </div>
-                <!--Information Single End-->
-            </div>
-        </div>
-    </section>
-    <!--Information End-->
-
-    <!--Contact Page Start-->
-    <section class="contact-page">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-6 col-lg-6">
-                    <div class="contact-page__left">
-                        <h3 class="contact-page__title">Get in Touch</h3>
-                        <p class="contact-page__sub-title">LEAVE US A MESSAGE</p>
-                        <div class="contact-page__form-box">
-                            {!! Form::open(['route' => $module.'contact-us.store', 'method'=>'POST', 'class'=>'contact-page__form contact-form-validated submit_form','novalidate'=>'novalidate']) !!}
-                                <div class="row">
-                                    <div class="col-xl-12">
-                                        <div class="contact-page__input-box">
-                                            <h3 class="contact-page__input-title">Full Name *</h3>
-                                            <input type="text" placeholder="Name" name="name">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6">
-                                        <div class="contact-page__input-box">
-                                            <h3 class="contact-page__input-title">Email *</h3>
-                                            <input placeholder="Your Email" type="email" name="email">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6">
-                                        <div class="contact-page__input-box">
-                                            <h3 class="contact-page__input-title">Phone Number *</h3>
-                                            <input type="text" placeholder="Phone" name="phone" >
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-12">
-                                        <div class="contact-page__input-box">
-                                            <h3 class="contact-page__input-title">subject*</h3>
-                                            <input type="text" placeholder="Subject" name="subject">
-
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-12">
-                                        <div class="contact-page__input-box text-message-box">
-                                            <h3 class="contact-page__input-title">Message
-                                                <span>(Oprional)</span></h3>
-                                            <textarea placeholder="Message" name="message" rows="5"></textarea>
-                                        </div>
-                                        <div class="contact-page__btn-box">
-                                            <button type="submit" class="thm-btn contact-page__btn"><span
-                                                    class="fas fa-paper-plane"></span>SEND
-                                                MESSAGE</button>
-                                        </div>
-                                    </div>
+                <div class="col-12 col-lg-5">
+                    {!! Form::open(['route' => $module.'contact-us.store', 'method'=>'POST', 'class'=>'submit_form','novalidate'=>'novalidate']) !!}
+                        <div class="form-block flex-columns-between gap-20">
+                            <div class="row row-gap-20">
+                                <div class="col-12 col-sm-6">
+                                    <input class="w-100 bg-surface text-secondary caption1 pl-16 pr-16 pt-12 pb-12 bora-8" name="name"
+                                           type="text" placeholder="Name"/>
                                 </div>
-                            {!! Form::close() !!}
-                            <div class="result"></div>
+                                <div class="col-12 col-sm-6">
+                                    <input class="w-100 bg-surface text-secondary caption1 pl-16 pr-16 pt-12 pb-12 bora-8" name="email" type="email" placeholder="Email"/>
+
+                                </div>
+                                <div class="col-12">
+                                    <input class="w-100 bg-surface text-secondary caption1 pl-16 pr-16 pt-12 pb-12 bora-8" name="subject" type="text" placeholder="Subject"/>
+
+                                </div>
+                                <div class="col-12">
+                                    <textarea class="w-100 bg-surface text-secondary caption1 pl-16 pr-16 pt-12 pb-12 bora-8" name="message" cols="10" rows="4" placeholder="Your Message..."></textarea>
+                                </div>
+                            </div>
+                            <div class="button-block">
+                                <button type="submit" class="button-share bg-on-surface text-button text-white pl-36 pr-36 pt-12 pb-12 bora-48">Send Message</button>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6">
-                    <div class="contact-page__right">
-                        @if($data['setting_data'] && $data['setting_data']->google_map)
-                            <iframe src="{{$data['setting_data']->google_map}}" style="border:0;width: 625px;height: 746px;" allowfullscreen="" loading="lazy"></iframe>
-                        @endif
-                    </div>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
-    </section>
-    <!--Contact Page End-->
-@endsection
+        @if($data['setting_data'] && $data['setting_data']->google_map)
+
+            <div class="map-block mt-100">
+                <iframe src="{{$data['setting_data']->google_map}}" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        @endif
+    </div>
+    @endsection
 @section('js')
     <script src="{{asset('assets/common/lazyload.js')}}"></script>
     <script src="{{asset('assets/common/general.js')}}"></script>

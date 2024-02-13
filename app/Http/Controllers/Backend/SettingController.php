@@ -16,7 +16,7 @@ class SettingController extends BackendBaseController
     protected string $module        = 'backend.';
     protected string $base_route    = 'backend.setting.';
     protected string $view_path     = 'backend.setting.';
-    protected string $page         = 'Setting';
+    protected string $page          = 'Setting';
     protected string $folder_name   = 'setting';
     protected string $page_title, $page_method, $image_path, $file_path;
     protected object $model;
@@ -69,6 +69,10 @@ class SettingController extends BackendBaseController
                 $image_name = $this->uploadImage($request->file('favicon_input'));
                 $request->request->add(['favicon'=>$image_name]);
             }
+            if($request->hasFile('popup_image_input')){
+                $image_name = $this->uploadImage($request->file('popup_image_input'));
+                $request->request->add(['popup_image'=>$image_name]);
+            }
 
             $this->model->create($request->all());
 
@@ -93,6 +97,7 @@ class SettingController extends BackendBaseController
     {
         $data['row']       = $this->model->find($id);
 
+
         DB::beginTransaction();
         try {
             if($request->hasFile('logo_input')){
@@ -106,6 +111,10 @@ class SettingController extends BackendBaseController
             if($request->hasFile('favicon_input')){
                 $image_name = $this->updateImage($request->file('favicon_input'),$data['row']->favicon);
                 $request->request->add(['favicon'=>$image_name]);
+            }
+            if($request->hasFile('popup_image_input')){
+                $image_name = $this->updateImage($request->file('popup_image_input'),$data['row']->popup_image);
+                $request->request->add(['popup_image'=>$image_name]);
             }
 
             if ($request->file('brochure_input')){
@@ -143,11 +152,34 @@ class SettingController extends BackendBaseController
                 $this->deleteFile($data['row']->brochure);
             }
 
-            Session::flash('success',$this->page.' was removed successfully');
+            Session::flash('success',' Brochure was removed successfully');
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
-            Session::flash('error',$this->page.'  was not removed. Something went wrong.');
+            Session::flash('error','Brochure was not removed. Something went wrong.');
+        }
+
+        return response()->json(route($this->base_route.'index'));
+
+    }
+
+    public function removePopUpImage(){
+        $data['row'] = $this->model->first();
+
+        DB::beginTransaction();
+        try {
+
+            $data['row']->update(['popup_image' => null]);
+
+            if ($data['row'] &&  $data['row']->popup_image){
+                $this->deleteImage($data['row']->popup_image);
+            }
+
+            Session::flash('success','Popup image was removed successfully');
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            Session::flash('error','Popup image  was not removed. Something went wrong.');
         }
 
         return response()->json(route($this->base_route.'index'));

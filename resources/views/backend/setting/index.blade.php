@@ -38,6 +38,19 @@
                     },
                 });
             });
+
+            $('.remove-popup-image').on('click', function() {
+                console.log('clicked');
+                var url = '{{ route($base_route."remove_popup_image") }}';
+                $.ajax({
+                    url: url,
+                    method: 'GET',
+                    success: function(url) {
+                        // Reload the page
+                        window.location.href = url;
+                    }
+                });
+            });
         });
     </script>
 

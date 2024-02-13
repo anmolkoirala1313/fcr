@@ -1,4 +1,5 @@
 <a class="scroll-to-top-btn" href="#header"><i class="ph-bold ph-caret-up"></i></a>
+{{--@include('frontend.includes.modal')--}}
 
 </div>
 <div id="footer">
@@ -130,6 +131,7 @@
 <script src="{{ asset('assets/frontend/js/jquery.magnific-popup.min.js') }}"></script>
 <script src="{{ asset('assets/frontend/js/drawer.min.js') }}"></script>
 <script src="{{ asset('assets/frontend/js/main.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script src="{{ asset('assets/common/lazyload.js') }}"></script>
 <script>

@@ -68,7 +68,7 @@ class HomePageController extends BackendBaseController
         $data['jobs']               = Job::active()->descending()->latest()->take(4)->get();
         $data['homepage']           = Welcome::first();
         $data['director']           = ManagingDirector::active()->orderBy('order', 'asc')->get();
-        $data['map']                = Setting::first()->google_map;
+        $data['setting']            = Setting::select('google_map','popup_image')->first();
         $data['clients']            = Client::active()->descending()->latest()->take(10)->get();
         $data['categories']         = Service::active()->pluck('title','id');
 

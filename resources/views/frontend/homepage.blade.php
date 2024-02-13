@@ -2,6 +2,7 @@
 @section('title') Home @endsection
 @section('css')
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 @endsection
 @section('content')
@@ -374,8 +375,8 @@
                         </div>
                         <div class="col-12 col-lg-6">
                             <div class="form-block bora-16 bg-white p-28" style="width: 95%;">
-                                @if($data['map'])
-                                    <iframe src="{{$data['map']}}" style="border:0;width: 545px;height: 520px; border-radius: 8px" allowfullscreen="" loading="lazy"></iframe>
+                                @if($data['setting']->google_map)
+                                    <iframe src="{{$data['setting']->google_map}}" style="border:0;width: 545px;height: 520px; border-radius: 8px" allowfullscreen="" loading="lazy"></iframe>
                                 @endif
                             </div>
                         </div>
@@ -462,13 +463,20 @@
             </div>
         @endif
 
+
+
 @endsection
 
 @section('js')
-    <script src="{{asset('assets/common/lazyload.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
     <script>
         $('.select2').select2();
+        let popup2 = "{{$data['setting']->popup_image}}";
+
+        if(popup2){
+            $('#firstmodal').modal('toggle');
+        }
     </script>
 
 @endsection
