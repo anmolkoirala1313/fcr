@@ -358,13 +358,13 @@ if (!function_exists('get_flash_card_icons')) {
     function get_flash_card_icons($index): string
     {
         if ($index == 0) {
-            $icon = 'icon-icon-start-ups';
+            $icon = 'icon-target';
         } else if ($index == 1) {
-            $icon = 'icon-icon-successful-project';
+            $icon = 'icon-lamp-earth';
         } else if ($index == 2) {
-            $icon = 'icon-icon-years-experience';
+            $icon = 'icon-hand-team';
         } else {
-            $icon = 'icon-star-1';
+            $icon = 'icon-hand-message';
         }
 
         return $icon;

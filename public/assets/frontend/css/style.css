@@ -7256,6 +7256,7 @@ Reduce font and spacing: Start
   .mt-100 {
     margin-top: 60px;
   }
+
   .pt-100 {
     padding-top: 60px;
   }
@@ -7457,4 +7458,60 @@ Reduce font and spacing: End
     top: 1px;
     right: 1px;
     width: 20px;
+}
+
+.custom-description blockquote{
+    margin-top: 30px;
+    font-style: italic;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+    color: #121212;
+    text-align: center;
+    background: var(--surface);
+    padding: 40px;
+    position: relative;
+    z-index: 1;
+    border-left: 3px solid var(--blue);
+}
+
+.custom-description ul,.custom-description ol {
+    margin-top: 30px;
+    padding-left: 0px;
+}
+
+.custom-description ul li, .custom-description ol li{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--secondary);
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.custom-description ul li:before, .custom-description ol li:before{
+    width: 25px;
+    height: 25px;
+    font-size: 14px;
+    border: 1px solid var(--blue);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--blue);
+    background: var(--blue);
+    border-radius: 50%;
+    color: var(--white);
+    font-family: "Phosphor-Bold" !important;
+    font-weight: 300;
+
+}
+.custom-description ol li:before{
+    content: "\ea00";
+}
+.custom-description ul li:before{
+    content: "\ea30";
+}
+
+.mt-30 {
+    margin-top: 30px;
 }

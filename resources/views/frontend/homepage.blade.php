@@ -87,7 +87,7 @@
                                 </a>
                             </div>
                             <div class="col-12 col-xl-4 col-lg-6 col-md-6 col-sm-6">
-                                <a class="main-item bora-16"> <i class="icon-lamp-gear"></i>
+                                <a class="main-item bora-16"> <i class="icon-hand-protect-white"></i>
                                     <div class="heading7 text-white hover-text-orange">Value</div>
                                     <div class="body3 text-placehover mt-12">
                                         {{ $data['homepage']->value ?? '' }}

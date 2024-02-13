@@ -74,6 +74,10 @@
   content: "\e90a";
   color: #2868d8;
 }
+.icon-hand-protect-white:before {
+  content: "\e90a";
+  color: #fff;
+}
 .icon-coin-virus:before {
   content: "\e90b";
   color: #2868d8;
@@ -179,6 +183,10 @@
 }
 .icon-wallet:before {
   content: "\e924";
+  color: #2868d8;
+}
+.icon-target:before {
+  content: "\e925";
   color: #2868d8;
 }
 .icon-target:before {
