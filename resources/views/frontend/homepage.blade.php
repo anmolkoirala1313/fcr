@@ -318,7 +318,7 @@
         @endif
 
         @if(count($data['director']) > 0)
-            <div class="testimonials-six pt-100 bg-on-surface">
+            <div class="testimonials-six pt-100 pb-60 bg-on-surface">
                 <div class="container">
                     <div class="text-center">
                         <div class="text-sub-heading2 text-white pt-8 pb-8 pl-16 pr-16 bg-blue bora-8 display-inline-block">
@@ -352,60 +352,38 @@
             </div>
         @endif
 
-    <div class="faqs-block style-one mt-100">
-        <div class="row row-gap-32">
-            <div class="col-12 col-xl-6">
-                <div class="bg-img"> <img src="assets/images/component/item1.png" alt=""/></div>
-                <div class="desc bg-blue flex-center">
-                    <div class="content gap-30"><i class="icon-hand-team icon-white"></i>
-                        <div class="heading4 text-white">We aim for a world of convenience and value for many customers</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-xl-6 bg-surface">
-                <div class="content-main">
-                    <div class="heading3">Frequently Asked questions</div>
-                    <div class="list-question mt-32">
-                        <div class="open question-item hover-box-shadow pointer mt-20 pl-28 pr-28 bora-8 border-line-1px">
-                            <div class="question-item-main flex-between pt-16 pb-16 heading7">Which device can I use to enter your service?<i class="ph-bold ph-plus fs-20 p-8"></i></div>
-                            <div class="content-question">
-                                <div class="border-line"></div>
-                                <div class="body3 text-secondary pt-16 pb-16">You can access our service from any device with an internet connection.</div>
+
+            <div class="form-cta-block benefit-three bg-surface">
+                <div class="container h-100">
+                    <div class="row  h-100">
+                        <div class="col-12 col-lg-6">
+                            <div class="text">
+                                <div class="text-sub-heading2 text-white pt-8 pb-8 pl-16 pr-16 bg-blue bora-8 display-inline-block">
+                                    {{ $data['homepage']->grievance_subtitle ?? '' }}
+                                </div>
+                                <div class="heading2 mt-20">{{ $data['homepage']->grievance_title }}</div>
                             </div>
-                        </div>
-                        <div class=" question-item hover-box-shadow pointer mt-20 pl-28 pr-28 bora-8 border-line-1px">
-                            <div class="question-item-main flex-between pt-16 pb-16 heading7">What are your products and services?<i class="ph-bold ph-plus fs-20 p-8"></i></div>
-                            <div class="content-question">
-                                <div class="border-line"></div>
-                                <div class="body3 text-secondary pt-16 pb-16">Our products and services include [describe your products/services briefly].</div>
+                            <div class="body3 text-secondary text-align-justify">
+                                {{ $data['homepage']->grievance_description ?? '' }}
                             </div>
+                            @if($data['homepage']->grievance_link)
+                                <div class="button-block mt-24 animate__animated animate__fadeInUp animate__delay-0-8s">
+                                    <a class="button-share display-inline-block hover-button-black border-none bg-blue text-white text-button pl-28 pr-28 pt-12 pb-12 bora-8" href="{{ $data['homepage']->grievance_link }}" tabindex="0">
+                                        {{ $data['homepage']->grievance_button ?? 'Contact Us' }}</a>
+                                </div>
+                            @endif
                         </div>
-                        <div class=" question-item hover-box-shadow pointer mt-20 pl-28 pr-28 bora-8 border-line-1px">
-                            <div class="question-item-main flex-between pt-16 pb-16 heading7">How can I contact your customer support department?<i class="ph-bold ph-plus fs-20 p-8"></i></div>
-                            <div class="content-question">
-                                <div class="border-line"></div>
-                                <div class="body3 text-secondary pt-16 pb-16">You can contact our customer support department by provide contact information during our business hours.</div>
-                            </div>
-                        </div>
-                        <div class=" question-item hover-box-shadow pointer mt-20 pl-28 pr-28 bora-8 border-line-1px">
-                            <div class="question-item-main flex-between pt-16 pb-16 heading7">Can I return items if I'm not satisfied?<i class="ph-bold ph-plus fs-20 p-8"></i></div>
-                            <div class="content-question">
-                                <div class="border-line"></div>
-                                <div class="body3 text-secondary pt-16 pb-16">Yes, you can return items within [specify time frame] if you are not satisfied.</div>
-                            </div>
-                        </div>
-                        <div class=" question-item hover-box-shadow pointer mt-20 pl-28 pr-28 bora-8 border-line-1px">
-                            <div class="question-item-main flex-between pt-16 pb-16 heading7">Do you have a customer loyalty program?<i class="ph-bold ph-plus fs-20 p-8"></i></div>
-                            <div class="content-question">
-                                <div class="border-line"></div>
-                                <div class="body3 text-secondary pt-16 pb-16">Yes, we have a customer loyalty program. Earn points with each purchase and enjoy exclusive benefits.</div>
+                        <div class="col-12 col-lg-6">
+                            <div class="form-block bora-16 bg-white p-28" style="width: 95%;">
+                                @if($data['map'])
+                                    <iframe src="{{$data['map']}}" style="border:0;width: 545px;height: 520px; border-radius: 8px" allowfullscreen="" loading="lazy"></iframe>
+                                @endif
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+
     <div class="form-request mt-100">
         <div class="container">
             <div class="heading flex-between">

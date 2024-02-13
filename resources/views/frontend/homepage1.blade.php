@@ -562,7 +562,7 @@
                                 </div>
 
                                 @if($data['map'])
-                                    <iframe src="{{$data['map']}}" style="border:0;width: 625px;height: 520px;" allowfullscreen="" loading="lazy"></iframe>
+                                    <iframe src="{{$data['map']}}" style="border:0;width: 440px;height: 520px; border-radius: 8px" allowfullscreen="" loading="lazy"></iframe>
                                 @endif
                             </div>
                         </div>

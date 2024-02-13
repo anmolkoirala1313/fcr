@@ -3972,7 +3972,7 @@ Section Testimonial Home3, Home4: End
 Section Testimonial Home6: Start
 */
 .testimonials-six .container > .row {
-  margin-top: 90px;
+  margin-top: 50px;
 }
 .testimonials-six .container > .row > div .row {
   border-radius: 16px;

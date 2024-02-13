@@ -26,7 +26,7 @@ class GeneralGrievanceRequest extends FormRequest
     {
         return [
             'grievance_title'       => 'required|string|max:60',
-            'grievance_description' => 'required|string|max:900',
+            'grievance_description' => 'required|string|max:1200',
         ];
     }
 
