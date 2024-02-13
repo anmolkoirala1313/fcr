@@ -4,6 +4,7 @@ use App\Http\Controllers\Backend\AlbumController;
 use App\Http\Controllers\Backend\Career\Basic_setup\JobCategoryController;
 use App\Http\Controllers\Backend\Career\CompanyCareerController;
 use App\Http\Controllers\Backend\Career\JobController;
+use App\Http\Controllers\Backend\ClientController;
 use App\Http\Controllers\Backend\PageHeadingController;
 use App\Http\Controllers\Backend\CustomerInquiryController;
 use App\Http\Controllers\Backend\DashboardController;
@@ -190,10 +191,10 @@ Route::delete('/team/trash/{id}/remove', [TeamController::class,'removeTrash'])-
 Route::resource('team', TeamController::class)->names('team');
 
 //client
-Route::get('/client/trash', [PageHeadingController::class,'trash'])->name('client.trash');
-Route::post('/client/trash/{id}/restore', [PageHeadingController::class,'restore'])->name('client.restore');
-Route::delete('/client/trash/{id}/remove', [PageHeadingController::class,'removeTrash'])->name('client.remove-trash');
-Route::resource('client', PageHeadingController::class)->names('client');
+Route::get('/client/trash', [ClientController::class,'trash'])->name('client.trash');
+Route::post('/client/trash/{id}/restore', [ClientController::class,'restore'])->name('client.restore');
+Route::delete('/client/trash/{id}/remove', [ClientController::class,'removeTrash'])->name('client.remove-trash');
+Route::resource('client', ClientController::class)->names('client');
 
 
 //Album

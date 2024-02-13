@@ -1,3 +1,6 @@
+<a class="scroll-to-top-btn" href="#header"><i class="ph-bold ph-caret-up"></i></a>
+
+</div>
 <div id="footer">
     <div class="style-one">
         <div class="footer-block bg-dark pt-60">

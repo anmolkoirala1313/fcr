@@ -5,7 +5,6 @@
 
 @endsection
 @section('content')
-    <div id="content">
         @if ($data['sliders'])
             <div class="slider-block style-one">
                 <div class="prev-arrow flex-center"><i class="ph-bold ph-caret-left text-white"></i></div>
@@ -352,7 +351,7 @@
             </div>
         @endif
 
-
+        @if($data['homepage']->grievance_title)
             <div class="form-cta-block benefit-three bg-surface">
                 <div class="container h-100">
                     <div class="row  h-100">
@@ -383,99 +382,84 @@
                     </div>
                 </div>
             </div>
+        @endif
 
-    <div class="form-request mt-100">
-        <div class="container">
-            <div class="heading flex-between">
-                <div class="heading3">Request a free call back.</div>
-                <div class="body3 text-secondary">Working with this agency has been a game-changer for our business Forem ipsum <br>dolor sit amet, consectetur adipiscing elit. </div>
-            </div>
-            <div class="form mt-40 flex-between gap-30">
-                <div class="row w-100">
-                    <div class="col-12 col-lg-4 col-md-6">
-                        <input class="body3 pt-12 pb-12 pl-20 pr-20 bg-surface bora-8 w-100" type="text" placeholder="First name*"/>
-                    </div>
-                    <div class="col-12 col-lg-4 col-md-6">
-                        <input class="body3 pt-12 pb-12 pl-20 pr-20 bg-surface bora-8 w-100" type="text" placeholder="Email"/>
-                    </div>
-                    <div class="col-12 col-lg-4 select-arrow-none">
-                        <select class="body3 pt-12 pb-12 pl-20 pr-20 bg-surface bora-8 w-100" name="categories">
-                            <option value="Financial Planning">Financial Planning</option>
-                            <option value="Business Planning">Business Planning</option>
-                            <option value="Development Planning">Development Planning</option>
-                        </select><i class="ph ph-caret-down"></i>
+        @if(count($data['testimonials'])>0)
+                <div class="testimonials-three mt-100">
+                    <div class="container">
+                        <div class="text-center">
+                            <div class="text-sub-heading2 text-white pt-8 pb-8 pl-16 pr-16 bg-blue bora-8 display-inline-block">
+                                Closer Look
+                            </div>
+                            <div class="heading3 mt-20">Message From Our Directors</div>
+                        </div>
+                        <div class="list-comment row">
+                            @foreach($data['testimonials'] as $index=>$testimonial)
+                                <div class="col-12 col-lg-4 display-flex align-items-stretch h-100 col-sm-6 comment-item">
+                                    <div class="item p-32 bg-white bora-12 box-shadow hover-box-shadow">
+                                        <div class="body3 text-secondary">"{{ $testimonial->description }}"</div>
+                                        <div class="infor mt-16 flex-item-center gap-16">
+                                            <div class="avatar">
+                                                <img class="w-60 h-60" src="{{ asset(imagePath($testimonial->image))}}" alt="">
+                                            </div>
+                                            <div class="desc">
+                                                <div class="text-button">{{ $testimonial->title ?? '' }}</div>
+                                                <div class="caption2 text-secondary mt-4">{{ $testimonial->position ?? '' }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
-                <div class="button-block">
-                    <button class="button-share bg-on-surface hover-bg-blue text-white text-button pl-28 pr-28 pt-12 pb-12 bora-48">Submit</button>
-                </div>
-            </div>
-        </div>
-    </div>
+        @endif
+
+
     <div class="blog-list style-one mt-100">
         <div class="container">
-            <div class="heading3 text-center">Latest News</div>
+            <div class="text-center">
+                <div class="text-sub-heading2 text-white pt-8 pb-8 pl-16 pr-16 bg-blue bora-8 display-inline-block">
+                    News and articles
+                </div>
+                <div class="heading3 mt-20">Latest Stories and Blogs</div>
+            </div>
             <div class="row row-gap-32 mt-40">
-                <div class="blog-item col-12 col-xl-4 col-sm-6" data-name=""><a class="blog-item-main" href="blog-detail-two.html">
-                        <div class="bg-img w-100 overflow-hidden mb-minus-1"><img class="w-100 h-100 display-block" src="assets/images/blog/item11.png" alt="CI Financial sells RIA stake in new expansion strategy"/></div>
-                        <div class="infor bg-white p-24">
-                            <div class="caption2 pt-4 pb-4 pl-12 pr-12 bg-surface bora-40 display-inline-block">Makerting</div>
-                            <div class="heading6 mt-8">CI Financial sells RIA stake in new expansion strategy</div>
-                            <div class="date flex-item-center gap-16 mt-8">
-                                <div class="author caption2 text-secondary">by <span class="text-on-surface">Avitex</span></div>
-                                <div class="item-date flex-item-center"><i class="ph-bold ph-calendar-blank"></i><span class="ml-4 caption2">1 days ago</span></div>
+                @foreach($data['blogs'] as $blog)
+                    <div class="blog-item col-12 col-xl-4 d-flex align-items-stretch col-sm-6" data-name="">
+                        <a class="blog-item-main" href="{{ route('frontend.blog.show', $blog->slug) }}">
+                            <div class="bg-img w-100 overflow-hidden mb-minus-1">
+                                <img class="w-100 h-100 display-block lazy" data-src="{{ asset(imagePath($blog->image))}}" alt=""/>
                             </div>
-                        </div></a></div>
-                <div class="blog-item col-12 col-xl-4 col-sm-6" data-name=""><a class="blog-item-main" href="blog-detail-two.html">
-                        <div class="bg-img w-100 overflow-hidden mb-minus-1"><img class="w-100 h-100 display-block" src="assets/images/blog/item13.png" alt="Barred financial advisors charged in $72 million criminal"/></div>
-                        <div class="infor bg-white p-24">
-                            <div class="caption2 pt-4 pb-4 pl-12 pr-12 bg-surface bora-40 display-inline-block">Development</div>
-                            <div class="heading6 mt-8">Barred financial advisors charged in $72 million criminal</div>
-                            <div class="date flex-item-center gap-16 mt-8">
-                                <div class="author caption2 text-secondary">by <span class="text-on-surface">Avitex</span></div>
-                                <div class="item-date flex-item-center"><i class="ph-bold ph-calendar-blank"></i><span class="ml-4 caption2">2 days ago</span></div>
+                            <div class="infor bg-white p-24">
+                                <div class="date flex-item-center gap-16 mt-8">
+                                    <div class="item-date flex-item-center"><i class="ph-bold ph-calendar-blank"></i>
+                                        <span class="ml-4 caption2">{{date('d M Y', strtotime($blog->created_at))}}</span>
+                                    </div>
+                                    <div class="caption2 pt-4 pb-4 pl-12 pr-12 bg-surface bora-40 display-inline-block">{{ $blog->blogCategory->title ?? '' }}</div>
+
+                                </div>
+                                <div class="heading6 mt-8">{{ $blog->title ?? '' }}</div>
+
                             </div>
-                        </div></a></div>
-                <div class="blog-item col-12 col-xl-4 col-sm-6" data-name=""><a class="blog-item-main" href="blog-detail-two.html">
-                        <div class="bg-img w-100 overflow-hidden mb-minus-1"><img class="w-100 h-100 display-block" src="assets/images/blog/item12.png" alt="Retirement Planning Strategies"/></div>
-                        <div class="infor bg-white p-24">
-                            <div class="caption2 pt-4 pb-4 pl-12 pr-12 bg-surface bora-40 display-inline-block">Design</div>
-                            <div class="heading6 mt-8">Retirement Planning Strategies</div>
-                            <div class="date flex-item-center gap-16 mt-8">
-                                <div class="author caption2 text-secondary">by <span class="text-on-surface">Avitex</span></div>
-                                <div class="item-date flex-item-center"><i class="ph-bold ph-calendar-blank"></i><span class="ml-4 caption2">2 days ago</span></div>
-                            </div>
-                        </div></a></div>
-                <div class="blog-item col-12 col-xl-4 col-sm-6 display-none col-lg-show" data-name=""><a class="blog-item-main" href="blog-detail-two.html">
-                        <div class="bg-img w-100 overflow-hidden mb-minus-1"><img class="w-100 h-100 display-block" src="assets/images/blog/item10.png" alt="Helping a local business"/></div>
-                        <div class="infor bg-white p-24">
-                            <div class="caption2 pt-4 pb-4 pl-12 pr-12 bg-surface bora-40 display-inline-block">Makerting</div>
-                            <div class="heading6 mt-8">Helping a local business</div>
-                            <div class="date flex-item-center gap-16 mt-8">
-                                <div class="author caption2 text-secondary">by <span class="text-on-surface">Avitex</span></div>
-                                <div class="item-date flex-item-center"><i class="ph-bold ph-calendar-blank"></i><span class="ml-4 caption2">3 days ago</span></div>
-                            </div>
-                        </div></a></div>
+                        </a>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>
-    <div class="partner-five-col style-one mt-100 bg-blue">
-        <div class="list pt-32 pb-32">
-            <div class="bg-img flex-center"><img class="w-100" src="assets/images/partner/Logo.png" alt=""/></div>
-            <div class="bg-img flex-center"><img class="w-100" src="assets/images/partner/Logo-1.png" alt=""/></div>
-            <div class="bg-img flex-center"><img class="w-100" src="assets/images/partner/Logo-2.png" alt=""/></div>
-            <div class="bg-img flex-center"><img class="w-100" src="assets/images/partner/Logo-3.png" alt=""/></div>
-            <div class="bg-img flex-center"><img class="w-100" src="assets/images/partner/Logo-4.png" alt=""/></div>
-            <div class="bg-img flex-center"><img class="w-100" src="assets/images/partner/Logo-5.png" alt=""/></div>
-            <div class="bg-img flex-center"><img class="w-100" src="assets/images/partner/Logo.png" alt=""/></div>
-            <div class="bg-img flex-center"><img class="w-100" src="assets/images/partner/Logo-1.png" alt=""/></div>
-            <div class="bg-img flex-center"><img class="w-100" src="assets/images/partner/Logo-2.png" alt=""/></div>
-            <div class="bg-img flex-center"><img class="w-100" src="assets/images/partner/Logo-3.png" alt=""/></div>
-            <div class="bg-img flex-center"><img class="w-100" src="assets/images/partner/Logo-4.png" alt=""/></div>
-            <div class="bg-img flex-center"><img class="w-100" src="assets/images/partner/Logo-5.png" alt=""/></div>
+
+   @if(count( $data['clients']) > 0)
+        <div class="partner-five-col style-one mt-100 bg-surface">
+            <div class="list pt-32 pb-32">
+
+                @foreach($data['clients'] as $index=>$client)
+                    <div class="bg-img flex-center"><img class="w-100" src="{{ asset(imagePath($client->image)) }}" alt=""/></div>
+                @endforeach
+
+            </div>
         </div>
-    </div><a class="scroll-to-top-btn" href="#header"><i class="ph-bold ph-caret-up"></i></a>
-</div>
+    @endif
 
 @endsection
 
