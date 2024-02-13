@@ -1,30 +1,23 @@
-<section class="faq-two">
-    <div class="faq-two__shape-1 float-bob-y">
-        <img src="{{ asset('assets/frontend/images/shapes/faq-two-shape-1.png') }}" alt="">
-    </div>
-    <div class="faq-two__shape-2 img-bounce">
-        <img src="{{ asset('assets/frontend/images/shapes/faq-two-shape-2.png') }}" alt="">
-    </div>
-    <div class="container">
-        <div class="faq-two__inner">
-            <h3 class="section__title-two">{{ $element->first()->title ?? '' }}</h3>
-            <div class="accrodion-grp" data-grp-name="faq-two-accrodion">
-                @foreach($element as $index=>$row)
-                    <div class="accrodion  {{$loop->first ? 'active':''}}">
-                        <div class="accrodion-title">
-                            <h4> {{ $row->list_title ?? '' }}</h4>
-                        </div>
-                        @if($row->list_description)
-                            <div class="accrodion-content">
-                                <div class="inner">
-                                    <p> {{ $row->list_description ?? '' }}</p>
-                                </div><!-- /.inner -->
-                            </div>
-                        @endif
 
-                    </div>
-                @endforeach
+<div class="faq-block pb-80 pt-80 bg-surface">
+    <div class="container">
+        <div class="row flex-center">
+            <div class="col-12 col-lg-8">
+                <div class="list-question">
+                    <div class="heading4">{{ $element->first()->title ?? '' }}</div>
+                    @foreach($element as $index=>$row)
+                        <div class=" question-item hover-box-shadow pointer mt-20 pl-28 pr-28 bora-8 border-line-1px">
+                            <div class="question-item-main flex-between pt-16 pb-16 heading7">{{ $row->list_title ?? '' }} {!! $row->list_description ? '<i class="ph-bold ph-plus fs-20 p-8"></i>':'' !!}</div>
+                            @if($row->list_description)
+                                <div class="content-question">
+                                    <div class="border-line"></div>
+                                    <div class="body3 text-secondary pt-16 pb-16"> {{ $row->list_description ?? '' }}</div>
+                                </div>
+                            @endif
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>
-</section>
+</div>
