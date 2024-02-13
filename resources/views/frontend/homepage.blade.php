@@ -415,51 +415,52 @@
                 </div>
         @endif
 
-
-    <div class="blog-list style-one mt-100">
-        <div class="container">
-            <div class="text-center">
-                <div class="text-sub-heading2 text-white pt-8 pb-8 pl-16 pr-16 bg-blue bora-8 display-inline-block">
-                    News and articles
-                </div>
-                <div class="heading3 mt-20">Latest Stories and Blogs</div>
-            </div>
-            <div class="row row-gap-32 mt-40">
-                @foreach($data['blogs'] as $blog)
-                    <div class="blog-item col-12 col-xl-4 d-flex align-items-stretch col-sm-6" data-name="">
-                        <a class="blog-item-main" href="{{ route('frontend.blog.show', $blog->slug) }}">
-                            <div class="bg-img w-100 overflow-hidden mb-minus-1">
-                                <img class="w-100 h-100 display-block lazy" data-src="{{ asset(imagePath($blog->image))}}" alt=""/>
-                            </div>
-                            <div class="infor bg-white p-24">
-                                <div class="date flex-item-center gap-16 mt-8">
-                                    <div class="item-date flex-item-center"><i class="ph-bold ph-calendar-blank"></i>
-                                        <span class="ml-4 caption2">{{date('d M Y', strtotime($blog->created_at))}}</span>
-                                    </div>
-                                    <div class="caption2 pt-4 pb-4 pl-12 pr-12 bg-surface bora-40 display-inline-block">{{ $blog->blogCategory->title ?? '' }}</div>
-
-                                </div>
-                                <div class="heading6 mt-8">{{ $blog->title ?? '' }}</div>
-
-                            </div>
-                        </a>
+        @if(count($data['blogs'])>0)
+            <div class="blog-list style-one mt-100">
+                <div class="container">
+                    <div class="text-center">
+                        <div class="text-sub-heading2 text-white pt-8 pb-8 pl-16 pr-16 bg-blue bora-8 display-inline-block">
+                            News and articles
+                        </div>
+                        <div class="heading3 mt-20">Latest Stories and Blogs</div>
                     </div>
-                @endforeach
+                    <div class="row row-gap-32 mt-40">
+                        @foreach($data['blogs'] as $blog)
+                            <div class="blog-item col-12 col-xl-4 d-flex align-items-stretch col-sm-6" data-name="">
+                                <a class="blog-item-main" href="{{ route('frontend.blog.show', $blog->slug) }}">
+                                    <div class="bg-img w-100 overflow-hidden mb-minus-1">
+                                        <img class="w-100 h-100 display-block lazy" data-src="{{ asset(imagePath($blog->image))}}" alt=""/>
+                                    </div>
+                                    <div class="infor bg-white p-24">
+                                        <div class="date flex-item-center gap-16 mt-8">
+                                            <div class="item-date flex-item-center"><i class="ph-bold ph-calendar-blank"></i>
+                                                <span class="ml-4 caption2">{{date('d M Y', strtotime($blog->created_at))}}</span>
+                                            </div>
+                                            <div class="caption2 pt-4 pb-4 pl-12 pr-12 bg-surface bora-40 display-inline-block">{{ $blog->blogCategory->title ?? '' }}</div>
+
+                                        </div>
+                                        <div class="heading6 mt-8">{{ $blog->title ?? '' }}</div>
+
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
+        @endif
 
-   @if(count( $data['clients']) > 0)
-        <div class="partner-five-col style-one mt-100 bg-surface">
-            <div class="list pt-32 pb-32">
+        @if(count( $data['clients']) > 0)
+            <div class="partner-five-col style-one mt-100 bg-surface">
+                <div class="list pt-32 pb-32">
 
-                @foreach($data['clients'] as $index=>$client)
-                    <div class="bg-img flex-center"><img class="w-100" src="{{ asset(imagePath($client->image)) }}" alt=""/></div>
-                @endforeach
+                    @foreach($data['clients'] as $index=>$client)
+                        <div class="bg-img flex-center"><img class="w-100" src="{{ asset(imagePath($client->image)) }}" alt=""/></div>
+                    @endforeach
 
+                </div>
             </div>
-        </div>
-    @endif
+        @endif
 
 @endsection
 
