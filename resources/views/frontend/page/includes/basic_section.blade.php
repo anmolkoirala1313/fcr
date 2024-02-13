@@ -1,42 +1,27 @@
-
-<section class="about-three" style="    padding: 120px 0 0px;">
-    <div class="about-three__shape-2 float-bob-y">
-        <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/about-three-shape-2.png')}}" alt="">
-    </div>
+<div class="about-home-five mt-100 mb-80">
     <div class="container">
-        <div class="row">
-            <div class="col-xl-6">
-                <div class="about-three__left">
-                    <div class="about-three__img wow slideInLeft" data-wow-delay="100ms"
-                         data-wow-duration="2500ms">
-                        <img class="lazy" data-src="{{ asset(imagePath($element->first()->image)) }}" alt="">
-                        <div class="about-three__shape-1 zoominout">
-                            <img class="lazy" data-src="{{ asset('assets/frontend/images/shapes/about-three-shape-1.png') }}" alt="">
-                        </div>
-                        <div class="about-three__shape-2 float-bob-y">
-                            <img class="lazy" data-src="{{ asset('assets/frontend/images/shapes/about-three-shape-2.png') }}" alt="">
-                        </div>
-                    </div>
+        <div class="row ">
+            <div class="col-12 col-lg-5 col-md-8 col-sm-8">
+                <div class="bg-img w-100 bora-20">
+                    <img class="hover-scale display-block bora-20 lazy" data-src="{{ asset(imagePath($element->first()->image)) }}" alt="">
                 </div>
             </div>
-            <div class="col-xl-6">
-                <div class="about-three__right">
-                    <div class="section-title-three text-left">
-                        <div class="section-title-three__tagline-box">
-                            <p class="section-title-three__tagline">{{ $element->first()->subtitle ?? '' }}</p>
-                        </div>
-                        <h2 class="section-title-three__title">{{ $element->first()->title ?? '' }}</h2>
-                    </div>
-                    <div class="about-three__text-2 text-align-justify custom-description">
-                        {!! $element->first()->description ?? '' !!}
-                    </div>
+            <div class="col-12 col-lg-6 ml-65">
+                <div class="text-about">
+                    @if ($element->first()->subtitle)
+                        <div class="text-sub-heading2 text-white pt-8 pb-8 pl-16 pr-16 bg-blue bora-8 display-inline-block">{{ $element->first()->subtitle ?? '' }}</div>
+                    @endif
+                    <div class="heading4 mt-16">{{ $element->first()->title ?? '' }}</div>
+                    <div class="body3 text-secondary mt-2 text-align-justify">  {!! $element->first()->description ?? '' !!}</div>
                     @if($element->first()->button_link)
-                        <div class="about-two__btn-box">
-                            <a href="{{$element->first()->button_link}}" class="about-one__btn thm-btn">  {{ $element->first()->button ?? 'Reach Out' }}</a>
+                        <div class="button-block button-block-2 mt-3 flex-item-center gap-24">
+                            <a class="button-share display-inline-block hover-button-black border-none bg-blue text-white text-button pl-28 pr-28 pt-12 pb-12 bora-8" href="{{$element->first()->button_link}}">
+                                <span> {{ $element->first()->button ?? 'Reach Out' }}</span></a>
                         </div>
                     @endif
                 </div>
+
             </div>
         </div>
     </div>
-</section>
+</div>

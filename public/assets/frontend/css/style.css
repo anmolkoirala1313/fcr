@@ -567,7 +567,7 @@ Container: Start
 }
 
 .bg-gradient-blue {
-  background: linear-gradient(136deg, #5473DC 0%, #8BF7FF 100%);
+    background: linear-gradient(136deg, #053b74 0%, #8BF7FF 100%);
 }
 
 .bg-dark {
@@ -919,6 +919,9 @@ Container: Start
 .mt-20 {
   margin-top: 20px;
 }
+.mt-18 {
+  margin-top: 18px;
+}
 
 .mt-16 {
   margin-top: 16px;
@@ -952,6 +955,30 @@ Container: Start
   margin-bottom: 12px;
 }
 
+.mb-40 {
+  margin-bottom: 40px;
+}
+
+.mb-60 {
+  margin-bottom: 60px;
+}
+
+.mb-70 {
+  margin-bottom: 70px;
+}
+
+.mb-80 {
+  margin-bottom: 80px;
+}
+
+.mb-90 {
+  margin-bottom: 90px;
+}
+
+.mb-100 {
+  margin-bottom: 100px;
+}
+
 .mb-8 {
   margin-bottom: 8px;
 }
@@ -962,6 +989,14 @@ Container: Start
 
 .mb-minus-1 {
   margin-bottom: -1px;
+}
+
+.ml-65 {
+  margin-left: 65px;
+}
+
+.ml-55 {
+  margin-left: 55px;
 }
 
 .ml-40 {

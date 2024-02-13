@@ -15,7 +15,7 @@
             <div class="card-body">
                 <div class="row">
                     <img class="img-responsive pb-4 border-bottom lazy" data-src="{{asset('assets/backend/images/pages/sections/'.$value.'.png')}}" width="100%"/>
-                    <div class="col-lg-6 mt-3">
+                    <div class="col-lg-12 mt-3">
                         <div class="mb-1">
                             <label class="form-label required">Title </label>
                             <input type="text" class="form-control" name="title" value="{{$call_to_action->title ?? null}}" maxlength="180" required>
@@ -27,7 +27,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 mt-3">
+                    <div class="col-lg-12 mt-1 mb-2">
                         <div class="mb-1">
                             <label>Sub Title </label>
                             <input type="text" class="form-control" maxlength="40" name="subtitle" value="{{$call_to_action->subtitle ?? null}}">
