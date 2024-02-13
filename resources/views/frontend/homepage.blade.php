@@ -472,11 +472,11 @@
 
     <script>
         $('.select2').select2();
-        let popup2 = "{{$data['setting']->popup_image}}";
+        {{--let popup2 = "{{$data['setting']->popup_image}}";--}}
 
-        if(popup2){
-            $('#firstmodal').modal('toggle');
-        }
+        {{--if(popup2){--}}
+        {{--    $('#firstmodal').modal('toggle');--}}
+        {{--}--}}
     </script>
 
 @endsection

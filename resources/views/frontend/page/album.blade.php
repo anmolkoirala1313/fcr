@@ -5,50 +5,41 @@
 
 @section('content')
 
-    @include($module.'includes.breadcrumb',['breadcrumb_image'=> 'image-2.png'])
+    @include($module.'includes.breadcrumb',['breadcrumb_image'=> 'background_action.jpeg'])
 
-    <section class="portfolio-page">
+    <div class="case-studies-block style-one mt-100 pb-100">
         <div class="container">
             @if($data['heading'])
-                <div class="col-xl-6">
-                    <div class="why-choose-one__left">
-                        <div class="section-title text-left">
-                            <div class="section-title__tagline-box">
-                                <p class="section-title__tagline">{{ $data['heading']->subtitle ?? '' }}</p>
-                            </div>
-                            <h2 class="section-title__title section-title_normal">{{ $data['heading']->title ?? '' }}
-                            </h2>
+
+                <div class="text text-center">
+                    @if ( $data['heading']->subtitle )
+                        <div class="text-sub-heading2 text-white pt-8 pb-8 pl-16 pr-16 bg-blue bora-8 display-inline-block">
+                            {{  $data['heading']->subtitle ?? ''  }}
                         </div>
+                    @endif
+                    <div class="heading3 mt-12 ">{{ $data['heading']->title ?? '' }}</div>
+                    <div class="right flex-columns-center gap-8 mt-12">
+                        <div class="body3">{!!  $data['heading']->description ?? '' !!}</div>
                     </div>
-                </div>
-                <div class="why-choose-one__text custom-description text-align-justify">
-                    {!! $data['heading']->description ?? ''  !!}
                 </div>
             @endif
-            <div class="row filter-layout mt-4">
+            <div class="row mt-40">
                 @foreach($data['rows'] as $row)
-                    <div class="col-xl-4 col-lg-6 col-md-6">
-                        <div class="portfolio-three__single">
-                            <div class="portfolio-three__img-box">
-                                <div class="portfolio-three__img">
-                                    <img class="lazy" data-src="{{ asset(imagePath($row->image)) }}" alt="">
-                                </div>
+                    <div class="col-12 col-xl-4 col-sm-6">
+                        <a class="item-main" href="{{ route($base_route.'page.album_gallery', $row->slug) }}">
+                            <div class="bg-img bora-16 overflow-hidden">
+                                <img class="w-100 h-100 bora-16 display-block lazy" data-src="{{ asset(imagePath($row->image)) }}" alt=""/>
                             </div>
-                            <div class="portfolio-three__content">
-                                <p class="portfolio-three__sub-title">Images: ({{ $row->album_gallery_count }})</p>
-                                <h3 class="portfolio-three__title">
-                                    <a href="{{ route('frontend.page.album_gallery',$row->slug) }}">{{ $row->title ?? '' }}</a></h3>
+                            <div class="infor bg-white bora-8 pl-24 pr-24 pt-16 pb-16 text-center">
+                                <div class="category text-button-uppercase text-secondary">Images: ({{ $row->album_gallery_count }})</div>
+                                <div class="heading6 mt-8">{{ $row->title ?? '' }}</div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 @endforeach
-
-            </div>
-            <div class="portfolio-page__pagination">
-                {{ $data['rows']->links('vendor.pagination.default') }}
             </div>
         </div>
-    </section>
+    </div>
 @endsection
 @section('js')
     <script src="{{asset('assets/common/lazyload.js')}}"></script>
