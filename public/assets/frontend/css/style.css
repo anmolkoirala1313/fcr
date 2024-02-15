@@ -3205,10 +3205,20 @@ Section Slider Subpage Main: Start
   width: 100%;
   height: 100%;
 }
+
 .slider-sub .bg-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+.slider-sub .bg-img:before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70%;
+    background: linear-gradient(to top, rgb(0 0 0 / 74%), transparent);
 }
 .slider-sub .container {
   position: absolute;
@@ -4271,7 +4281,10 @@ Section Testimonial Home6: End
   position: relative;
   height: 50px;
 }
-.blog-list .container > .row .search-block input {
+.blog-list .container > .row .search-block .search-form {
+    height: 100%;
+}
+.blog-list .container > .row .search-block .search-form input {
   height: 100%;
   padding-left: 16px;
   padding-right: 52px;
@@ -4282,13 +4295,15 @@ Section Testimonial Home6: End
 .blog-list .container > .row .search-block input:focus {
   border: 1px solid var(--blue);
 }
-.blog-list .container > .row .search-block i {
+.blog-list .container > .row .search-block button {
   position: absolute;
   right: 0;
   top: 0;
   border-radius: 0 8px 8px 0;
   font-size: 20px;
   color: var(--secondary);
+    border: none;
+    background-color: var(--blue);
   width: 50px;
   height: 50px;
   display: flex;
@@ -4297,9 +4312,18 @@ Section Testimonial Home6: End
   cursor: pointer;
   transition: all ease 0.3s;
 }
-.blog-list .container > .row .search-block i:hover {
-  background-color: var(--blue);
-  color: var(--white);
+.blog-list .container > .row .search-block button:hover {
+  background-color: #f5f5f2;
+  color: var(--blue);
+    border-top: 1px solid var(--blue);
+    border-right: 1px solid var(--blue);
+    border-bottom: 1px solid var(--blue);
+}
+.blog-list .container > .row .search-block button {
+    color: var(--white);
+}
+.blog-list .container > .row .cate-block .list-nav .nav-item{
+    margin-top: 5px;
 }
 .blog-list .container > .row .cate-block .list-nav .nav-item.active, .blog-list .container > .row .cate-block .list-nav .nav-item:hover {
   background-color: var(--surface);
@@ -7515,4 +7539,19 @@ Reduce font and spacing: End
 
 .mt-30 {
     margin-top: 30px;
+}
+
+.pagination .list-nav .nav-item:hover, .pagination .list-nav .nav-item.active{
+    background-color: var(--blue);
+    border: 1px solid var(--blue);
+    color: var(--white);
+}
+
+.pagination .list-nav .nav-item.disabled{
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.pagination .list-nav .nav-item:hover a {
+    color: var(--white);
 }

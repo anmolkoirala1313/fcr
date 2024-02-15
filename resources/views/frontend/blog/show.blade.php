@@ -5,47 +5,70 @@
 
     @include($module.'includes.breadcrumb',['breadcrumb_image'=> 'background_action.jpeg'])
 
-{{--    <section class="news-details">--}}
-{{--        <div class="container">--}}
-{{--            <div class="row">--}}
-{{--                <div class="col-xl-8 col-lg-7">--}}
-{{--                    <div class="news-details__left">--}}
-{{--                        <div class="news-details__img">--}}
-{{--                            <img class="lazy" data-src="{{ asset(imagePath($data['row']->image)) }}" alt="">--}}
-{{--                        </div>--}}
-{{--                        <div class="news-details__author-and-meta">--}}
-{{--                            <div class="news-details__meta">--}}
-{{--                                <p><span class="fas fa-calendar"></span>{{date('d M Y', strtotime($data['row']->created_at))}}</p>--}}
-{{--                                <p> <a href="{{ route('frontend.blog.category', $data['row']->blogCategory->slug)}}" >--}}
-{{--                                    <span class="fas fa-list-alt"></span>--}}
-{{--                                        {{ $data['row']->blogCategory->title ?? ''}}--}}
-{{--                                    </a>--}}
-{{--                                </p>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <h3 class="news-details__title-1">--}}
-{{--                            {{ $data['row']->title ?? '' }}--}}
-{{--                        </h3>--}}
-{{--                        <div class="news-details__text-2 text-align-justify custom-description">{!!  $data['row']->description !!}</div>--}}
-{{--                        <div class="news-details__tag-and-social">--}}
-{{--                            <div class="news-details__tag">--}}
-{{--                            </div>--}}
-{{--                            <div class="news-details__social">--}}
-{{--                                <span>Share on:</span>--}}
-{{--                                <a href="#"><i class="fab fa-facebook" onclick='fbShare("{{route('frontend.blog.show',$data['row']->slug)}}")'></i></a>--}}
-{{--                                <a href="#"><i class="fab fa-twitter" onclick='twitShare("{{route('frontend.blog.show',$data['row']->slug)}}","{{ $data['row']->title }}")'></i></a>--}}
-{{--                                <a href="#"><i class="fab fa-whatsapp" onclick='whatsappShare("{{route('frontend.blog.show',$data['row']->slug)}}","{{ $data['row']->title }}")'></i></a>--}}
+    <div class="blog-list style-detail mt-100 mb-100">
+        <div class="container">
+            <div class="row flex-center">
+                <div class="col-12 col-lg-8">
+                    <a class="caption2 pt-8 pb-8 pl-16 pr-16 bg-surface bora-20 hover-button-black" href="{{ route('frontend.blog.category', $data['row']->blogCategory->slug)}}">
+                        {{ $data['row']->blogCategory->title ?? ''}}
+                    </a>
+                    <div class="heading4 mt-16">   {{ $data['row']->title ?? '' }}</div>
+                    <div class="date flex-item-center gap-16 mt-16">
+                        <div class="item-date flex-item-center"><i class="ph-bold ph-calendar-blank"></i><span class="ml-4 caption2">{{date('d M Y', strtotime($data['row']->created_at))}}</span></div>
+                    </div>
+                    <div class="blog-paragraph">
+                        <div class="paragraph-heading text-center">
+                            <div class="bg-img mt-40">
+                                <img class="w-100 bora-16 lazy" data-src="{{ asset(imagePath($data['row']->image)) }}"  alt=""/></div>
+                        </div>
+                        <div class="paragraph-content mt-32">
+                            <div class="body2 text-secondary text-align-justify custom-description">
+                                {!!  $data['row']->description !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-more-infor mt-32">
+                        <div class="infor-above flex-between">
+                            <div class="tags-cloud-block flex-item-center gap-12">
+                                <div class="body3">Category:</div>
+                                <div class="list-nav flex-item-center gap-12">
+                                    <a class="caption2 pt-8 pb-8 pl-16 pr-16 bg-surface bora-20 hover-button-black" href="{{ route('frontend.blog.category', $data['row']->blogCategory->slug)}}">
+                                        {{ $data['row']->blogCategory->title ?? ''}}
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="share-block flex-item-center gap-16">
+                                <div class="caption2 pt-8 pb-8 pl-16 pr-16 bora-8 border-line-1px">
+                                 Share
+                                </div>
+                                <div class="social-media flex-item-center gap-12">
+                                    <a href="#" target="_blank"> <i class="icon-facebook" onclick='fbShare("{{route('frontend.blog.show',$data['row']->slug)}}")'></i></a>
+                                    <a href="#" target="_blank"> <i class="fab fa-whatsapp" onclick='whatsappShare("{{route('frontend.blog.show',$data['row']->slug)}}","{{ $data['row']->title }}")'></i></a>
+                                    <a href="#" target="_blank"> <i class="icon-twitter fs-14"  onclick='twitShare("{{route('frontend.blog.show',$data['row']->slug)}}","{{ $data['row']->title }}")'></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-32 line-x"></div>
+                            <div class="infor-below flex-between pt-20 pb-20">
+                                @if($data['previous'])
+                                    <div class="prev-block"> <a class="text-left" href="{{ route('frontend.blog.show', $data['previous']->slug) }}">
+                                            <div class="text-button-uppercase text-blue">Previous</div>
+                                            <div class="heading7 mt-4">{{ $data['previous']->title }} </div></a></div>
+                                @endif
+                                @if($data['next'] )
+                                    <div class="line-y"></div>
+                                    <div class="next-block"> <a class="text-right" href="{{ route('frontend.blog.show', $data['next']->slug) }}">
+                                            <div class="text-button-uppercase text-blue">Next</div>
+                                            <div class="heading7 mt-4">{{ $data['next']->title }}</div></a></div>
+                                @endif
+                            </div>
+                            <div class="line-x"></div>
 
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="col-xl-4 col-lg-5">--}}
-{{--                    @include($view_path.'includes.sidebar')--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </section>--}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('js')

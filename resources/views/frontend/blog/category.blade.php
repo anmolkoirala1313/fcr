@@ -5,53 +5,41 @@
 
     @include($module.'includes.breadcrumb',['breadcrumb_image'=> 'background_action.jpeg'])
 
-{{--    <section class="news-page news-list-one-right">--}}
-{{--        <div class="container">--}}
-{{--            <div class="row">--}}
-{{--                <div class="col-xl-8 col-lg-7">--}}
-{{--                    <div class="news-page__left">--}}
-{{--                        <div class="row">--}}
-{{--                            @foreach( $data['rows']  as $index=>$row)--}}
-{{--                                <div class="col-lg-6 d-flex align-items-stretch wow fadeInUp" data-wow-delay="{{$index+1}}00ms">--}}
-{{--                                    ` <div class="news-three__single">--}}
-{{--                                        <div class="news-three__img-box">--}}
-{{--                                            <div class="news-three__img">--}}
-{{--                                                <img class="lazy" data-src="{{ asset(imagePath($row->image))}}" alt="">--}}
-{{--                                            </div>--}}
-{{--                                            <div class="news-three__date">--}}
-{{--                                                <p>{{date('d', strtotime($row->created_at))}}</p>--}}
-{{--                                                <span>{{date('M Y', strtotime($row->created_at))}}</span>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="news-three__content">--}}
-{{--                                            <ul class="news-three__meta list-unstyled">--}}
-{{--                                                <li>--}}
-{{--                                                    <p><span class="icon-report"></span>  {{ $row->blogCategory->title ?? '' }}</p>--}}
-{{--                                                </li>--}}
-{{--                                            </ul>--}}
-{{--                                            <h3 class="news-three__title"><a href="{{ route('frontend.blog.show', $row->slug) }}">--}}
-{{--                                                    {{ $row->title ?? '' }}</a></h3>--}}
+    <div class="blog-list mt-100 mb-100">
+        <div class="container">
+            <div class="row row-gap-40">
+                <div class="col-12 col-lg-8 flex-column row-gap-40">
+                    <div class="row">
+                        @foreach( $data['rows']  as $index=>$row)
+                            <div class="blog-item col-12 col-xl-6 d-flex align-items-stretch col-sm-6 {{ $index > 1 ? 'mt-3':'' }}" data-name="">
+                                <a class="blog-item-main" href="{{ route('frontend.blog.show', $row->slug) }}">
+                                    <div class="bg-img w-100 overflow-hidden mb-minus-1">
+                                        <img class="w-100 h-100 display-block lazy" data-src="{{ asset(imagePath($row->image))}}" alt=""/>
+                                    </div>
+                                    <div class="infor bg-white p-24">
+                                        <div class="date flex-item-center gap-16 mt-8">
+                                            <div class="item-date flex-item-center"><i class="ph-bold ph-calendar-blank"></i>
+                                                <span class="ml-4 caption2">{{date('d M Y', strtotime($row->created_at))}}</span>
+                                            </div>
+                                            <div class="caption2 pt-4 pb-4 pl-12 pr-12 bg-surface bora-40 display-inline-block">{{ $row->blogCategory->title ?? '' }}</div>
 
-{{--                                            <div class="news-three__btn">--}}
-{{--                                                <a href="{{ route('frontend.blog.show', $row->slug) }}">Learn More<span--}}
-{{--                                                        class="icon-right-arrow1"></span></a>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            @endforeach--}}
-{{--                        </div>--}}
-{{--                        <div class="portfolio-page__pagination">--}}
-{{--                            {{ $data['rows']->links('vendor.pagination.default') }}--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="col-xl-4 col-lg-5">--}}
-{{--                    @include($view_path.'includes.sidebar')--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </section>--}}
+                                        </div>
+                                        <div class="heading6 mt-8">{{ $row->title ?? '' }}</div>
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="pagination">
+                        {{ $data['rows']->links('vendor.pagination.default') }}
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4 pl-55">
+                    @include($view_path.'includes.sidebar')
+                </div>
+            </div>
+        </div>
+    </div>
 
 @endsection
 @section('js')

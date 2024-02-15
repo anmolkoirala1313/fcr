@@ -61,13 +61,16 @@ class BlogController extends BackendBaseController
     {
 
         $this->page_method      = 'show';
-        $this->page_title       = $this->page.' Details';
         $data                   = $this->getCommonData();
         $data['row']            = $this->model->where('slug',$slug)->first();
 
         if(!$data['row']){
             abort(404);
         }
+
+        $data['previous']       = $this->model->where('id', '<', $data['row']->id)->select('title','slug')->orderBy('id', 'desc')->first();
+        $data['next']           = $this->model->where('id', '>', $data['row']->id)->select('title','slug')->orderBy('id', 'asc')->first();
+        $this->page_title       =  $data['row']->title  ?? $this->page.' Details';
 
         return view($this->loadResource($this->view_path.'show'), compact('data'));
     }
