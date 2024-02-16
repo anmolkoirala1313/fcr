@@ -1,48 +1,36 @@
-<div class="services-details__left">
-    <div class="sidebar__single sidebar__search service-search" style="background-color: #f7f9fa;">
-        <div class="sidebar__title-box">
-            <h3 class="sidebar__title">Search Here</h3>
+<div class="search-block bora-8 bg-surface">
+    {!! Form::open(['route' => $base_route.'search', 'method'=>'GET', 'class'=>'search-form']) !!}
+    <input class="bora-8 bg-surface w-100" type="text" name="for"  placeholder="Search"/>
+    <button type="submit"><i class="ph ph-magnifying-glass"></i></button>
+    {!! Form::close() !!}
+</div>
+@if(count( $data['latest']) > 0)
+    <div class="more-infor border-line-1px bora-12 pt-32 pb-32 pl-24 pr-24 mt-3">
+        <div class="heading6">The best our Services</div>
+        <div class="body3 text-secondary mt-8">Whether you have a team of 2 or 200, our shared team inboxes </div>
+        <div class="list-nav mt-16">
+            @foreach($data['latest'] as $latest)
+                <a class="nav-item bora-8 flex-between p-12 mt-1 {{ $loop->first ? 'active':''}}" href="{{ route('frontend.service.show',$latest->key) }}">
+                    <div class="text-button text-secondary">
+                        {{ $latest->title ?? '' }}
+                    </div><i class="ph-bold ph-caret-right hidden"></i>
+                </a>
+            @endforeach
         </div>
-        {!! Form::open(['route' => $base_route.'search', 'method'=>'GET', 'class'=>'sidebar__search-form']) !!}
-            <input type="text" placeholder="Search Service" name="for" style="    background-color: #ffffff;">
-            <button type="submit"><i class="icon-magnifying-glass"></i></button>
-        {!! Form::close() !!}
     </div>
-    @if(count( $data['latest']) > 0)
-
-        <div class="services-details__services-box">
-            <ul class="services-details__services-list list-unstyled">
-                @foreach($data['latest'] as $latest)
-                    <li>
-                        <a href="{{ route('frontend.service.show',$latest->key) }}">
-                            {{$latest->title ?? ''}}<span
-                                class="icon-right-arrow1"></span></a>
-                    </li>
-                @endforeach
-            </ul>
+@endif
+<div class="ads-block bora-8">
+    <div class="bg-img"> <img src="{{ asset('assets/frontend/images/component/ads.png') }}" alt=""/></div>
+    <div class="text flex-columns-between">
+        <div class="title">
+            <div class="heading5 text-white">Let’s talk</div>
+            <div class="body3 text-white mt-4">You can reach out,<br>Send a Message!</div>
         </div>
-    @endif
-    <div class="services-details__contact">
-        <h3 class="services-details__contact-title">Contact us</h3>
-        <ul class="services-details__contact-list list-unstyled">
-            <li>
-                <div class="icon">
-                    <span class="icon-location-1"></span>
-                </div>
-                <p>{{   $data['setting']->address ?? '' }}</p>
-            </li>
-            <li>
-                <div class="icon">
-                    <span class="icon-phone"></span>
-                </div>
-                <p><a href="tel:{{ $data['setting']->phone ?? $data['setting']->mobile }}">{{ $data['setting']->phone ?? $data['setting']->mobile }}</a></p>
-            </li>
-            <li>
-                <div class="icon">
-                    <span class="icon-envelope"></span>
-                </div>
-                <p><a href="mailto:{{ $data['setting']->email }}">{{ $data['setting']->email }}</a></p>
-            </li>
-        </ul>
+        <div class="button-block">
+            <a class="button-share hover-button-black display-inline-block bg-white text-button pl-36 pr-36 pt-12 pb-12 bora-48"
+               href="{{route('frontend.contact-us')}}">
+                Contact Us
+            </a>
+        </div>
     </div>
 </div>

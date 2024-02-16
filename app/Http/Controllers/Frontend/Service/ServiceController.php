@@ -39,7 +39,7 @@ class ServiceController extends BackendBaseController
         $this->page_method      = 'index';
         $this->page_title       = 'All '.$this->page;
         $data                   = $this->getCommonData();
-        $data['rows']           = $this->model->active()->descending()->paginate(9);
+        $data['rows']           = $this->model->active()->descending()->paginate(6);
 
         if(!$data['rows']){
             abort(404);

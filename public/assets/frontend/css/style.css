@@ -4277,14 +4277,14 @@ Section Testimonial Home6: End
   border: 1px solid var(--blue);
   color: var(--white);
 }
-.blog-list .container > .row .search-block {
+.blog-list .container > .row .search-block, .sidebar .search-block {
   position: relative;
   height: 50px;
 }
-.blog-list .container > .row .search-block .search-form {
+.blog-list .container > .row .search-block .search-form, .sidebar .search-block .search-form{
     height: 100%;
 }
-.blog-list .container > .row .search-block .search-form input {
+.blog-list .container > .row .search-block .search-form input, .sidebar .search-block .search-form input{
   height: 100%;
   padding-left: 16px;
   padding-right: 52px;
@@ -4292,10 +4292,10 @@ Section Testimonial Home6: End
   border: 1px solid transparent;
   outline: none;
 }
-.blog-list .container > .row .search-block input:focus {
+.blog-list .container > .row .search-block input:focus, .sidebar .search-block input:focus {
   border: 1px solid var(--blue);
 }
-.blog-list .container > .row .search-block button {
+.blog-list .container > .row .search-block button, .sidebar .search-block button {
   position: absolute;
   right: 0;
   top: 0;
@@ -4312,14 +4312,14 @@ Section Testimonial Home6: End
   cursor: pointer;
   transition: all ease 0.3s;
 }
-.blog-list .container > .row .search-block button:hover {
+.blog-list .container > .row .search-block button:hover, .sidebar .search-block button:hover {
   background-color: #f5f5f2;
   color: var(--blue);
     border-top: 1px solid var(--blue);
     border-right: 1px solid var(--blue);
     border-bottom: 1px solid var(--blue);
 }
-.blog-list .container > .row .search-block button {
+.blog-list .container > .row .search-block button, .sidebar .search-block button{
     color: var(--white);
 }
 .blog-list .container > .row .cate-block .list-nav .nav-item{
@@ -4479,7 +4479,7 @@ Lastest Blogs - Home 6: Change color - End
   font-size: 18px;
   margin-top: 6px;
 }
-.blog-list.style-detail .blog-more-infor .infor-above .social-media i {
+.blog-list.style-detail .blog-more-infor .infor-above .social-media i, .share-social .social-media i{
   background-color: var(--surface);
   width: 40px;
   height: 40px;
@@ -4489,17 +4489,17 @@ Lastest Blogs - Home 6: Change color - End
   justify-content: center;
   transition: all ease 0.3s;
 }
-.blog-list.style-detail .blog-more-infor .infor-above .social-media i::before {
+.blog-list.style-detail .blog-more-infor .infor-above .social-media i::before, .share-social .social-media i::before{
   transition: all ease 0.3s;
   color: var(--on-surface);
 }
-.blog-list.style-detail .blog-more-infor .infor-above .social-media i:hover {
+.blog-list.style-detail .blog-more-infor .infor-above .social-media i:hover, .share-social .social-media i:hover {
   background-color: var(--blue);
 }
-.blog-list.style-detail .blog-more-infor .infor-above .social-media i:hover::before {
+.blog-list.style-detail .blog-more-infor .infor-above .social-media i:hover::before, .share-social .social-media i:hover::before{
   color: var(--white);
 }
-.blog-list.style-detail .blog-more-infor .infor-above .social-media i.icon-twitter {
+.blog-list.style-detail .blog-more-infor .infor-above .social-media i.icon-twitter, .share-social .social-media i.icon-twitter{
   margin-left: 1px;
   margin-top: 2px;
 }

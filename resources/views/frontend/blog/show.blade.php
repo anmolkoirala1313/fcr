@@ -1,5 +1,39 @@
 @extends('frontend.layouts.master')
 @section('title') {{ $data['row']->title ?? $page_title }} @endsection
+@section('css')
+    <style>
+        .table {
+            width: 100%!important;
+            margin-bottom: 1rem;
+            color: #212529;
+            border-collapse: collapse;
+        }
+
+        .table th,
+        .table td {
+            padding: 0.75rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .table thead th {
+            vertical-align: bottom;
+            border-bottom: 2px solid #dee2e6;
+            background-color: #f8f9fa;
+        }
+
+        .table tbody + tbody {
+            border-top: 2px solid #dee2e6;
+        }
+
+        .table tbody tr:first-child {
+            background-color: var(--blue); /* Different background color */
+            border-color:var(--blue); /* Different border color */
+            color: white;
+        }
+
+    </style>
+@endsection
 
 @section('content')
 

@@ -5,45 +5,33 @@
 
     @include($module.'includes.breadcrumb',['breadcrumb_image'=> 'background_action.jpeg'])
 
-{{--    <section class="services-details">--}}
-{{--        <div class="container">--}}
-{{--            <div class="row">--}}
-{{--                <div class="col-xl-3 col-lg-4">--}}
-{{--                    @include($view_path.'includes.sidebar')--}}
-{{--                </div>--}}
-{{--                <div class="col-xl-9 col-lg-8">--}}
-{{--                    <div class="services-details__right">--}}
-{{--                        <h3 class="team-five__title">We found: <span class="search-text">{{ count($data['rows']) }}</span> Service{{ count($data['rows']) > 1 ?'s':'' }}</h3>--}}
-{{--                        <div class="row">--}}
-{{--                            @foreach( $data['rows']  as $index=>$row)--}}
-{{--                            <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="{{$index+1}}00ms">--}}
-{{--                                <div class="portfolio-one__single">--}}
-{{--                                    <div class="portfolio-one__img-box">--}}
-{{--                                        <div class="portfolio-one__img">--}}
-{{--                                            <img class="lazy" data-src="{{ asset(thumbnailImagePath($row->image)) }}" alt="">--}}
-{{--                                        </div>--}}
-{{--                                        <div class="portfolio-one__content">--}}
-{{--                                            --}}{{--                                        <p class="portfolio-one__sub-title">Business Audit</p>--}}
-{{--                                            <h3 class="portfolio-one__title">--}}
-{{--                                                <a href="{{ route('frontend.service.show', $row->key) }}">{{ $row->title ?? '' }}</a></h3>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="portfolio-one__arrow">--}}
-{{--                                            <a href="{{ route('frontend.service.show', $row->key) }}" class=""><span--}}
-{{--                                                    class="icon-top-right-1"></span></a>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        @endforeach--}}
-{{--                        </div>--}}
-{{--                        <div class="portfolio-page__pagination">--}}
-{{--                            {{ $data['rows']->links('vendor.pagination.default') }}--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </section>--}}
+
+    <div class="content-detail-block pt-100 pb-100">
+        <div class="container">
+            <div class="row row-gap-32">
+                <div class="col-12 col-xl-8">
+                    <div class="row mb-2">
+                        @foreach( $data['rows']  as $index=>$row)
+                            <div class="blog-item col-12 col-xl-6 col-sm-6 {{ $index > 1 ? 'mt-3':'' }}">
+                                <a class="blog-item-main" href="{{ route('frontend.service.show', $row->key) }}">
+                                    <div class="bg-img w-100 overflow-hidden mb-minus-1">
+                                        <img class="w-100 h-100 display-block lazy" data-src="{{ asset(thumbnailImagePath($row->image)) }}" alt="">
+                                    </div>
+                                    <div class="infor bg-white p-24">
+                                        <div class="heading6 mt-8">{{ $row->title ?? '' }}</div>
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                    {{ $data['rows']->links('vendor.pagination.default') }}
+                </div>
+                <div class="col-12 col-xl-4 sidebar">
+                    @include($view_path.'includes.sidebar')
+                </div>
+            </div>
+        </div>
+    </div>
 
 @endsection
 @section('js')
