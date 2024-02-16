@@ -1,10 +1,12 @@
-<div class="modal fade" id="firstmodal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-    <div class="modal-dialog modal-fullscreen modal-dialog-centered">
-        <div class="modal-content" style="background-color: transparent;">
-            <div class="modal-body">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<div class="popup-container" id="customPopup">
+    <div class="popup">
+        <div class="popup-header">
+            <span class="popup-close" id="closePopup">&times;</span>
+        </div>
+        <div class="popup-content">
+            @if ($data['setting']->popup_image)
                 <img  class="w-100" src="{{ asset(imagePath($data['setting']->popup_image))}}" alt="">
-            </div>
+            @endif
         </div>
     </div>
 </div>

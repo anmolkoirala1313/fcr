@@ -4,6 +4,54 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
+    <style>
+        .popup-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .popup {
+            background: transparent;
+            width: 80%;
+            height: auto; /* Set height to auto */
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .popup-header {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .popup-close {
+            cursor: pointer;
+            font-size: 35px; /* Increase the size of the close button */
+            color: #042a54;
+        }
+
+        .popup-content {
+            text-align: center;
+        }
+
+        .popup-content img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+    </style>
 @endsection
 @section('content')
         @if ($data['sliders'])
@@ -463,7 +511,10 @@
             </div>
         @endif
 
+        @if ($data['setting']->popup_image)
 
+            @include('frontend.includes.modal')
+        @endif
 
 @endsection
 
@@ -472,11 +523,28 @@
 
     <script>
         $('.select2').select2();
-        {{--let popup2 = "{{$data['setting']->popup_image}}";--}}
 
-        {{--if(popup2){--}}
-        {{--    $('#firstmodal').modal('toggle');--}}
-        {{--}--}}
+        $(document).ready(function () {
+            let popup2 = "{{$data['setting']->popup_image}}";
+
+            // Open Popup on Page Load
+            if (popup2 !== "" && popup2 !== null) {
+                $("#customPopup").fadeIn();
+            }
+
+            // Close Popup
+            $("#closePopup").click(function () {
+                $("#customPopup").fadeOut();
+            });
+
+            // Close Popup on outside click
+            $(document).mouseup(function (e) {
+                var popup = $(".popup");
+                if (!popup.is(e.target) && popup.has(e.target).length === 0) {
+                    $("#customPopup").fadeOut();
+                }
+            });
+        });
     </script>
 
 @endsection
