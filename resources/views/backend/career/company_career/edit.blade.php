@@ -15,7 +15,7 @@
                     <div class="flex-shrink-0">
 
                         <div class="d-flex justify-content-sm-end gap-2">
-                            <a href="{{ route('frontend.job.show', $data['row']->slug) }}" class="btn btn-outline-primary waves-effect waves-light"
+                            <a href="{{ route('frontend.career.show', $data['row']->slug) }}" class="btn btn-outline-primary waves-effect waves-light"
                                target="_blank"
                                title="View in Frontend">
                                 <i class="ri-eye-line align-bottom me-1"></i>

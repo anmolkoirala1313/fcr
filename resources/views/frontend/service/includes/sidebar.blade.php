@@ -6,8 +6,7 @@
 </div>
 @if(count( $data['latest']) > 0)
     <div class="more-infor border-line-1px bora-12 pt-32 pb-32 pl-24 pr-24 mt-3">
-        <div class="heading6">The best our Services</div>
-        <div class="body3 text-secondary mt-8">Whether you have a team of 2 or 200, our shared team inboxes </div>
+        <div class="heading6">Latest Categories</div>
         <div class="list-nav mt-16">
             @foreach($data['latest'] as $latest)
                 <a class="nav-item bora-8 flex-between p-12 mt-1 {{ $loop->first ? 'active':''}}" href="{{ route('frontend.service.show',$latest->key) }}">

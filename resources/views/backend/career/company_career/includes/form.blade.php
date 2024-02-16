@@ -57,7 +57,6 @@
         <div class="mb-3">
             {!! Form::label('image_input', 'Images', ['class' => 'form-label required']) !!}
             {!! Form::file('image_input', ['class'=>'form-control','id'=>'image_input']) !!}
-            <p class="text-muted mb-2">Recommended size: 1290 X 400px</p>
 
         </div>
         @if($page_method=='edit' && $data['row']->image)

@@ -5,60 +5,45 @@
 
     @include($module.'includes.breadcrumb',['breadcrumb_image'=> 'background_action.jpeg'])
 
-{{--    <section class="news-page-two news-list-two-left">--}}
-{{--        <div class="container">--}}
-{{--            <div class="row">--}}
-{{--                <div class="col-xl-4 col-lg-5">--}}
-{{--                    @include($view_path.'includes.sidebar')--}}
-{{--                </div>--}}
-{{--                <div class="col-xl-8 col-lg-7">--}}
-{{--                    <div class="news-page-two__left">--}}
-{{--                        <div class="news-page-two__content-box">--}}
-{{--                            @foreach( $data['rows']  as $index=>$row)--}}
-{{--                                <div class="news-page-two__single wow fadeInUp" data-wow-delay="{{$index+1}}00ms">--}}
-{{--                                    <div class="news-page-two__img">--}}
-{{--                                        <img class="lazy" data-src="{{ asset(imagePath($row->image)) }}" alt="" style="width: 400px; height: 330px; object-fit: cover">--}}
-{{--                                    </div>--}}
-{{--                                    <div class="news-page-two__content">--}}
-{{--                                        <p class="news-page-two__category"><a href="{{ route('frontend.career.show', $row->slug) }}">--}}
-{{--                                                @if(@$row->end_date >= date('Y-m-d'))--}}
-{{--                                                    {{date('M j, Y',strtotime(@$row->start_date))}} - {{date('M j, Y',strtotime(@$row->end_date))}}--}}
-{{--                                                @else--}}
-{{--                                                    Expired--}}
-{{--                                                @endif--}}
-{{--                                            </a>--}}
-{{--                                        </p>--}}
-{{--                                        <div class="news-page-two__title-box">--}}
-{{--                                            <h3><a href="{{ route('frontend.career.show', $row->slug) }}">{{ $row->title ?? '' }}</a></h3>--}}
-{{--                                        </div>--}}
-{{--                                        <ul class="list-unstyled news-page-two__meta">--}}
-{{--                                            @if($row->min_qualification)--}}
-{{--                                                <li><a href="{{ route('frontend.career.show', $row->slug) }}"> <span class="icon-list"></span>--}}
-{{--                                                        Min. Qualification: {{ ucfirst($row->min_qualification) }}</a>--}}
-{{--                                                </li>--}}
-{{--                                            @endif--}}
-{{--                                            @if($row->required_number)--}}
-{{--                                                <li><a href="{{ route('frontend.career.show', $row->slug) }}"> <span class="icon-user-2"></span>--}}
-{{--                                                        Req. Number: {{ $row->required_number }}</a>--}}
-{{--                                                </li>--}}
-{{--                                            @endif--}}
-{{--                                        </ul>--}}
-{{--                                        <div class="news-page-two__read-more" style="margin-top: {{ $row->required_number || $row->min_qualification ? '38px':'101px' }}; ">--}}
-{{--                                            <a href="{{ route('frontend.career.show', $row->slug) }}">View Details</a>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            @endforeach--}}
-{{--                        </div>--}}
-{{--                        <div class="portfolio-page__pagination">--}}
-{{--                            {{ $data['rows']->links('vendor.pagination.default') }}--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </section>--}}
+    <div class="blog-list mt-100 mb-100">
+        <div class="container">
+            <div class="row row-gap-40">
+                    <div class="col-12 col-lg-8 flex-column row-gap-40">
+                        @foreach( $data['rows']  as $index=>$row)
+                            <a class="row blog-item row-gap-20 item-filter" href="{{ route('frontend.career.show', $row->slug) }}" style="border: 1px solid #ddddd9;border-radius: 18px;">
+                                <div class="col-12 col-md-6" style="padding-left: 0px;">
+                                    <div class="bg-img w-100 overflow-hidden bora-16">
+                                        <img class="display-block lazy" style="width: 410px; height: 261px" data-src="{{ asset(imagePath($row->image)) }}" alt=""></div>
+                                </div>
+                                <div class="col-12 col-md-6" style="padding-top: 15px;">
+                                    <div class="caption2 pt-4 pb-4 pl-12 pr-12 bg-surface bora-40 display-inline-block">FCR Career</div>
+                                    <div class="heading6 mt-8">{{ $row->title ?? '' }}</div>
+                                    <div class="date flex-item-center gap-16 mt-8">
+                                        <div class="item-date flex-item-center"><i class="ph-bold ph-calendar-blank"></i>
+                                            <span class="ml-4 caption2">
+                                                @if(@$row->end_date >= date('Y-m-d'))
+                                                    {{date('M j, Y',strtotime(@$row->start_date))}} - {{date('M j, Y',strtotime(@$row->end_date))}}
+                                                @else
+                                                    Expired
+                                                @endif</span>
+                                        </div>
+                                    </div>
+                                    <div class="body3 text-secondary mt-16 pb-16">
+                                        {!! elipsis($row->description) !!}
+                                    </div>
+                                    <div class="read fw-700 text-underline">Read More</div>
+                                </div>
+                            </a>
+                        @endforeach
+
+                        {{ $data['rows']->links('vendor.pagination.default') }}
+                    </div>
+                <div class="col-12 col-lg-4 pl-55 sidebar">
+                    @include($view_path.'includes.sidebar')
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('js')
-    <script src="{{asset('assets/common/lazyload.js')}}"></script>
 @endsection

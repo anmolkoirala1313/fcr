@@ -47,7 +47,7 @@ class CompanyCareerController extends BackendBaseController
         try {
             $request->request->add(['created_by' => auth()->user()->id ]);
             if($request->hasFile('image_input')){
-                $image_name = $this->uploadImage($request->file('image_input'));
+                $image_name = $this->uploadImage($request->file('image_input'), '790', '435');
                 $request->request->add(['image'=>$image_name]);
             }
 
@@ -80,7 +80,7 @@ class CompanyCareerController extends BackendBaseController
             $request->request->add(['slug' => $this->model->changeTokey($request['title'])]);
 
             if($request->hasFile('image_input')){
-                $image_name = $this->updateImage($request->file('image_input'),$data['row']->image);
+                $image_name = $this->updateImage($request->file('image_input'),$data['row']->image,'790', '435');
                 $request->request->add(['image'=>$image_name]);
             }
 

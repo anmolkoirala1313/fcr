@@ -3526,19 +3526,19 @@ Service Detail Page: Start
 .content-detail-block .container > .row > div:last-child .list-nav .nav-item.active i, .content-detail-block .container > .row > div:last-child .list-nav .nav-item:hover i {
   visibility: visible;
 }
-.content-detail-block .container > .row > div:last-child .ads-block {
+.content-detail-block .container > .row > div:last-child .ads-block, .ads-block {
   margin-top: 40px;
   width: 100%;
   position: relative;
 }
-.content-detail-block .container > .row > div:last-child .ads-block .bg-img {
+.content-detail-block .container > .row > div:last-child .ads-block .bg-img, .ads-block .bg-img{
   width: 100%;
 }
-.content-detail-block .container > .row > div:last-child .ads-block .bg-img img {
+.content-detail-block .container > .row > div:last-child .ads-block .bg-img img, .ads-block .bg-img img{
   width: 100%;
   z-index: -1;
 }
-.content-detail-block .container > .row > div:last-child .ads-block .text {
+.content-detail-block .container > .row > div:last-child .ads-block .text, .ads-block .text{
   position: absolute;
   left: 32px;
   top: 36px;
@@ -3551,18 +3551,18 @@ Service Detail Page: Start
     align-items: flex-start;
   }
   .content-detail-block .container > .row > div:last-child .more-infor,
-  .content-detail-block .container > .row > div:last-child .ads-block {
+  .content-detail-block .container > .row > div:last-child .ads-block,.ads-block{
     width: 48%;
   }
-  .content-detail-block .container > .row > div:last-child .ads-block {
+  .content-detail-block .container > .row > div:last-child .ads-block, .ads-block {
     margin-top: 0;
     height: 100%;
   }
   .content-detail-block .container > .row > div:last-child .ads-block .bg-img,
-  .content-detail-block .container > .row > div:last-child .ads-block img {
+  .content-detail-block .container > .row > div:last-child .ads-block img, .ads-block .bg-img, .ads-block img{
     height: 100%;
   }
-  .content-detail-block .container > .row > div:last-child .ads-block .text {
+  .content-detail-block .container > .row > div:last-child .ads-block .text, .ads-block .text {
     top: 25%;
     bottom: 25%;
   }
@@ -3573,12 +3573,12 @@ Service Detail Page: Start
     row-gap: 32px;
   }
   .content-detail-block .container > .row > div:last-child .more-infor,
-  .content-detail-block .container > .row > div:last-child .ads-block {
+  .content-detail-block .container > .row > div:last-child .ads-block, .ads-block {
     width: 100%;
   }
 }
 @media (max-width: 575.99px) {
-  .content-detail-block .container > .row > div:last-child .ads-block .text {
+  .content-detail-block .container > .row > div:last-child .ads-block .text, .ads-block .text{
     top: 20%;
     bottom: 20%;
   }
