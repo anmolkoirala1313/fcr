@@ -38,125 +38,124 @@
 
     @include($module.'includes.breadcrumb',['breadcrumb_image'=> 'background_action.jpeg'])
 
-{{--    <section class="portfolio-details">--}}
-{{--        <div class="container">--}}
-{{--            <div class="row">--}}
-{{--                <div class="col-xl-12">--}}
-{{--                    <div class="portfolio-details__img">--}}
-{{--                        <img class="lazy" data-src="{{ asset(imagePath($data['row']->image)) }}" alt="">--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="portfolio-details__bottom">--}}
-{{--                    <div class="row">--}}
-{{--                        <div class="col-xl-8 col-lg-7">--}}
-{{--                            <div class="portfolio-details__left">--}}
-{{--                                <h3 class="portfolio-details__title">--}}
-{{--                                    {{ $data['row']->name ?? $data['row']->title ?? '' }}--}}
-{{--                                </h3>--}}
-{{--                                <div class="portfolio-details__text-1 text-align-justify custom-description">--}}
-{{--                                    {!!  $data['row']->description !!}--}}
-{{--                                </div>--}}
-{{--                                <div class="news-details__tag-and-social">--}}
-{{--                                    <div class="news-details__tag">--}}
-{{--                                        <span>Category:</span>--}}
-{{--                                        @foreach($data['row']->categories as $category)--}}
-{{--                                            <a href="{{ route('frontend.job.category',$category->title)}}">{{$category->title}}</a>--}}
-{{--                                        @endforeach--}}
-{{--                                    </div>--}}
-{{--                                    <div class="news-details__social">--}}
-{{--                                        <span>Share on:</span>--}}
-{{--                                        <a href="#"><i class="fab fa-facebook" onclick='fbShare("{{route('frontend.job.show',$data['row']->slug)}}")'></i></a>--}}
-{{--                                        <a href="#"><i class="fab fa-twitter" onclick='twitShare("{{route('frontend.job.show',$data['row']->slug)}}","{{ $data['row']->title }}")'></i></a>--}}
-{{--                                        <a href="#"><i class="fab fa-whatsapp" onclick='whatsappShare("{{route('frontend.job.show',$data['row']->slug)}}","{{ $data['row']->title }}")'></i></a>--}}
+    <div class="blog-list style-detail mt-100 mb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-8">
+                    <div class="heading4 mt-16">
+                        {{ $data['row']->name ?? $data['row']->title ?? '' }}
+                    </div>
+                    <div class="date flex-item-center gap-16 mt-16">
+                        <div class="item-date flex-item-center"><i class="ph-bold ph-calendar-blank"></i><span class="ml-4 caption2">{{date('d M Y', strtotime($data['row']->created_at))}}</span></div>
+                    </div>
+                    <div class="blog-paragraph">
+                        <div class="paragraph-heading text-center">
+                            <div class="bg-img mt-3">
+                                <img class="w-100 bora-16 lazy" data-src="{{ asset(imagePath($data['row']->image)) }}"  alt=""/></div>
+                        </div>
+                        <div class="paragraph-content mt-32">
+                            <div class="body2 text-secondary text-align-justify custom-description">
+                                {!!  $data['row']->description !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-more-infor mt-32">
+                        <div class="infor-above flex-between">
+                            <div class="tags-cloud-block flex-item-center gap-12">
+                                <div class="body3">Category:</div>
+                                <div class="list-nav flex-item-center gap-12">
+                                    @foreach($data['row']->categories as $category)
+                                        <a class="caption2 pt-8 pb-8 pl-16 pr-16 bg-surface bora-20 hover-button-black" href="{{ route('frontend.job.category',$category->title)}}">
+                                            {{$category->title}}
+                                        </a>
+                                    @endforeach
+                                </div>
+                            </div>
+                            <div class="share-block flex-item-center gap-16">
+                                <div class="caption2 pt-8 pb-8 pl-16 pr-16 bora-8 border-line-1px">
+                                    Share
+                                </div>
+                                <div class="social-media flex-item-center gap-12">
+                                    <a href="#" target="_blank"> <i class="icon-facebook" onclick='fbShare("{{route('frontend.job.show',$data['row']->slug)}}")'></i></a>
+                                    <a href="#" target="_blank"> <i class="fab fa-whatsapp" onclick='whatsappShare("{{route('frontend.job.show',$data['row']->slug)}}","{{ $data['row']->title }}")'></i></a>
+                                    <a href="#" target="_blank"> <i class="icon-twitter fs-14"  onclick='twitShare("{{route('frontend.job.show',$data['row']->slug)}}","{{ $data['row']->title }}")'></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-32 line-x"></div>
+                        <div class="infor-below flex-between pt-20 pb-20">
+                            @if($data['previous'])
+                                <div class="prev-block"> <a class="text-left" href="{{ route('frontend.blog.show', $data['previous']->slug) }}">
+                                        <div class="text-button-uppercase text-blue">Previous</div>
+                                        <div class="heading7 mt-4">{{ $data['previous']->title }} </div></a></div>
+                            @endif
+                            @if($data['next'] )
+                                <div class="line-y"></div>
+                                <div class="next-block"> <a class="text-right" href="{{ route('frontend.blog.show', $data['next']->slug) }}">
+                                        <div class="text-button-uppercase text-blue">Next</div>
+                                        <div class="heading7 mt-4">{{ $data['next']->title }}</div></a></div>
+                            @endif
+                        </div>
+                        <div class="line-x"></div>
 
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="col-xl-4 col-lg-5">--}}
-{{--                            <div class="portfolio-details__right">--}}
-{{--                                <div class="portfolio-details__information-box">--}}
-{{--                                    <h3 class="portfolio-details__information-title">Job Information</h3>--}}
-{{--                                    <ul class="portfolio-details__information list-unstyled">--}}
-{{--                                        <li>--}}
-{{--                                            <div class="icon">--}}
-{{--                                                <span class="icon-date11"></span>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="content">--}}
-{{--                                                <p>Published Date:</p>--}}
-{{--                                                <h4>--}}
-{{--                                                    @if(@$data['row']->end_date >= date('Y-m-d'))--}}
-{{--                                                        {{date('M j, Y',strtotime(@$data['row']->start_date))}} - {{date('M j, Y',strtotime(@$data['row']->end_date))}}--}}
-{{--                                                    @else--}}
-{{--                                                        Expired--}}
-{{--                                                    @endif--}}
-{{--                                                </h4>--}}
-{{--                                            </div>--}}
-{{--                                        </li>--}}
-{{--                                        @if($data['row']->company)--}}
-{{--                                            <li>--}}
-{{--                                                <div class="icon">--}}
-{{--                                                    <span class="icon-bank-building"></span>--}}
-{{--                                                </div>--}}
-{{--                                                <div class="content">--}}
-{{--                                                    <p>Required Number:</p>--}}
-{{--                                                    <h4>{{ ucfirst($data['row']->company ?? '')}}</h4>--}}
-{{--                                                </div>--}}
-{{--                                            </li>--}}
-{{--                                        @endif--}}
-{{--                                        @if($data['row']->required_number)--}}
-{{--                                            <li>--}}
-{{--                                                <div class="icon">--}}
-{{--                                                    <span class="icon-list"></span>--}}
-{{--                                                </div>--}}
-{{--                                                <div class="content">--}}
-{{--                                                    <p>Required Number:</p>--}}
-{{--                                                    <h4>{{ $data['row']->required_number ?? ''}}</h4>--}}
-{{--                                                </div>--}}
-{{--                                            </li>--}}
-{{--                                        @endif--}}
-{{--                                        @if($data['row']->salary)--}}
-{{--                                            <li>--}}
-{{--                                                <div class="icon">--}}
-{{--                                                    <span class="icon-money"></span>--}}
-{{--                                                </div>--}}
-{{--                                                <div class="content">--}}
-{{--                                                    <p>Salary:</p>--}}
-{{--                                                    <h4>{{ $data['row']->salary ?? '' }}</h4>--}}
-{{--                                                </div>--}}
-{{--                                            </li>--}}
-{{--                                        @endif--}}
-{{--                                        @if($data['row']->min_qualification)--}}
-{{--                                            <li>--}}
-{{--                                                <div class="icon">--}}
-{{--                                                    <span class="icon-category"></span>--}}
-{{--                                                </div>--}}
-{{--                                                <div class="content">--}}
-{{--                                                    <p>Minimum Qualification:</p>--}}
-{{--                                                    <h4>{{ $data['row']->min_qualification  ?? ''}}</h4>--}}
-{{--                                                </div>--}}
-{{--                                            </li>--}}
-{{--                                        @endif--}}
-{{--                                        @if($data['row']->formlink && $data['row']->end_date >= date('Y-m-d'))--}}
-{{--                                            <li>--}}
-{{--                                                <div class="icon">--}}
-{{--                                                    <span class="icon-location11"></span>--}}
-{{--                                                </div>--}}
-{{--                                                <div class="content">--}}
-{{--                                                    <p>Apply:</p>--}}
-{{--                                                    <h4><a href="{{$data['row']->formlink}}" target="_blank">Submit response</a></h4>--}}
-{{--                                                </div>--}}
-{{--                                            </li>--}}
-{{--                                        @endif--}}
-{{--                                    </ul>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </section>--}}
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <div class="bora-12 bg-white box-shadow p-32 flex-columns-between">
+                        <div class="heading6">Job Information</div>
+                        <div class="infor-item flex-between mt-32">
+                            <div class="text-button">Published Date:</div>
+                            <div class="body3 text-secondary">
+                                @if(@$data['row']->end_date >= date('Y-m-d'))
+                                    {{date('M j, Y',strtotime(@$data['row']->start_date))}} - {{date('M j, Y',strtotime(@$data['row']->end_date))}}
+                                @else
+                                    Expired
+                                @endif
+                            </div>
+                        </div>
+                        @if($data['row']->company)
+                            <div class="line-x mt-16"></div>
+                            <div class="infor-item flex-between mt-32">
+                                <div class="text-button">Companuy</div>
+                                <div class="body3 text-secondary">{{ $data['row']->company ?? '' }}</div>
+                            </div>
+                        @endif
+                        @if($data['row']->required_number)
+                            <div class="line-x mt-16"></div>
+                            <div class="infor-item flex-between mt-32">
+                                <div class="text-button">Required Number</div>
+                                <div class="body3 text-secondary">{{ $data['row']->required_number ?? '' }}</div>
+                            </div>
+                        @endif
+                        @if($data['row']->salary)
+                            <div class="line-x mt-16"></div>
+                            <div class="infor-item flex-between mt-16">
+                                <div class="text-button">Salary</div>
+                                <div class="body3 text-secondary">{{ $data['row']->required_number ?? '' }}</div>
+                            </div>
+                        @endif
+                        @if($data['row']->min_qualification)
+                            <div class="line-x mt-16"></div>
+                            <div class="infor-item flex-between mt-16">
+                                <div class="text-button">Min Qualification</div>
+                                <div class="body3 text-secondary">{{ $data['row']->min_qualification ?? '' }}</div>
+                            </div>
+                        @endif
+                        @if($data['row']->formlink && $data['row']->end_date >= date('Y-m-d'))
+                            <div class="line-x mt-16"></div>
+                            <div class="infor-item flex-between mt-16">
+                                <div class="text-button">Location</div>
+                                <div class="body3 text-secondary"><a href="{{$data['row']->formlink}}" target="_blank">Submit response</a></div>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
 @endsection
 
 @section('js')

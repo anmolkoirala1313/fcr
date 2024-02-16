@@ -35,8 +35,9 @@
                                 </div>
                             </a>
                         @endforeach
-
-                        {{ $data['rows']->links('vendor.pagination.default') }}
+                        <div class="pagination mt-5">
+                            {{ $data['rows']->links('vendor.pagination.default') }}
+                        </div>
                     </div>
                 <div class="col-12 col-lg-4 pl-55 sidebar">
                     @include($view_path.'includes.sidebar')

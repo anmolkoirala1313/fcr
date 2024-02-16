@@ -5,48 +5,40 @@
 
     @include($module.'includes.breadcrumb',['breadcrumb_image'=> 'background_action.jpeg'])
 
-{{--    <section class="news-page-three news-list-three-left">--}}
-{{--        <div class="container">--}}
-{{--            <div class="row">--}}
-{{--                <div class="col-xl-4 col-lg-5">--}}
-{{--                    @include($view_path.'includes.sidebar')--}}
-{{--                </div>--}}
-{{--                <div class="col-xl-8 col-lg-7">--}}
-{{--                    <div class="news-page-three__left">--}}
-{{--                        <h3 class="team-five__title">We found: <span class="search-text">{{ count($data['rows']) }}</span> Job{{ count($data['rows']) > 1 ?'s':'' }}</h3>--}}
-
-{{--                        <div class="news-page-three__content-box">--}}
-{{--                            <div class="row">--}}
-{{--                                @foreach( $data['rows']  as $index=>$row)--}}
-{{--                                    <div class="col-xl-6 col-lg-6 col-md-6">--}}
-{{--                                        <div class="portfolio-three__single">--}}
-{{--                                            <div class="portfolio-three__img-box">--}}
-{{--                                                <div class="portfolio-three__img">--}}
-{{--                                                    <img class="lazy" data-src="{{ asset(imagePath($row->image)) }}" alt="">--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="portfolio-three__content">--}}
-{{--                                                <p class="portfolio-three__sub-title">--}}
-{{--                                                    @if(@$row->end_date >= date('Y-m-d'))--}}
-{{--                                                        {{date('M j, Y',strtotime(@$row->start_date))}} - {{date('M j, Y',strtotime(@$row->end_date))}}--}}
-{{--                                                    @else--}}
-{{--                                                        Expired--}}
-{{--                                                    @endif</p>--}}
-{{--                                                <h3 class="portfolio-three__title"><a href="{{ route('frontend.job.show', $row->slug) }}">{{ $row->title ?? '' }}</a></h3>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                @endforeach--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="portfolio-page__pagination">--}}
-{{--                            {{ $data['rows']->links('vendor.pagination.default') }}--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </section>--}}
+    <div class="case-studies-block style-one mt-100 pb-100">
+        <div class="container">
+            <div class="row row-gap-32">
+                <div class="col-12 col-xl-8">
+                    <div class="row">
+                        @foreach( $data['rows']  as $index=>$row)
+                            <div class="col-12 col-xl-6 col-sm-6">
+                                <a class="item-main" href="{{ route('frontend.job.show', $row->slug) }}">
+                                    <div class="bg-img bora-16 overflow-hidden">
+                                        <img class="w-100 h-100 bora-16 display-block lazy" data-src="{{ asset(imagePath($row->image)) }}" alt="" style="width: 410px;height: 303px;object-fit: cover"/></div>
+                                    <div class="infor bg-white bora-8 pl-24 pr-24 pt-16 pb-16 text-center">
+                                        <div class="category text-button-uppercase text-secondary">
+                                            @if(@$row->end_date >= date('Y-m-d'))
+                                                {{date('M j, Y',strtotime(@$row->start_date))}} - {{date('M j, Y',strtotime(@$row->end_date))}}
+                                            @else
+                                                Expired
+                                            @endif
+                                        </div>
+                                        <div class="heading6 mt-8">{{ $row->title ?? '' }}</div>
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="pagination mt-5">
+                        {{ $data['rows']->links('vendor.pagination.default') }}
+                    </div>
+                </div>
+                <div class="col-12 col-xl-4 sidebar">
+                    @include($view_path.'includes.sidebar')
+                </div>
+            </div>
+        </div>
+    </div>
 
 @endsection
 @section('js')

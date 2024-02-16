@@ -39,7 +39,7 @@ class JobController extends BackendBaseController
         $this->page_method      = 'index';
         $this->page_title       = 'All '.$this->page;
         $data                   = $this->getCommonData();
-        $data['rows']           = $this->model->active()->descending()->paginate(4);
+        $data['rows']           = $this->model->active()->descending()->paginate(6);
 
         if(!$data['rows']){
             abort(404);
@@ -67,6 +67,9 @@ class JobController extends BackendBaseController
         if(!$data['row']){
             abort(404);
         }
+        $data['previous']       = $this->model->where('id', '<', $data['row']->id)->select('title','slug')->orderBy('id', 'desc')->first();
+        $data['next']           = $this->model->where('id', '>', $data['row']->id)->select('title','slug')->orderBy('id', 'asc')->first();
+        $this->page_title       =  $data['row']->title  ?? $this->page.' Details';
 
         return view($this->loadResource($this->view_path.'show'), compact('data'));
     }

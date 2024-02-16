@@ -4332,16 +4332,16 @@ Section Testimonial Home6: End
 .blog-list .container > .row .cate-block .list-nav .nav-item.active i, .blog-list .container > .row .cate-block .list-nav .nav-item:hover i {
   visibility: visible;
 }
-.blog-list .container > .row .recent-post-block .recent-post-item .item-img img {
+.blog-list .container > .row .recent-post-block .recent-post-item .item-img img, .recent-post-item .item-img img{
   width: 80px;
   height: 80px;
   border-radius: 12px;
   object-fit: cover;
 }
-.blog-list .container > .row .recent-post-block .recent-post-item .item-title {
+.blog-list .container > .row .recent-post-block .recent-post-item .item-title,.recent-post-item .item-title {
   transition: all ease 0.5s;
 }
-.blog-list .container > .row .recent-post-block .recent-post-item:hover .item-title {
+.blog-list .container > .row .recent-post-block .recent-post-item:hover .item-title, .recent-post-item:hover .item-title {
   color: var(--blue);
 }
 @media (max-width: 991.99px) {
