@@ -16,24 +16,20 @@
         .rendered-form p, .contact-page__sub-title{
             font-size: 16px;
             font-weight: 400;
-            text-transform: uppercase;
-            color: #26292E;
-            margin-top: 14px;
-            margin-bottom: 10px;
+            line-height: 26px;
         }
 
         .rendered-form label{
-            color: var(--blue);
+            color: #121212;
             font-size: 14px;
             font-weight: 400;
-            letter-spacing: 1.12px;
             text-transform: uppercase;
             margin-bottom: 2px;
         }
 
 
         .rendered-form input[type="text"], .rendered-form input[type="email"] {
-            height: 38px;
+            height: 46px;
             width: 100%;
             border: none;
             padding-right: 30px;
@@ -48,9 +44,13 @@
             background-color: #F5F5F2;
         }
 
-        .rendered-form textarea.form-control{
+        .rendered-form textarea.form-control, .form-contact .row .form-block select{
             background-color: #F5F5F2;
             color: var(--secondary);
+        }
+
+        .form-contact .row .form-block select{
+            height: 46px;
         }
 
         .rendered-form input[type="text"]:focus, .rendered-form input[type="email"]:focus {
