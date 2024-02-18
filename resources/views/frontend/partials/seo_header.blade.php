@@ -134,7 +134,7 @@
                 </div>
                 <div class="menu-right-block flex-item-center">
                     <a class="button-share bg-orange border-transparent hover-text-orange hover-bg-white text-white text-button pl-36 pr-36 pt-12 pb-12 bora-100" href="{{route('frontend.contact-us')}}">
-                        Get a quote
+                        Contact Us
                     </a>
                     <div class="menu-humburger display-none pointer"><i class="ph-bold ph-list fs-24"></i></div>
                 </div>

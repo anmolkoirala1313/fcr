@@ -7,7 +7,7 @@
 
     @include($module.'includes.breadcrumb',['breadcrumb_image'=> 'background_action.jpeg'])
 
-    <div class="our-team-block pt-100 bg-white">
+    <div class="our-team-block pt-100 bg-white pb-100">
         <div class="container">
             @if($data['heading'])
                 <div class="text text-center">
@@ -24,37 +24,35 @@
                     </div>
                 </div>
             @endif
-            <div class="list-member mt-40 row row-gap-32">
-{{--                @foreach($data['rows'] as $team)--}}
-
-{{--                    <div class="col-12 col-xl-4 col-lg-4 col-md-6 col-sm-6">--}}
-{{--                        <div class="bg-img w-100">--}}
-{{--                            <img class="w-100 h-100 display-block lazy" data-src="{{ asset(imagePath($team->image)) }}" alt=""/>--}}
-
-{{--                            @if(@$team->fb_link || @$team->twitter_link || @$team->instagram_link || @$team->linkedin_link)--}}
-
-{{--                            <div class="list-social bg-white">--}}
-{{--                                @if($team->fb_link)--}}
-{{--                                <a href="{{ $team->fb_link  ?? "#" }}" target="_blank">--}}
-{{--                                    <i class="icon-facebook fs-14"></i></a>--}}
-{{--                                @endif--}}
-{{--                                @if($team->instagram_link)--}}
-{{--                                        <a href="{{ $team->instagram_link  ?? "#" }}" target="_blank"> <i class="icon-insta fs-12"></i></a></div>--}}
-{{--                                @endif--}}
-{{--                                @if($team->twitter_link)--}}
-{{--                                    <a href="{{ $team->twitter_link  ?? "#" }}" target="_blank"> <i class="icon-twitter fs-12"></i></a>--}}
-{{--                                @endif--}}
-{{--                                @if($team->linkedin_link)--}}
-{{--                                    <a href="{{ $team->linkedin_link  ?? "#" }}" target="_blank"> <i class="icon-in fs-14"></i></a>--}}
-{{--                                @endif--}}
-{{--                            </div>--}}
-{{--                        @endif--}}
-{{--                        <div class="infor text-center pt-16">--}}
-{{--                            <div class="name heading6">{{$team->title ?? ''}}</div>--}}
-{{--                            <div class="caption1 text-secondary">{{$team->designation ?? ''}} </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                @endforeach--}}
+            <div class="mt-20 row team-member">
+                @foreach($data['rows'] as $team)
+                    <div class="col-12 col-xl-3 col-lg-3 col-md-6 col-sm-6 mt-3">
+                        <div class="bg-img w-100">
+                            <img class="w-100 h-100 display-block lazy" data-src="{{ asset(imagePath($team->image)) }}" alt=""/>
+                            @if(@$team->fb_link || @$team->twitter_link || @$team->instagram_link || @$team->linkedin_link)
+                                <div class="list-social bg-white">
+                                    @if($team->fb_link)
+                                        <a href="{{ $team->fb_link  ?? "#" }}" target="_blank">
+                                            <i class="icon-facebook fs-14"></i></a>
+                                    @endif
+                                    @if($team->instagram_link)
+                                        <a href="{{ $team->instagram_link  ?? "#" }}" target="_blank"> <i class="icon-insta fs-12"></i></a>
+                                    @endif
+                                    @if($team->twitter_link)
+                                        <a href="{{ $team->twitter_link  ?? "#" }}" target="_blank"> <i class="icon-twitter fs-12"></i></a>
+                                    @endif
+                                    @if($team->linkedin_link)
+                                        <a href="{{ $team->linkedin_link  ?? "#" }}" target="_blank"> <i class="icon-in fs-14"></i></a>
+                                    @endif
+                                </div>
+                            @endif
+                        </div>
+                        <div class="infor text-center pt-16">
+                            <div class="name heading6">{{$team->title ?? ''}}</div>
+                            <div class="caption1 text-secondary">{{$team->designation ?? ''}} </div>
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>
