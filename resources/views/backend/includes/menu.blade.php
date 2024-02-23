@@ -57,6 +57,11 @@
                                    data-key="t-multi-level-homepage">Why Us</a>
                             </li>
                             <li class="nav-item">
+                                <a href="{{ route('backend.homepage.image_and_description.create') }}"
+                                   class="nav-link {{request()->route()->getName() == 'backend.homepage.image_and_description.create' ? 'active':''}}"
+                                   data-key="t-multi-level-homepage">Image and description</a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="{{ route('backend.homepage.recruitment_process.create') }}"
                                    class="nav-link {{request()->route()->getName() == 'backend.homepage.recruitment_process.create' ? 'active':''}}"
                                    data-key="t-multi-level-homepage">Recruitment Process</a>
