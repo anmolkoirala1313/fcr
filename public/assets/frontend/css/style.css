@@ -7572,3 +7572,32 @@ Reduce font and spacing: End
 .w-30{
     width: 30%;
 }
+
+.custom-card, .custom-card-2 {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+}
+
+.custom-card img, .custom-card-2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.custom-card:hover {
+    transform: scale(1.02);
+}
+
+

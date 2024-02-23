@@ -343,7 +343,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="payment-gateway-one bg-surface">
                 <div class="bg-img">
                     <img class="w-100 h-100 lazy" data-src="{{ asset(imagePath($data['homepage']->why_image)) }}" alt=""/>
@@ -370,7 +369,6 @@
         @endif
 
         @if(count($data['homepage']->recruitmentProcess))
-
             <div class="how-we-work pt-100 pb-100 bg-blue-surface">
                 <div class="container">
                     <div class="text-button-uppercase text-orange">{{ $data['homepage']->recruitment_subtitle  ?? ''}}</div>
@@ -394,7 +392,6 @@
                     </div>
                 </div>
             </div>
-
         @endif
 
         @if(count($data['director']) > 0)
@@ -466,7 +463,7 @@
         @endif
 
         @if(count($data['testimonials'])>0)
-                <div class="testimonials-three mt-100">
+            <div class="testimonials-three mt-100">
                     <div class="container">
                         <div class="text-center">
                             <div class="text-sub-heading2 text-white pt-8 pb-8 pl-16 pr-16 bg-blue bora-8 display-inline-block">
@@ -544,7 +541,6 @@
         @endif
 
         @if ($data['setting']->popup_image)
-
             @include('frontend.includes.modal')
         @endif
 

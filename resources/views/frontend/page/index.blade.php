@@ -69,6 +69,9 @@
         @if($index == 'document' && count($element)>0)
             @include($base_route.'includes.document')
         @endif
+        @if($index == 'card_image' && count($element)>0)
+            @include($base_route.'includes.card_image')
+        @endif
     @endforeach
 @endsection
 @section('js')

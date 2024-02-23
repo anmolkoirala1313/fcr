@@ -113,6 +113,9 @@ class PageSectionElementsService {
         elseif ($data['section_name'] == 'document'){
             $this->storeDocument($request, $data);
         }
+        elseif ($data['section_name'] == 'card_image'){
+            $this->syncImageCard($request, $data);
+        }
         else{
             if ($request->hasFile('image_input')) {
                 $image_name = $this->uploadImage($request->file('image_input'), '550','450');
@@ -218,7 +221,7 @@ class PageSectionElementsService {
                         'title'               => $heading,
                         'subtitle'            => $subheading,
                         'list_title'          => $title,
-                        'image'               => $request['image_'.$index] ?? $section->image,
+                        'image'               => $request['image_'.$index] ?? $section->image ?? null,
                         'list_description'    => $request['list_description'][$index],
                         'status'              => $request['status'],
                         'created_by'          => $request['created_by'],
@@ -239,6 +242,8 @@ class PageSectionElementsService {
         }
         elseif ($data['section_name'] == 'document'){
             $this->storeDocument($request, $data);
+        }elseif ($data['section_name'] == 'card_image'){
+            $this->syncImageCard($request, $data);
         }
     }
 
@@ -279,7 +284,7 @@ class PageSectionElementsService {
                     'subtitle'            => $subheading,
                     'description'         => $description,
                     'list_title'          => $title,
-                    'image'               => $request['image_'.$index] ?? $section->image,
+                    'image'               => $request['image_'.$index] ?? $section->image ?? null,
                     'list_description'    => $request['list_description'][$index],
                     'status'              => $request['status'],
                     'created_by'          => $request['created_by'],
@@ -298,4 +303,53 @@ class PageSectionElementsService {
         }
 
     }
+
+    public function syncImageCard($request, $data ){
+        $cards       = PageSection::find($data['section_id']);
+        $cards_id    = $cards->pageSectionElements->pluck('id')->toArray();
+        foreach ($request['list_header'] as $index=>$title){
+            $section     = $this->model->find($request['list_id'][$index]);
+            $heading     =  array_key_exists($index, $request->input('heading')) ? $request->input('heading')[$index] : null;
+            $subheading  =  array_key_exists($index, $request->input('subheading')) ? $request->input('subheading')[$index] : null;
+            $description =  array_key_exists($index, $request->input('description')) ? $request->input('description')[$index] : null;
+
+            if ($request->file('image_input') && array_key_exists($index,$request->file('image_input'))){
+                $image_name  = $this->updateImage( $request->file('image_input')[$index]);
+                $request->request->add(['image_'.$index => $image_name]);
+                if ($section && $section->list_image){
+                    $this->deleteImage($section->list_image);
+                }
+            }
+
+            $this->model->updateOrCreate(
+                [
+                    'id'              => $request['list_id'][$index],
+                    'page_section_id' => $data['section_id']
+                ],
+                [
+                    'heading'             => $heading,
+                    'subheading'          => $subheading,
+                    'description'         => $description,
+                    'list_title'          => $title,
+                    'image'               => $request['image_position'][$index],
+                    'button'              => $request['button'][$index],
+                    'list_image'          => $request['image_'.$index] ?? $section->list_image ?? null,
+                    'list_description'    => $request['list_description'][$index],
+                    'status'              => $request['status'],
+                    'created_by'          => $request['created_by'],
+                    'updated_by'          => $request['updated_by']
+                ]
+            );
+
+        }
+
+        foreach ($cards_id as $value){
+            if(!in_array($value,$request->input('list_id'))){
+                $element = $this->model->find($value);
+                $this->deleteImage($element->list_image);
+                $element->forceDelete();
+            }
+        }
+    }
+
 }

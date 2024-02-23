@@ -123,6 +123,23 @@
 
                     </div>
                 </div>
+                <div class="card shadow-none">
+                    <div class="card-header">
+                        <h5 class="card-title text-primary mb-0">Card image</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="image-checkbox {{ $page_method == 'edit' ? (in_array('card_image', $data['section_slug']) ? "image-checkbox-checked":"") : ''}}">
+                                    <img class="img-responsive" src="{{asset('assets/backend/images/pages/sections/card_image.png')}}" width="100%"/>
+                                    <input type="checkbox" name="section[]" value="card_image" id="card_image.png" {{ $page_method == 'edit' ? (in_array('card_image', $data['section_slug']) ? "checked":"") : ''}} />
+                                    <i class="ri ri-check-line hidden"></i>
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
 
                 <div class="card shadow-none">
                     <div class="card-header">

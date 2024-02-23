@@ -76,4 +76,40 @@
         $(this).closest('tr').remove();
     });
 
+    $(document).on('click','#add_card_image', function (e){
+        e.preventDefault();
+        let count =  $('#card-table tbody tr').length;
+        count ++;
+
+        if (count > 20){
+            Swal.fire({
+                title: "Limit Reached",
+                text: "Cannot add more than 20 image card fields",
+                icon: "info",
+                confirmButtonClass: "btn btn-primary mt-2",
+                buttonsStyling: !1
+            });
+            return false;
+        }
+
+        let detail = @json(view($view_path.'partials.card_image_details')->render());
+        $('#card-table tbody tr:last').after(detail);
+    });
+
+    $(document).on('click','.remove_card_row', function (e){
+        let count =  $('#card-table tbody tr').length;
+        count --;
+        if (count < 1){
+            Swal.fire({
+                title: "Action prohibited",
+                text: "Cannot remove the last image card field",
+                icon: "info",
+                confirmButtonClass: "btn btn-primary mt-2",
+                buttonsStyling: !1
+            });
+            return false;
+        }
+        $(this).closest('tr').remove();
+    });
+
 </script>

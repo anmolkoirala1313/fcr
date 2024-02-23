@@ -86,6 +86,9 @@
                                         @if($value == 'document')
                                             @include($view_path.'includes.document')
                                         @endif
+                                            @if($value == 'card_image')
+                                            @include($view_path.'includes.card_image')
+                                        @endif
                                     </div>
                                 @endforeach
                             </div>
