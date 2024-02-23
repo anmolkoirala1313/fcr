@@ -7564,3 +7564,7 @@ Reduce font and spacing: End
 .pagination .list-nav .nav-item:hover a {
     color: var(--white);
 }
+
+.w-30{
+    width: 30%;
+}
