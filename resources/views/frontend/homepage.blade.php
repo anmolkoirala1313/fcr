@@ -412,7 +412,7 @@
                             <div class="heading3 text-white col-12 col-xl-6">{{  $data['homepage']->recruitment_title ?? ''}}</div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row justify-content-center">
                         @foreach($data['homepage']->recruitmentProcess as $index=>$process)
                             <div class="col-12 col-xl-3 col-md-6 col-sm-6 d-flex align-items-stretch">
                                 <div class="main-item bora-16 p-32">
