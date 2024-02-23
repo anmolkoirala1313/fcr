@@ -542,6 +542,10 @@ Container: Start
   background-color: var(--surface);
 }
 
+.bg-blue-surface {
+  background-color: #1b3b5c;
+}
+
 .bg-blue {
   background-color: var(--blue);
 }

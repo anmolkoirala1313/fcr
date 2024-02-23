@@ -313,25 +313,29 @@
                         <div class="row row-gap-32">
                             <div class="col-12 col-xl-3 col-lg-3 col-md-6 col-sm-6 flex-columns-center">
                                 <div class="count-block flex-item-center">
-                                    <div class="counter heading3">{{ $data['homepage']->project_completed ?? '600' }}</div>
+                                    <div class="counter heading3">{{ $data['homepage']->project_completed ?? '600'}}</div>
+                                    <span class="heading3">+</span>
                                 </div>
                                 <div class="body1 text-secondary">Project Completed</div>
                             </div>
                             <div class="col-12 col-xl-3 col-lg-3 col-md-6 col-sm-6 flex-columns-center">
                                 <div class="count-block flex-item-center">
-                                    <div class="counter heading3">{{ $data['homepage']->happy_clients ?? '560' }}</div>
+                                    <div class="counter heading3">{{ $data['homepage']->happy_clients ?? '560'}}</div>
+                                    <span class="heading3">+</span>
                                 </div>
                                 <div class="body1 text-secondary">Happy Clients</div>
                             </div>
                             <div class="col-12 col-xl-3 col-lg-3 col-md-6 col-sm-6 flex-columns-center">
                                 <div class="count-block flex-item-center">
-                                    <div class="counter heading3">{{ $data['homepage']->visa_approved ?? '785' }}</div>
+                                    <div class="counter heading3">{{ $data['homepage']->visa_approved ?? '785' .'+'}}</div>
+                                    <span class="heading3">+</span>
                                 </div>
                                 <div class="body1 text-secondary">Visa Approved</div>
                             </div>
                             <div class="col-12 col-xl-3 col-lg-3 col-md-6 col-sm-6 flex-columns-center">
                                 <div class="count-block flex-item-center">
-                                    <div class="counter heading3">{{ $data['homepage']->success_stories ?? '650' }}</div>
+                                    <div class="counter heading3">{{ $data['homepage']->success_stories ?? '650'}}</div>
+                                    <span class="heading3">+</span>
                                 </div>
                                 <div class="body1 text-secondary">Passive income earners</div>
                             </div>
@@ -363,6 +367,34 @@
                     </div>
                 </div>
             </div>
+        @endif
+
+        @if(count($data['homepage']->recruitmentProcess))
+
+            <div class="how-we-work pt-100 pb-100 bg-blue-surface">
+                <div class="container">
+                    <div class="text-button-uppercase text-orange">{{ $data['homepage']->recruitment_subtitle  ?? ''}}</div>
+                    <div class="heading mt-12">
+                        <div class="row w-100 row-gap-24 flex-item-center">
+                            <div class="heading3 text-white col-12 col-xl-6">{{  $data['homepage']->recruitment_title ?? ''}}</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        @foreach($data['homepage']->recruitmentProcess as $index=>$process)
+                            <div class="col-12 col-xl-3 col-md-6 col-sm-6 d-flex align-items-stretch">
+                                <div class="main-item bora-16 p-32">
+                                    <div class="number heading4 text-white bg-orange bora-20 display-inline-block">{{ $index < 9 ? '0'.($index+1): ($index+1) }}</div>
+                                    <div class="heading7 text-white">{{ $process->title ?? '' }}</div>
+                                    <div class="body3 text-placehover mt-8">
+                                        {{ $process->description ?? '' }}
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+
         @endif
 
         @if(count($data['director']) > 0)
