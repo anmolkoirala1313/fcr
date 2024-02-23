@@ -35,6 +35,9 @@
                                     <a href="{{ route('backend.homepage.mission_vision.create') }}" class="d-block py-1 {{request()->route()->getName() == 'backend.homepage.mission_vision.create' ? '':'text-muted'}}">Mission, Vision & Value</a>
                                 </li>
                                 <li>
+                                    <a href="{{ route('backend.homepage.image_and_description.create') }}" class="d-block py-1 {{request()->route()->getName() == 'backend.homepage.image_and_description.create' ? '':'text-muted'}}">Image and Description</a>
+                                </li>
+                                <li>
                                     <a href="{{ route('backend.homepage.why_us.create') }}" class="d-block py-1 {{request()->route()->getName() == 'backend.homepage.why_us.create' ? '':'text-muted'}}">Why Us</a>
                                 </li>
                                 <li>

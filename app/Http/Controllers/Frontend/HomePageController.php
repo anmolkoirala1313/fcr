@@ -14,6 +14,7 @@ use App\Models\Backend\Client;
 use App\Models\Backend\CustomerInquiry;
 use App\Models\Backend\Document;
 use App\Models\Backend\FlightInquiry;
+use App\Models\Backend\Homepage\ImageAndDescription;
 use App\Models\Backend\Homepage\Slider;
 use App\Models\Backend\Homepage\Welcome;
 use App\Models\Backend\ManagingDirector;

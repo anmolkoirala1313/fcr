@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\Career\Basic_setup\JobCategoryController;
 use App\Http\Controllers\Backend\Career\CompanyCareerController;
 use App\Http\Controllers\Backend\Career\JobController;
 use App\Http\Controllers\Backend\ClientController;
+use App\Http\Controllers\Backend\Homepage\ImageAndDescriptionController;
 use App\Http\Controllers\Backend\PageHeadingController;
 use App\Http\Controllers\Backend\CustomerInquiryController;
 use App\Http\Controllers\Backend\DashboardController;
@@ -157,6 +158,10 @@ Route::prefix('homepage/')->name('homepage.')->middleware(['auth'])->group(funct
     //recruitment process
     Route::get('recruitment-process', [RecruitmentProcessController::class, 'create'])->name('recruitment_process.create');
     Route::resource('recruitment-process', RecruitmentProcessController::class)->only(['store', 'update'])->names('recruitment_process');
+
+    //image and description
+    Route::get('image-and-description', [ImageAndDescriptionController::class, 'create'])->name('image_and_description.create');
+    Route::resource('image-and-description', ImageAndDescriptionController::class)->only(['store', 'update'])->names('image_and_description');
 });
 
 //documents

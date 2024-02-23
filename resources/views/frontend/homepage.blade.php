@@ -274,6 +274,41 @@
             </div>
         @endif
 
+        @if($data['homepage']->iad_title)
+        <div class="service-block service-block-two pt-100 pb-100 bg-surface">
+            <div class="container">
+                <div class="row row-gap-32">
+                    <div class="col-12 col-xl-6 flex-column gap-16">
+                        <div class="text-about">
+                            @if ($data['homepage']->iad_link)
+                                <div class="text-sub-heading2 text-white pt-8 pb-8 pl-16 pr-16 bg-blue bora-8 display-inline-block">
+                                    {{ $data['homepage']->iad_subtitle ?? '' }}
+                                </div>
+                            @endif
+                            <div class="heading3 mt-1">{{ $data['homepage']->iad_title ?? '' }}</div>
+                            <div class="body3 text-secondary text-align-justify mt-2 custom-description">
+                                {!! $data['homepage']->iad_description  ?? '' !!}
+                            </div>
+                            @if ($data['homepage']->iad_link)
+                                <div class="button-block flex-item-center gap-20 mt-2 pb-8">
+                                    <a class="button-share text-white bg-blue hover-button-black text-button pt-14 pb-14 pl-36 pr-36 bora-48"
+                                       href="{{ $data['homepage']->iad_link ?? '' }}">
+                                        {{ $data['homepage']->iad_button ?? 'Know More' }}
+                                    </a>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col12 col-xl-6">
+                        <div class="list-service pl-40">
+                            <img class="w-100 h-100 lazy" data-src="{{ asset(imagePath($data['homepage']->iad_image)) }}" alt=""/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
+
         @if(count($data['homepage']->coreValueDetail))
             <div class="service-block mt-100">
                 <div class="container">
