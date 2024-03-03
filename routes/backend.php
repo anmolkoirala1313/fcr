@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\Career\CompanyCareerController;
 use App\Http\Controllers\Backend\Career\JobController;
 use App\Http\Controllers\Backend\ClientController;
 use App\Http\Controllers\Backend\Homepage\ImageAndDescriptionController;
+use App\Http\Controllers\Backend\Homepage\SiteStatisticController;
 use App\Http\Controllers\Backend\PageHeadingController;
 use App\Http\Controllers\Backend\CustomerInquiryController;
 use App\Http\Controllers\Backend\DashboardController;
@@ -154,6 +155,11 @@ Route::prefix('homepage/')->name('homepage.')->middleware(['auth'])->group(funct
     //why us
     Route::get('why-us', [WhyUsController::class, 'create'])->name('why_us.create');
     Route::resource('why-us', WhyUsController::class)->only(['store', 'update'])->names('why_us');
+
+    //site statistics
+    Route::get('site-statistic', [SiteStatisticController::class, 'create'])->name('site_statistic.create');
+    Route::resource('site-statistic', SiteStatisticController::class)->only(['store', 'update'])->names('site_statistic');
+
 
     //recruitment process
     Route::get('recruitment-process', [RecruitmentProcessController::class, 'create'])->name('recruitment_process.create');

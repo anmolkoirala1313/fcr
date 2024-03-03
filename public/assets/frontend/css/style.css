@@ -6751,7 +6751,7 @@ Form contact main: Start
 */
 .form-cta-block {
   position: relative;
-  height: 514px;
+  /*height: 514px;*/
 }
 .form-cta-block .bg-img img {
   position: fixed;
@@ -6770,6 +6770,7 @@ Form contact main: Start
 }
 .form-cta-block .container > .row > div:last-child .form-block {
   width: 78%;
+    margin: 12px;
 }
 .form-cta-block .container > .row > div:last-child .form-block input,
 .form-cta-block .container > .row > div:last-child .form-block select,

@@ -57,6 +57,11 @@
                                    data-key="t-multi-level-homepage">Why Us</a>
                             </li>
                             <li class="nav-item">
+                                <a href="{{ route('backend.homepage.site_statistic.create') }}"
+                                   class="nav-link {{request()->route()->getName() == 'backend.homepage.site_statistic.create' ? 'active':''}}"
+                                   data-key="t-multi-level-homepage">Site Statistic</a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="{{ route('backend.homepage.image_and_description.create') }}"
                                    class="nav-link {{request()->route()->getName() == 'backend.homepage.image_and_description.create' ? 'active':''}}"
                                    data-key="t-multi-level-homepage">Image and description</a>

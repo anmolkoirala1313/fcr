@@ -238,19 +238,30 @@
                                 <div class="heading6">Send us a message</div>
                                 <div class="row row-gap-20">
                                     <div class="col-12 col-sm-6">
-                                        <input class="w-100 bg-surface caption1 pl-16 pr-16 pt-12 pb-12 bora-8" name="name" type="text" placeholder="Name">
+                                        <input class="w-100 bg-surface caption1 pl-16 pr-16 pt-12 pb-12 bora-8" name="name" type="text" placeholder="Name" required>
                                     </div>
                                     <div class="col-12 col-sm-6">
-                                        <input class="w-100 bg-surface caption1 pl-16 pr-16 pt-12 pb-12 bora-8" name="email"  type="text" placeholder="Email">
+                                        <input class="w-100 bg-surface caption1 pl-16 pr-16 pt-12 pb-12 bora-8" name="father_name" type="text" placeholder="Father Name">
                                     </div>
                                     <div class="col-12 col-sm-6">
-                                        <input class="w-100 bg-surface caption1 pl-16 pr-16 pt-12 pb-12 bora-8" name="number" type="text" placeholder="Number">
+                                        <input class="w-100 bg-surface caption1 pl-16 pr-16 pt-12 pb-12 bora-8" name="passport_number" type="text" placeholder="Passport Number" required>
                                     </div>
                                     <div class="col-12 col-sm-6">
-                                        <input class="w-100 bg-surface caption1 pl-16 pr-16 pt-12 pb-12 bora-8" name="location" type="text" placeholder="Location">
+                                        <input class="w-100 bg-surface caption1 pl-16 pr-16 pt-12 pb-12 bora-8" name="dob" type="date" placeholder="D.O.B" max="{{today()}}" required>
                                     </div>
                                     <div class="col-12 col-sm-6">
-                                        <select class="w-100 bg-surface caption1 pl-12 pt-12 pb-12 bora-8 select2" name="categories">
+                                        <select class="w-100 bg-surface caption1 pl-12 pt-12 pb-12 bora-8 select2" name="gender" required>
+                                            <option value>Select Gender</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                                <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <input class="w-100 bg-surface caption1 pl-16 pr-16 pt-12 pb-12 bora-8" name="number" type="text" placeholder="Number" required>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <select class="w-100 bg-surface caption1 pl-12 pt-12 pb-12 bora-8 select2" name="categories" required>
                                             <option value>Select Category</option>
                                             @foreach($data['categories'] as $index=>$category)
                                                 <option value="{{ $index }}">{{$category}}</option>
@@ -258,7 +269,22 @@
                                         </select>
                                     </div>
                                     <div class="col-12 col-sm-6">
+                                        <select class="w-100 bg-surface caption1 pl-12 pt-12 pb-12 bora-8 select2" name="gender">
+                                            <option value>Select Latest Qualification</option>
+                                            <option value="slc">SLC</option>
+                                            <option value="plus2">Plus 2</option>
+                                            <option value="bachelors">Bachelors</option>
+                                            <option value="Masters">Masters</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <input class="w-100 bg-surface caption1 bora-8" style="padding: 9px;" type="file" placeholder="Passport Photo">
+                                        <small>P.P</small>
+                                    </div>
+
+                                    <div class="col-12 col-sm-6">
                                         <input class="w-100 bg-surface caption1 bora-8" style="padding: 9px;" type="file" placeholder="CV">
+                                        <small>c.v</small>
                                     </div>
                                     <div class="col-12">
                                         <textarea class="w-100 bg-surface caption1 pl-16 pr-16 pt-12 pb-12 bora-8" name="messsage" cols="10" rows="2" placeholder="Your Message"></textarea>
@@ -340,44 +366,84 @@
                 </div>
             </div>
         @endif
-
-        @if($data['homepage']->why_title)
-            <div class="style-two mt-80">
-                <div class="count-number-block">
-                    <div class="container">
-                        <div class="row row-gap-32">
-                            <div class="col-12 col-xl-3 col-lg-3 col-md-6 col-sm-6 flex-columns-center">
-                                <div class="count-block flex-item-center">
-                                    <div class="counter heading3">{{ $data['homepage']->project_completed ?? '600'}}</div>
-                                    <span class="heading3">+</span>
-                                </div>
-                                <div class="body1 text-secondary">Project Completed</div>
+        @if($data['statistics']->ss_title)
+            <div class="service-block service-block-two mt-60 mb-80">
+                <div class="container" style="    border-top: 1px solid var(--line);     padding-top: 60px;">
+                    <div class="row row-gap-32">
+                        <div class="col-12 col-xl-4 flex-column gap-16">
+                            <div class="text-sub-heading2 text-blue">{{ $data['statistics']->ss_subtitle ?? '' }}</div>
+                            <div class="heading3">{{ $data['statistics']->ss_title ?? '' }}</div>
+                            <div class="body3 text-secondary">
+                                {{ $data['statistics']->ss_description ?? '' }}
                             </div>
-                            <div class="col-12 col-xl-3 col-lg-3 col-md-6 col-sm-6 flex-columns-center">
-                                <div class="count-block flex-item-center">
-                                    <div class="counter heading3">{{ $data['homepage']->happy_clients ?? '560'}}</div>
-                                    <span class="heading3">+</span>
+                        </div>
+                        <div class="col12 col-xl-8">
+                            <div class="list-service pl-40">
+                                <div class="row row-gap-32">
+                                    <div class="col-12 col-lg-6 col-md-6">
+                                        <div class="service-item hover-box-shadow bora-8 p-24 bg-white box-shadow h-100">
+                                            <a class="service-item-main flex-item-center gap-30">
+                                                <div class="heading"><i class="icon-coin-hand text-blue fs-48"></i></div>
+                                                <div class="desc">
+                                                    <div class="heading7 hover-text-blue">Project Completed</div>
+                                                    <div class="count-block flex-item-center">
+                                                        <div class="counter heading3">{{ $data['homepage']->project_completed ?? '600'}}</div>
+                                                        <span class="heading3">+</span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-6 col-md-6">
+                                        <div class="service-item hover-box-shadow bora-8 p-24 bg-white box-shadow h-100">
+                                            <a class="service-item-main flex-item-center gap-30">
+                                                <div class="heading"><i class="icon-coin-pig text-blue fs-48"></i></div>
+                                                <div class="desc">
+                                                    <div class="heading7 hover-text-blue">Happy Clients</div>
+                                                    <div class="count-block flex-item-center">
+                                                        <div class="counter heading3">{{ $data['homepage']->happy_clients ?? '600'}}</div>
+                                                        <span class="heading3">+</span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-6 col-md-6">
+                                        <div class="service-item hover-box-shadow bora-8 p-24 bg-white box-shadow h-100">
+                                            <a class="service-item-main flex-item-center gap-30">
+                                                <div class="heading"><i class="icon-coin-virus text-blue fs-48"></i></div>
+                                                <div class="desc">
+                                                    <div class="heading7 hover-text-blue">Visa Approved</div>
+                                                    <div class="count-block flex-item-center">
+                                                        <div class="counter heading3">{{ $data['homepage']->visa_approved ?? '600'}}</div>
+                                                        <span class="heading3">+</span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-6 col-md-6">
+                                        <div class="service-item hover-box-shadow bora-8 p-24 bg-white box-shadow h-100">
+                                            <a class="service-item-main flex-item-center gap-30">
+                                                <div class="heading"><i class="icon-hand-protect text-blue fs-48"></i></div>
+                                                <div class="desc">
+                                                    <div class="heading7 hover-text-blue">Passive income earners</div>
+                                                    <div class="count-block flex-item-center">
+                                                        <div class="counter heading3">{{ $data['homepage']->success_stories ?? '600'}}</div>
+                                                        <span class="heading3">+</span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="body1 text-secondary">Happy Clients</div>
-                            </div>
-                            <div class="col-12 col-xl-3 col-lg-3 col-md-6 col-sm-6 flex-columns-center">
-                                <div class="count-block flex-item-center">
-                                    <div class="counter heading3">{{ $data['homepage']->visa_approved ?? '785' .'+'}}</div>
-                                    <span class="heading3">+</span>
-                                </div>
-                                <div class="body1 text-secondary">Visa Approved</div>
-                            </div>
-                            <div class="col-12 col-xl-3 col-lg-3 col-md-6 col-sm-6 flex-columns-center">
-                                <div class="count-block flex-item-center">
-                                    <div class="counter heading3">{{ $data['homepage']->success_stories ?? '650'}}</div>
-                                    <span class="heading3">+</span>
-                                </div>
-                                <div class="body1 text-secondary">Passive income earners</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        @endif
+        @if($data['homepage']->why_title)
             <div class="payment-gateway-one bg-surface">
                 <div class="bg-img">
                     <img class="w-100 h-100 lazy" data-src="{{ asset(imagePath($data['homepage']->why_image)) }}" alt=""/>

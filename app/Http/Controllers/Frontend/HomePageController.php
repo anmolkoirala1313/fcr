@@ -15,6 +15,7 @@ use App\Models\Backend\CustomerInquiry;
 use App\Models\Backend\Document;
 use App\Models\Backend\FlightInquiry;
 use App\Models\Backend\Homepage\ImageAndDescription;
+use App\Models\Backend\Homepage\SiteStatistic;
 use App\Models\Backend\Homepage\Slider;
 use App\Models\Backend\Homepage\Welcome;
 use App\Models\Backend\ManagingDirector;
@@ -72,6 +73,7 @@ class HomePageController extends BackendBaseController
         $data['setting']            = Setting::select('google_map','popup_image')->first();
         $data['clients']            = Client::active()->descending()->latest()->take(10)->get();
         $data['categories']         = Service::active()->pluck('title','id');
+        $data['statistics']         = SiteStatistic::active()->first();
 
         return view($this->loadResource($this->view_path.'homepage'), compact('data'));
     }

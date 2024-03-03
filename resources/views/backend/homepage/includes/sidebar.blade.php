@@ -13,7 +13,7 @@
                                 <h5 class="fs-13 mb-0">Navigation List</h5>
                             </div>
                             <div class="flex-shrink-0 ms-2">
-                                <span class="badge bg-light text-muted">8</span>
+                                <span class="badge bg-light text-muted">10</span>
                             </div>
                         </a>
 
@@ -39,6 +39,9 @@
                                 </li>
                                 <li>
                                     <a href="{{ route('backend.homepage.why_us.create') }}" class="d-block py-1 {{request()->route()->getName() == 'backend.homepage.why_us.create' ? '':'text-muted'}}">Why Us</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('backend.homepage.site_statistic.create') }}" class="d-block py-1 {{request()->route()->getName() == 'backend.homepage.site_statistic.create' ? '':'text-muted'}}">Site Statistic</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('backend.homepage.recruitment_process.create') }}" class="d-block py-1 {{request()->route()->getName() == 'backend.homepage.recruitment_process.create' ? '':'text-muted'}}">Recruitment Process</a>
