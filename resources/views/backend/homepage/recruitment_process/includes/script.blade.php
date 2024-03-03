@@ -6,10 +6,10 @@
         let count =  $('#process-table tbody tr').length;
         count ++;
 
-        if (count > 8){
+        if (count > 16){
             Swal.fire({
                 title: "Limit Reached",
-                text: "Cannot add more than 8 recruitment process fields",
+                text: "Cannot add more than 16 recruitment process fields",
                 icon: "info",
                 confirmButtonClass: "btn btn-primary mt-2",
                 buttonsStyling: !1
@@ -22,7 +22,7 @@
 
     });
 
-    $(document).on('click','.remove_row', function (e){
+    $(document).on('click','.remove_row', function (){
         let count =  $('#process-table tbody tr').length;
         count --;
         if (count < 1){
