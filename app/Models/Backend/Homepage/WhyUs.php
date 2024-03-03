@@ -11,5 +11,5 @@ class WhyUs extends BackendBaseModel
     use HasFactory, SoftDeletes;
 
     protected $table    = 'homepages';
-    protected $fillable = ['id','why_title','why_subtitle','why_description','why_video','why_image','project_completed','happy_clients','visa_approved','success_stories','status','created_by','updated_by'];
+    protected $fillable = ['id','why_title','why_subtitle','why_description','why_video','why_image','why_link','why_button','project_completed','happy_clients','visa_approved','success_stories','status','created_by','updated_by'];
 }

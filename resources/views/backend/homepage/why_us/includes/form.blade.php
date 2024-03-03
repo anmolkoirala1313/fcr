@@ -32,6 +32,18 @@
                     {!! Form::text('why_video', null,['class'=>'form-control','id'=>'why_video','placeholder'=>'Enter video link']) !!}
                 </div>
             </div>
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    {!! Form::label('why_button', 'Button', ['class' => 'form-label']) !!}
+                    {!! Form::text('why_button', null,['class'=>'form-control','id'=>'why_button','placeholder'=>'Enter button name']) !!}
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    {!! Form::label('why_link', 'Link', ['class' => 'form-label']) !!}
+                    {!! Form::text('why_link', null,['class'=>'form-control','id'=>'why_link','placeholder'=>'Enter button link']) !!}
+                </div>
+            </div>
             <div class="col-lg-12">
                 <div class="mb-3">
                     {!! Form::label('image_input', 'Images', ['class' => 'form-label request']) !!}
@@ -51,6 +63,11 @@
                         </div>
                     </div>
                 @endif
+            </div>
+            <div class="col-lg-12 border-top mt-3">
+                <div class="hstack gap-2">
+                    {!! Form::submit(isset($data['row']) ? 'Update':'Create',['class'=>'btn btn-success mt-3','id'=>'user-add-button']) !!}
+                </div>
             </div>
         </div>
     </div>

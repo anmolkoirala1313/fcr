@@ -462,6 +462,14 @@
                                 <div class="body3 text-secondary text-align-justify">
                                     {{ $data['homepage']->why_description ?? '' }}
                                 </div>
+                                @if ( $data['homepage']->why_link )
+                                    <div class="button-block flex-item-center gap-20 mt-2 pb-8">
+                                        <a class="button-share text-white bg-blue hover-button-black text-button pt-14 pb-14 pl-36 pr-36 bora-48" href="{{ $data['homepage']->why_link ?? '#' }}">
+                                           {{ $data['homepage']->why_button ?? 'Learn More'}}
+                                        </a>
+                                    </div>
+                                @endif
+
                             </div>
                         </div>
                     </div>
