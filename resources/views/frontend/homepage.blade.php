@@ -336,7 +336,7 @@
         @endif
 
         @if(count($data['homepage']->coreValueDetail))
-            <div class="service-block mt-100">
+            <div class="service-block mt-100 mb-60">
                 <div class="container">
                     <div class="text-center">
                         <div class="text-sub-heading2 text-white pt-8 pb-8 pl-16 pr-16 bg-blue bora-8 display-inline-block">
@@ -383,7 +383,7 @@
                                     <div class="col-12 col-lg-6 col-md-6">
                                         <div class="service-item hover-box-shadow bora-8 p-24 bg-white box-shadow h-100">
                                             <a class="service-item-main flex-item-center gap-30">
-                                                <div class="heading"><i class="icon-coin-hand text-blue fs-48"></i></div>
+                                                <div class="heading"><i class="icon-hand-message text-blue fs-48"></i></div>
                                                 <div class="desc">
                                                     <div class="heading7 hover-text-blue">Project Completed</div>
                                                     <div class="count-block flex-item-center">
@@ -397,7 +397,7 @@
                                     <div class="col-12 col-lg-6 col-md-6">
                                         <div class="service-item hover-box-shadow bora-8 p-24 bg-white box-shadow h-100">
                                             <a class="service-item-main flex-item-center gap-30">
-                                                <div class="heading"><i class="icon-coin-pig text-blue fs-48"></i></div>
+                                                <div class="heading"><i class="icon-hand-team text-blue fs-48"></i></div>
                                                 <div class="desc">
                                                     <div class="heading7 hover-text-blue">Happy Clients</div>
                                                     <div class="count-block flex-item-center">
@@ -411,7 +411,7 @@
                                     <div class="col-12 col-lg-6 col-md-6">
                                         <div class="service-item hover-box-shadow bora-8 p-24 bg-white box-shadow h-100">
                                             <a class="service-item-main flex-item-center gap-30">
-                                                <div class="heading"><i class="icon-coin-virus text-blue fs-48"></i></div>
+                                                <div class="heading"><i class="icon-gear-collect text-blue fs-48"></i></div>
                                                 <div class="desc">
                                                     <div class="heading7 hover-text-blue">Visa Approved</div>
                                                     <div class="count-block flex-item-center">
@@ -425,7 +425,7 @@
                                     <div class="col-12 col-lg-6 col-md-6">
                                         <div class="service-item hover-box-shadow bora-8 p-24 bg-white box-shadow h-100">
                                             <a class="service-item-main flex-item-center gap-30">
-                                                <div class="heading"><i class="icon-hand-protect text-blue fs-48"></i></div>
+                                                <div class="heading"><i class="icon-coin-virus text-blue fs-48"></i></div>
                                                 <div class="desc">
                                                     <div class="heading7 hover-text-blue">Passive income earners</div>
                                                     <div class="count-block flex-item-center">
